@@ -23,10 +23,51 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 06 Aug 2020 18:22:44 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 06 Aug 2020 18:25:57 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
+        
+            <item>
+                <title>Test3</title>
+                <link>https://example.com/posts/test3/</link>
+                <guid isPermaLink="true">https://example.com/posts/test3/</guid>
+                <pubDate>Thu, 06 Aug 2020 18:25:39 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h1 id=&#34;final-test&#34;&gt;final test&lt;/h1&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/categories/">categories</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/tags/tags/">tags</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>T3</title>
