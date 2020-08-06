@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">liudy</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-08-06T11:56:48&#43;08:00</updated>
+    <updated>2020-08-06T11:58:19&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -20,22 +20,22 @@
             <title type="text">First</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/post/first/" />
             <id>https://liudyboy.github.io/post/first/</id>
-            <updated>2020-08-06T11:35:57&#43;08:00</updated>
+            <updated>2020-08-06T11:58:11&#43;08:00</updated>
             <published>2020-08-06T09:48:13&#43;08:00</published>
             <author>
                     <name>liudy</name>
                     <uri>https://io-oi.me/</uri>
                     <email>liudy95@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">hello my world$A_b + b_c \alpha$ 人之初，性本善 $$ Ave P = \int_0^1 p(r) dr $$ 其中的$\alpha$ 如下： $$ \tau + \phi $$ what \…</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">hello my world$A_b + b_c \alpha$ 人之初，性本善 $ Ave P = \int_0^1 p(r) dr $ 其中的$\alpha$ 如下： $$ \tau + \phi $$ what \…</summary>
             
                 <content type="html">&lt;ol&gt;
 &lt;li&gt;hello my world$A_b + b_c \alpha$&lt;/li&gt;
 &lt;li&gt;人之初，性本善&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;$$
+&lt;p&gt;$
 Ave P = \int_0^1 p(r) dr
-$$&lt;/p&gt;
+$&lt;/p&gt;
 &lt;p&gt;其中的$\alpha$ 如下：
 $$
 \tau + \phi
