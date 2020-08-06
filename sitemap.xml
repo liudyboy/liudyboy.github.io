@@ -3,26 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://liudyboy.github.io/post/first/</loc>
-    <lastmod>2020-08-06T14:20:39+08:00</lastmod>
+    <loc>https://example.com/tags/algorithm/</loc>
+    <lastmod>2020-08-06T17:06:25+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/</loc>
-    <lastmod>2020-08-06T14:20:39+08:00</lastmod>
+    <loc>https://example.com/categories/</loc>
+    <lastmod>2020-08-06T17:06:25+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/post/</loc>
-    <lastmod>2020-08-06T14:20:39+08:00</lastmod>
+    <loc>https://example.com/categories/deep-learning/</loc>
+    <lastmod>2020-08-06T17:06:25+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/categories/</loc>
+    <loc>https://example.com/</loc>
+    <lastmod>2020-08-06T17:09:37+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/tags/</loc>
+    <loc>https://example.com/posts/</loc>
+    <lastmod>2020-08-06T17:06:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/algorithm/t3/</loc>
+    <lastmod>2020-08-06T17:06:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/</loc>
+    <lastmod>2020-08-06T17:06:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/categories/categories/</loc>
+    <lastmod>2020-08-06T17:03:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/tags/</loc>
+    <lastmod>2020-08-06T17:03:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/deeplearning/test2/</loc>
+    <lastmod>2020-08-06T17:03:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/about/</loc>
+    <lastmod>2020-08-06T17:09:37+08:00</lastmod>
   </url>
   
 </urlset>

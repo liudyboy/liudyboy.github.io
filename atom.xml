@@ -3,42 +3,34 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
-    <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2020-08-06T14:28:12&#43;08:00</updated>
-    <id>https://liudyboy.github.io/</id>
-    <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
-    <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
+    <subtitle type="html"></subtitle>
+    <updated>2020-08-06T18:22:44&#43;08:00</updated>
+    <id>https://example.com/</id>
+    <link rel="alternate" type="text/html" href="https://example.com/" />
+    <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
     <author>
             <name>liudy</name>
-            <uri>https://liudyboy.github.io/</uri>
+            <uri>https://example.com/</uri>
             
-                <email>liudy95@163.com</email>
+                <email>liudy95@126.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
         <entry>
-            <title type="text">First</title>
-            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/post/first/" />
-            <id>https://liudyboy.github.io/post/first/</id>
-            <updated>2020-08-06T14:20:39&#43;08:00</updated>
-            <published>2020-08-06T09:48:13&#43;08:00</published>
+            <title type="text">T3</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/algorithm/t3/" />
+            <id>https://example.com/posts/algorithm/t3/</id>
+            <updated>2020-08-06T17:06:25&#43;08:00</updated>
+            <published>2020-08-06T17:05:31&#43;08:00</published>
             <author>
                     <name>liudy</name>
-                    <uri>https://liudyboy.github.io/</uri>
-                    <email>liudy95@163.com</email>
+                    <uri>https://example.com/</uri>
+                    <email>liudy95@126.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">第一章 首先我们可以 链接可以是网络URL，也可以是相对路径。 相对路径的话需要注意本地路……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">This is a descirption</summary>
             
-                <content type="html">&lt;h1 id=&#34;第一章&#34;&gt;第一章&lt;/h1&gt;
-&lt;p&gt;首先我们可以&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/media/1.png&#34; alt=&#34;example&#34;&gt;
-&lt;img src=&#34;https://liudyboy.github.io/media/2.jpg&#34; alt=&#34;example2&#34;&gt;
-链接可以是网络URL，也可以是相对路径。
-相对路径的话需要注意本地路径和(网站)部署路径可能不一致的问题。&lt;/p&gt;
-&lt;p&gt;Got that
-$$
-\alpha * \tau = 5
-$$&lt;/p&gt;
+                <content type="html">&lt;h1 id=&#34;this-is-1&#34;&gt;this is 1&lt;/h1&gt;
+&lt;p&gt;this is about some algorithm&lt;/p&gt;
 </content>
             
             
@@ -47,7 +39,71 @@ $$&lt;/p&gt;
             
                 
                     
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/deep-learning/" term="deep learning" label="deep learning" />
+                            
+                        
+                    
                 
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/tags/algorithm/" term="algorithm" label="algorithm" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Test2</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/deeplearning/test2/" />
+            <id>https://example.com/posts/deeplearning/test2/</id>
+            <updated>2020-08-06T17:03:19&#43;08:00</updated>
+            <published>2020-08-06T16:56:36&#43;08:00</published>
+            <author>
+                    <name>liudy</name>
+                    <uri>https://example.com/</uri>
+                    <email>liudy95@126.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">This is a descirption</summary>
+            
+                <content type="html">&lt;h1 id=&#34;1&#34;&gt;1&lt;/h1&gt;
+&lt;h2 id=&#34;2&#34;&gt;2&lt;/h2&gt;
+&lt;h1 id=&#34;3&#34;&gt;3&lt;/h1&gt;
+&lt;h2 id=&#34;4&#34;&gt;4&lt;/h2&gt;
+&lt;p&gt;aha aha&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/categories/categories/" term="categories" label="categories" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/tags/tags/" term="tags" label="tags" />
+                            
+                        
                     
                 
             

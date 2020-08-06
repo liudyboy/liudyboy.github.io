@@ -8,46 +8,38 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>liudy</title>
-        <link>https://liudyboy.github.io/</link>
-        <description>MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</description>
+        <link>https://example.com/</link>
+        <description></description>
         <generator>Hugo 0.74.3 https://gohugo.io/</generator>
         
             <language>zh-CN</language>
         
         
-            <managingEditor>liudy95@163.com (liudy)</managingEditor>
+            <managingEditor>liudy95@126.com (liudy)</managingEditor>
         
         
-            <webMaster>liudy95@163.com (liudy)</webMaster>
+            <webMaster>liudy95@126.com (liudy)</webMaster>
         
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 06 Aug 2020 14:28:12 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 06 Aug 2020 18:22:44 &#43;0800</lastBuildDate>
         
-            <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
+            <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
         
             <item>
-                <title>First</title>
-                <link>https://liudyboy.github.io/post/first/</link>
-                <guid isPermaLink="true">https://liudyboy.github.io/post/first/</guid>
-                <pubDate>Thu, 06 Aug 2020 09:48:13 &#43;0800</pubDate>
+                <title>T3</title>
+                <link>https://example.com/posts/algorithm/t3/</link>
+                <guid isPermaLink="true">https://example.com/posts/algorithm/t3/</guid>
+                <pubDate>Thu, 06 Aug 2020 17:05:31 &#43;0800</pubDate>
                 
-                    <author>liudy95@163.com (liudy)</author>
+                    <author>liudy95@126.com (liudy)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description>&lt;h1 id=&#34;第一章&#34;&gt;第一章&lt;/h1&gt;
-&lt;p&gt;首先我们可以&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/media/1.png&#34; alt=&#34;example&#34;&gt;
-&lt;img src=&#34;https://liudyboy.github.io/media/2.jpg&#34; alt=&#34;example2&#34;&gt;
-链接可以是网络URL，也可以是相对路径。
-相对路径的话需要注意本地路径和(网站)部署路径可能不一致的问题。&lt;/p&gt;
-&lt;p&gt;Got that
-$$
-\alpha * \tau = 5
-$$&lt;/p&gt;
+                    <description>&lt;h1 id=&#34;this-is-1&#34;&gt;this is 1&lt;/h1&gt;
+&lt;p&gt;this is about some algorithm&lt;/p&gt;
 </description>
                 
                 
@@ -56,7 +48,68 @@ $$&lt;/p&gt;
                 
                     
                         
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/deep-learning/">deep learning</category>
+                                
+                            
+                        
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/tags/algorithm/">algorithm</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Test2</title>
+                <link>https://example.com/posts/deeplearning/test2/</link>
+                <guid isPermaLink="true">https://example.com/posts/deeplearning/test2/</guid>
+                <pubDate>Thu, 06 Aug 2020 16:56:36 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h1 id=&#34;1&#34;&gt;1&lt;/h1&gt;
+&lt;h2 id=&#34;2&#34;&gt;2&lt;/h2&gt;
+&lt;h1 id=&#34;3&#34;&gt;3&lt;/h1&gt;
+&lt;h2 id=&#34;4&#34;&gt;4&lt;/h2&gt;
+&lt;p&gt;aha aha&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/categories/categories/">categories</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://example.com/tags/tags/">tags</category>
+                                
+                            
                         
                     
                 
