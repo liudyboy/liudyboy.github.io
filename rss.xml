@@ -23,10 +23,96 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 06 Aug 2020 21:39:42 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 06 Aug 2020 23:03:14 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
+        
+            <item>
+                <title>数学杂记</title>
+                <link>https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/</guid>
+                <pubDate>Thu, 06 Aug 2020 22:58:19 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E6%95%B0%E5%AD%A6/">数学</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/%E7%9F%A5%E8%AF%86/">知识</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Regression</title>
+                <link>https://liudyboy.github.io/posts/regression/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/posts/regression/</guid>
+                <pubDate>Thu, 06 Aug 2020 22:54:38 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/%E5%9B%9E%E5%BD%92/">回归</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>深度学习加速 网络设计</title>
