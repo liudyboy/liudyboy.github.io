@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Thu, 06 Aug 2020 11:58:19 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 06 Aug 2020 14:03:12 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -38,22 +38,14 @@
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
-                    <description>&lt;ol&gt;
-&lt;li&gt;hello my world$A_b + b_c \alpha$&lt;/li&gt;
-&lt;li&gt;人之初，性本善&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;$
-Ave P = \int_0^1 p(r) dr
-$&lt;/p&gt;
-&lt;p&gt;其中的$\alpha$ 如下：
-$$
-\tau + \phi
-$$
-what&lt;/p&gt;
+                    <description>&lt;h1 id=&#34;第一章&#34;&gt;第一章&lt;/h1&gt;
+&lt;p&gt;首先我们可以&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/media/1.png&#34; alt=&#34;example&#34;&gt;
-&lt;img src=&#34;https://liudyboy.github.io/media/2.jpg&#34; alt=&#34;example2&#34;&gt;&lt;/p&gt;
-&lt;p&gt;\&lt;br&gt;
-kao&lt;/p&gt;
+&lt;img src=&#34;https://liudyboy.github.io/media/2.jpg&#34; alt=&#34;example2&#34;&gt;
+链接可以是网络URL，也可以是相对路径。
+相对路径的话需要注意本地路径和(网站)部署路径可能不一致的问题。&lt;br&gt;
+wufaliji&lt;br&gt;
+kenndfadfj&lt;/p&gt;
 </description>
                 
                 
