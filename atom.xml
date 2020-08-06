@@ -2,9 +2,9 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-    <title type="text">Hugo Theme MemE</title>
+    <title type="text">liudy</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-08-06T11:49:28&#43;08:00</updated>
+    <updated>2020-08-06T11:53:11&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -27,10 +27,7 @@
                     <uri>https://io-oi.me/</uri>
                     <email>liudy95@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">hello my world$A_b + b_c \alpha$ 人之初，性本善  $$ Ave P = \int_0^1 p(r) dr $$
-其中的$\alpha$ 如下： $$ \tau + \phi $$ what
-\
-kao</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">hello my world$A_b + b_c \alpha$ 人之初，性本善 $$ Ave P = \int_0^1 p(r) dr $$ 其中的$\alpha$ 如下： $$ \tau + \phi $$ what \…</summary>
             
                 <content type="html">&lt;ol&gt;
 &lt;li&gt;hello my world$A_b + b_c \alpha$&lt;/li&gt;
