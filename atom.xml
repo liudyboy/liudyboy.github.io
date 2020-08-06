@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
-    <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-08-06T14:03:12&#43;08:00</updated>
+    <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
+    <updated>2020-08-06T14:28:12&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -14,32 +14,31 @@
             
                 <email>liudy95@163.com</email>
             </author>
-    <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
+    <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
         <entry>
             <title type="text">First</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/post/first/" />
             <id>https://liudyboy.github.io/post/first/</id>
-            <updated>2020-08-06T14:03:08&#43;08:00</updated>
+            <updated>2020-08-06T14:20:39&#43;08:00</updated>
             <published>2020-08-06T09:48:13&#43;08:00</published>
             <author>
                     <name>liudy</name>
-                    <uri>https://io-oi.me/</uri>
+                    <uri>https://liudyboy.github.io/</uri>
                     <email>liudy95@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">第一章 首先我们可以
-链接可以是网络URL，也可以是相对路径。 相对路径的话需要注意本地路径和(网站)部署路径可能不一致的问题。
-wufaliji
-kenndfadfj</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">第一章 首先我们可以 链接可以是网络URL，也可以是相对路径。 相对路径的话需要注意本地路……</summary>
             
                 <content type="html">&lt;h1 id=&#34;第一章&#34;&gt;第一章&lt;/h1&gt;
 &lt;p&gt;首先我们可以&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/media/1.png&#34; alt=&#34;example&#34;&gt;
 &lt;img src=&#34;https://liudyboy.github.io/media/2.jpg&#34; alt=&#34;example2&#34;&gt;
 链接可以是网络URL，也可以是相对路径。
-相对路径的话需要注意本地路径和(网站)部署路径可能不一致的问题。&lt;br&gt;
-wufaliji&lt;br&gt;
-kenndfadfj&lt;/p&gt;
+相对路径的话需要注意本地路径和(网站)部署路径可能不一致的问题。&lt;/p&gt;
+&lt;p&gt;Got that
+$$
+\alpha * \tau = 5
+$$&lt;/p&gt;
 </content>
             
             
