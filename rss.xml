@@ -8,7 +8,7 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>liudy</title>
-        <link>https://example.com/</link>
+        <link>https://liudyboy.github.io/</link>
         <description>MemE is a powerful and highly customizable GoHugo theme for personal blogs.</description>
         <generator>Hugo 0.74.3 https://gohugo.io/</generator>
         
@@ -23,15 +23,15 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Thu, 06 Aug 2020 11:53:11 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 06 Aug 2020 11:56:48 &#43;0800</lastBuildDate>
         
-            <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
+            <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
         
             <item>
                 <title>First</title>
-                <link>https://example.com/post/first/</link>
-                <guid isPermaLink="true">https://example.com/post/first/</guid>
+                <link>https://liudyboy.github.io/post/first/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/post/first/</guid>
                 <pubDate>Thu, 06 Aug 2020 09:48:13 &#43;0800</pubDate>
                 
                     <author>liudy95@163.com (liudy)</author>
@@ -50,8 +50,8 @@ $$
 \tau + \phi
 $$
 what&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/media/1.png&#34; alt=&#34;example&#34;&gt;
-&lt;img src=&#34;https://example.com/media/2.jpg&#34; alt=&#34;example2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/media/1.png&#34; alt=&#34;example&#34;&gt;
+&lt;img src=&#34;https://liudyboy.github.io/media/2.jpg&#34; alt=&#34;example2&#34;&gt;&lt;/p&gt;
 &lt;p&gt;\&lt;br&gt;
 kao&lt;/p&gt;
 </description>
