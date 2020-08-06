@@ -4,15 +4,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">Hugo Theme MemE</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-08-06T11:11:38&#43;08:00</updated>
+    <updated>2020-08-06T11:49:28&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
     <author>
-            <name>reuixiy</name>
+            <name>liudy</name>
             <uri>https://example.com/</uri>
             
-                <email>reuixiy@gmail.com</email>
+                <email>liudy95@163.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
@@ -20,15 +20,17 @@
             <title type="text">First</title>
             <link rel="alternate" type="text/html" href="https://example.com/post/first/" />
             <id>https://example.com/post/first/</id>
-            <updated>2020-08-06T11:03:55&#43;08:00</updated>
+            <updated>2020-08-06T11:35:57&#43;08:00</updated>
             <published>2020-08-06T09:48:13&#43;08:00</published>
             <author>
-                    <name>reuixiy</name>
+                    <name>liudy</name>
                     <uri>https://io-oi.me/</uri>
-                    <email>reuixiy@gmail.com</email>
+                    <email>liudy95@163.com</email>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html">hello my world$A_b + b_c \alpha$ 人之初，性本善  $$ Ave P = \int_0^1 p(r) dr $$
-其中的$\alpha$ 如下： $$ \tau + \phi $$</summary>
+其中的$\alpha$ 如下： $$ \tau + \phi $$ what
+\
+kao</summary>
             
                 <content type="html">&lt;ol&gt;
 &lt;li&gt;hello my world$A_b + b_c \alpha$&lt;/li&gt;
@@ -40,7 +42,12 @@ $$&lt;/p&gt;
 &lt;p&gt;其中的$\alpha$ 如下：
 $$
 \tau + \phi
-$$&lt;/p&gt;
+$$
+what&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/media/1.png&#34; alt=&#34;example&#34;&gt;
+&lt;img src=&#34;https://example.com/media/2.jpg&#34; alt=&#34;example2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;\&lt;br&gt;
+kao&lt;/p&gt;
 </content>
             
             

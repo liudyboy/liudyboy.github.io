@@ -15,15 +15,15 @@
             <language>en</language>
         
         
-            <managingEditor>reuixiy@gmail.com (reuixiy)</managingEditor>
+            <managingEditor>liudy95@163.com (liudy)</managingEditor>
         
         
-            <webMaster>reuixiy@gmail.com (reuixiy)</webMaster>
+            <webMaster>liudy95@163.com (liudy)</webMaster>
         
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Thu, 06 Aug 2020 11:11:38 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 06 Aug 2020 11:49:28 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
@@ -34,7 +34,7 @@
                 <guid isPermaLink="true">https://example.com/post/first/</guid>
                 <pubDate>Thu, 06 Aug 2020 09:48:13 &#43;0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>liudy95@163.com (liudy)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
@@ -48,7 +48,12 @@ $$&lt;/p&gt;
 &lt;p&gt;其中的$\alpha$ 如下：
 $$
 \tau + \phi
-$$&lt;/p&gt;
+$$
+what&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/media/1.png&#34; alt=&#34;example&#34;&gt;
+&lt;img src=&#34;https://example.com/media/2.jpg&#34; alt=&#34;example2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;\&lt;br&gt;
+kao&lt;/p&gt;
 </description>
                 
                 
