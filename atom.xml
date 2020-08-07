@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2020-08-07T09:09:46&#43;08:00</updated>
+    <updated>2020-08-07T10:47:21&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -16,6 +16,86 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
+        <entry>
+            <title type="text">常见的数学函数</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0/" />
+            <id>https://liudyboy.github.io/posts/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0/</id>
+            <updated>2020-08-07T10:33:09&#43;08:00</updated>
+            <published>2020-08-07T09:36:54&#43;08:00</published>
+            <author>
+                    <name>liudy</name>
+                    <uri>https://liudyboy.github.io/</uri>
+                    <email>liudy95@126.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文列举一些常见的数学函数</summary>
+            
+                <content type="html">&lt;h2 id=&#34;sgn函数&#34;&gt;sgn函数&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/sign.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;logistic函数&#34;&gt;logistic函数&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/logisticf.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;函数图像:
+&lt;img src=&#34;https://liudyboy.github.io/imgs/lo.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;rectified-linear-unitrelu&#34;&gt;Rectified Linear Unit(ReLU):&lt;/h2&gt;
+&lt;p&gt;$$
+f(x)=\max(0, x)
+$$
+函数图像：
+&lt;img src=&#34;https://liudyboy.github.io/imgs/relu.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;tanh函数&#34;&gt;Tanh函数&lt;/h2&gt;
+&lt;p&gt;Tanh 是双曲正切函数，是三角学中普遍使用的 Tan 圆函数的双曲类比(调整平移过的sigmoid函数)
+定义：
+$$
+tanh(\alpha) = \frac{sinh(\alpha)}{\cosh(\alpha)}
+$$
+$$
+tanh(\alpha)=\frac{e^{2\alpha}-1}{e^{2\alpha}+1}=\frac{e^x-e^{-x}}{e^x+e^{-x}}
+$$
+函数图像：
+&lt;img src=&#34;https://liudyboy.github.io/imgs/tanh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;双曲函数&#34;&gt;双曲函数&lt;/h2&gt;
+&lt;p&gt;双曲函数是一类与常见的三角函数（也叫圆函数）类似的函数
+$$
+sinh(x) = \frac{e^x - e^{-x}}{2}
+$$
+$$
+cosh(x) = \frac{e^x + e^{-x}}{2}
+$$
+$$
+tanh(x) = \frac{sinh(x)}{cosh(x)}
+$$
+性质： $cosh^2t-sinh^2t=1$&lt;/p&gt;
+&lt;p&gt;函数图像：
+&lt;img src=&#34;https://liudyboy.github.io/imgs/hh1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/categories/%E6%95%B0%E5%AD%A6/" term="数学" label="数学" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/tags/%E5%9F%BA%E7%A1%80/" term="基础" label="基础" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">数学杂记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/" />
@@ -112,7 +192,7 @@
             <title type="text">深度学习加速 网络设计</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/" />
             <id>https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/</id>
-            <updated>2020-08-07T09:08:58&#43;08:00</updated>
+            <updated>2020-08-07T09:15:13&#43;08:00</updated>
             <published>2020-08-06T20:33:07&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -163,7 +243,8 @@
 在Grouped convolution 中存在一个问题，各个分组卷积中处理的只是局部的输入数据的信息，只能从特定的一些特征中学习从而导致信息在各组卷积中阻隔了。所以引入 channel shuffling.
 &lt;img src=&#34;https://liudyboy.github.io/imgs/shc.png&#34; alt=&#34;Channel shuffle.&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;shufflenet-v2httpsarxivorgabs180711164&#34;&gt;&lt;a href=&#34;https://arxiv.org/abs/1807.11164&#34;&gt;ShuffleNet V2&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;背景:&lt;/strong&gt; 在shufflenet V2 文中作者指出一般设计高效网络时如：ShuffleNet v1和MobileNet v2 时都使用FLOPs这一间接的测量手段来衡量运行速度。虽然这部分占据了大部分的时间，但是I/O, data shuffle 和 element-wise operations(AddTensor, ReLU, etc)也耗费了大量的时间，所以只考虑FLOPs衡量时间是不精确的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;背景:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在shufflenet V2 文中作者指出一般设计高效网络时如：ShuffleNet v1和MobileNet v2 时都使用FLOPs这一间接的测量手段来衡量运行速度。虽然这部分占据了大部分的时间，但是I/O, data shuffle 和 element-wise operations(AddTensor, ReLU, etc)也耗费了大量的时间，所以只考虑FLOPs衡量时间是不精确的。&lt;/p&gt;
 &lt;p&gt;经过实验作者得到设计高效网络的四个方向：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;use ”balanced“ convolutions (equal channel width);
