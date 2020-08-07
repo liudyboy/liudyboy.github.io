@@ -3,62 +3,77 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://example.com/categories/</loc>
-    <lastmod>2020-08-06T18:25:52+08:00</lastmod>
+    <loc>https://liudyboy.github.io/categories/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/categories/categories/</loc>
-    <lastmod>2020-08-06T18:25:52+08:00</lastmod>
+    <loc>https://liudyboy.github.io/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/</loc>
-    <lastmod>2020-08-06T18:25:52+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/posts/</loc>
-    <lastmod>2020-08-06T18:25:52+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/tags/</loc>
-    <lastmod>2020-08-06T18:25:52+08:00</lastmod>
+    <loc>https://liudyboy.github.io/categories/%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/tags/tags/</loc>
-    <lastmod>2020-08-06T18:25:52+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/posts/test3/</loc>
-    <lastmod>2020-08-06T18:25:52+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/tags/algorithm/</loc>
-    <lastmod>2020-08-06T17:06:25+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/regression/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/categories/deep-learning/</loc>
-    <lastmod>2020-08-06T17:06:25+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/%E5%9B%9E%E5%BD%92/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/posts/algorithm/t3/</loc>
-    <lastmod>2020-08-06T17:06:25+08:00</lastmod>
+    <loc>https://liudyboy.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/posts/deeplearning/test2/</loc>
-    <lastmod>2020-08-06T17:03:19+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://example.com/about/</loc>
+    <loc>https://liudyboy.github.io/tags/%E5%8A%A0%E9%80%9F/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2020-08-07T09:08:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/about/</loc>
     <lastmod>2020-08-06T17:09:37+08:00</lastmod>
   </url>
   

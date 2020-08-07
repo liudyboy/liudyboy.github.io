@@ -4,33 +4,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2020-08-06T18:26:58&#43;08:00</updated>
-    <id>https://example.com/</id>
-    <link rel="alternate" type="text/html" href="https://example.com/" />
-    <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
+    <updated>2020-08-07T09:08:58&#43;08:00</updated>
+    <id>https://liudyboy.github.io/</id>
+    <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
+    <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
     <author>
             <name>liudy</name>
-            <uri>https://example.com/</uri>
+            <uri>https://liudyboy.github.io/</uri>
             
                 <email>liudy95@126.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
         <entry>
-            <title type="text">Test3</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/test3/" />
-            <id>https://example.com/posts/test3/</id>
-            <updated>2020-08-06T18:25:52&#43;08:00</updated>
-            <published>2020-08-06T18:25:39&#43;08:00</published>
+            <title type="text">数学杂记</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/" />
+            <id>https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/</id>
+            <updated>2020-08-07T09:08:58&#43;08:00</updated>
+            <published>2020-08-06T22:58:19&#43;08:00</published>
             <author>
                     <name>liudy</name>
-                    <uri>https://example.com/</uri>
+                    <uri>https://liudyboy.github.io/</uri>
                     <email>liudy95@126.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">This is a descirption</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文将包含学习过程中遇到的数学知识</summary>
             
-                <content type="html">&lt;h1 id=&#34;final-test&#34;&gt;final test&lt;/h1&gt;
-</content>
+                <content type="html"></content>
             
             
             
@@ -42,7 +41,7 @@
                             
                             
                             
-                                <category scheme="https://example.com/categories/categories/" term="categories" label="categories" />
+                                <category scheme="https://liudyboy.github.io/categories/%E6%95%B0%E5%AD%A6/" term="数学" label="数学" />
                             
                         
                     
@@ -52,7 +51,7 @@
                             
                             
                             
-                                <category scheme="https://example.com/tags/tags/" term="tags" label="tags" />
+                                <category scheme="https://liudyboy.github.io/tags/%E7%9F%A5%E8%AF%86/" term="知识" label="知识" />
                             
                         
                     
@@ -61,21 +60,19 @@
         </entry>
     
         <entry>
-            <title type="text">T3</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/algorithm/t3/" />
-            <id>https://example.com/posts/algorithm/t3/</id>
-            <updated>2020-08-06T17:06:25&#43;08:00</updated>
-            <published>2020-08-06T17:05:31&#43;08:00</published>
+            <title type="text">Regression</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/regression/" />
+            <id>https://liudyboy.github.io/posts/regression/</id>
+            <updated>2020-08-07T09:08:58&#43;08:00</updated>
+            <published>2020-08-06T22:54:38&#43;08:00</published>
             <author>
                     <name>liudy</name>
-                    <uri>https://example.com/</uri>
+                    <uri>https://liudyboy.github.io/</uri>
                     <email>liudy95@126.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">This is a descirption</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文将介绍线性回归、lasso regression、ridge regression</summary>
             
-                <content type="html">&lt;h1 id=&#34;this-is-1&#34;&gt;this is 1&lt;/h1&gt;
-&lt;p&gt;this is about some algorithm&lt;/p&gt;
-</content>
+                <content type="html"></content>
             
             
             
@@ -87,7 +84,7 @@
                             
                             
                             
-                                <category scheme="https://example.com/categories/deep-learning/" term="deep learning" label="deep learning" />
+                                <category scheme="https://liudyboy.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" term="机器学习" label="机器学习" />
                             
                         
                     
@@ -97,7 +94,13 @@
                             
                             
                             
-                                <category scheme="https://example.com/tags/algorithm/" term="algorithm" label="algorithm" />
+                                <category scheme="https://liudyboy.github.io/tags/%E5%9B%9E%E5%BD%92/" term="回归" label="回归" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/tags/%E7%AE%97%E6%B3%95/" term="算法" label="算法" />
                             
                         
                     
@@ -106,23 +109,88 @@
         </entry>
     
         <entry>
-            <title type="text">Test2</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/deeplearning/test2/" />
-            <id>https://example.com/posts/deeplearning/test2/</id>
-            <updated>2020-08-06T17:03:19&#43;08:00</updated>
-            <published>2020-08-06T16:56:36&#43;08:00</published>
+            <title type="text">深度学习加速 网络设计</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/" />
+            <id>https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/</id>
+            <updated>2020-08-07T09:08:58&#43;08:00</updated>
+            <published>2020-08-06T20:33:07&#43;08:00</published>
             <author>
                     <name>liudy</name>
-                    <uri>https://example.com/</uri>
+                    <uri>https://liudyboy.github.io/</uri>
                     <email>liudy95@126.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">This is a descirption</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">总结一些深度学习中在网络架构设计上加速神经网络执行的方法</summary>
             
-                <content type="html">&lt;h1 id=&#34;1&#34;&gt;1&lt;/h1&gt;
-&lt;h2 id=&#34;2&#34;&gt;2&lt;/h2&gt;
-&lt;h1 id=&#34;3&#34;&gt;3&lt;/h1&gt;
-&lt;h2 id=&#34;4&#34;&gt;4&lt;/h2&gt;
-&lt;p&gt;aha aha&lt;/p&gt;
+                <content type="html">&lt;p&gt;随着深度学习模型越来越复杂，训练该模型需要消耗大量的计算资源，本文纪录一些在网络架构设计上加速的一些方法。&lt;/p&gt;
+&lt;h2 id=&#34;1-x-1-convolutionhttpstowardsdatasciencecoma-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215&#34;&gt;&lt;a href=&#34;https://towardsdatascience.com/a-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215&#34;&gt;1 x 1 convolution&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;该方法如下图：
+&lt;img src=&#34;https://liudyboy.github.io/imgs/11conv.png&#34; alt=&#34;1 x 1 convolution, where the filter size is 1 x 1 x D.&#34;&gt;
+1 x 1convolution 的优点有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dimensionality reduction for efficient computations&lt;/li&gt;
+&lt;li&gt;Efficient low dimensional embedding, or feature pooling&lt;/li&gt;
+&lt;li&gt;Applying nonlinearity again after convolution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;spatially-separable-convolutionshttpstowardsdatasciencecoma-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215&#34;&gt;&lt;a href=&#34;https://towardsdatascience.com/a-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215&#34;&gt;Spatially Separable Convolutions&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;该方法在mobileNet使用，方法如下图：
+&lt;img src=&#34;https://liudyboy.github.io/imgs/spco2.png&#34; alt=&#34;Spatially separable convolution with 1 channel.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/spco3.png&#34; alt=&#34;Standard convolution with 1 channel.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;利用类似矩阵分解的方法，将矩阵用两个向量相乘表示
+&lt;img src=&#34;spco1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;降低计算量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;depthwise-separable-convolutionshttpstowardsdatasciencecoma-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215&#34;&gt;&lt;a href=&#34;https://towardsdatascience.com/a-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215&#34;&gt;Depthwise Separable Convolutions&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;该方法常用于深度学习(eg. MobileNet, Xception),该方法由两部分组成： depthwise convolutions 和 1x1 convolutions.
+&lt;img src=&#34;https://liudyboy.github.io/imgs/ddse.png&#34; alt=&#34;The overall process of depthwise separable convolution.&#34;&gt;
+&lt;img src=&#34;https://liudyboy.github.io/imgs/sco.png&#34; alt=&#34;Standard 2D convolution to create output with 128 layer, using 128 filters.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;大幅降低计算量（约可以降低h的2次方倍的计算量，h为卷积核的大小，eg. 3x3, 5x5）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;降低了模型的表示能力，可能导致sub-optimal&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;grouped-convolutionhttpstowardsdatasciencecoma-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215&#34;&gt;&lt;a href=&#34;https://towardsdatascience.com/a-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215&#34;&gt;Grouped Convolution&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/s2d.png&#34; alt=&#34;Standard 2D convolution.&#34;&gt;
+&lt;img src=&#34;https://liudyboy.github.io/imgs/gc2.png&#34; alt=&#34;Grouped convolution with 2 filter groups.&#34;&gt;
+将卷积核分成两个组，分别负责一半的输入数据输出一半的数据，该方法可以用于模型并行在多个GPU上训练，并且大幅的减少了模型参数，还有文章说该方法对模型性能有所提升。&lt;/p&gt;
+&lt;h2 id=&#34;shuffled-grouped-convolutionhttpsarxivorgabs170701083&#34;&gt;&lt;a href=&#34;https://arxiv.org/abs/1707.01083&#34;&gt;Shuffled Grouped Convolution&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;shuffled grouped convolution 包含了 grouped convolution 和 channel shuffling.
+&lt;img src=&#34;https://liudyboy.github.io/imgs/gcc.png&#34; alt=&#34;Grouped convolution&#34;&gt;
+在Grouped convolution 中存在一个问题，各个分组卷积中处理的只是局部的输入数据的信息，只能从特定的一些特征中学习从而导致信息在各组卷积中阻隔了。所以引入 channel shuffling.
+&lt;img src=&#34;https://liudyboy.github.io/imgs/shc.png&#34; alt=&#34;Channel shuffle.&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;shufflenet-v2httpsarxivorgabs180711164&#34;&gt;&lt;a href=&#34;https://arxiv.org/abs/1807.11164&#34;&gt;ShuffleNet V2&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;背景:&lt;/strong&gt; 在shufflenet V2 文中作者指出一般设计高效网络时如：ShuffleNet v1和MobileNet v2 时都使用FLOPs这一间接的测量手段来衡量运行速度。虽然这部分占据了大部分的时间，但是I/O, data shuffle 和 element-wise operations(AddTensor, ReLU, etc)也耗费了大量的时间，所以只考虑FLOPs衡量时间是不精确的。&lt;/p&gt;
+&lt;p&gt;经过实验作者得到设计高效网络的四个方向：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;use ”balanced“ convolutions (equal channel width);
+&lt;ul&gt;
+&lt;li&gt;即卷积层的输入特征通道数与输出特征通道数尽可能相等；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;be aware of the cost of using group convolution;
+&lt;ul&gt;
+&lt;li&gt;即group convolution可以减少FLOPs，但是增加了MAC（memory access cost）,所以要恰当的使用group convolution；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;reduce the degree of fragmentation;
+&lt;ul&gt;
+&lt;li&gt;因为Network fragmentation 会降低并行化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;reduce element-wise operations
+&lt;ul&gt;
+&lt;li&gt;这部分操作FLOPs很小，但是需要大量MAC
+&lt;img src=&#34;https://liudyboy.github.io/imgs/shufflenetv2.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;网络设计&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;At the beginning of each unit, the input of c feature channels are split into two branches with c − c′ and c′ channels, respectively. Following G3, one branch remains as identity. The other branch consists of three convolutions with the same input and output channels to satisfy G1. The two 1 × 1 convolutions are no longer group-wise. This is partially to follow G2, and partially because the split operation already produces two groups. After convolution, the two branches are concatenated. So, the number of channels keeps the same (G1). The same “channel shuffle”  is then used to enable information communication between the two branches.&lt;/p&gt;
+&lt;p&gt;After the shuffling, the next unit begins. Note that the “Add” operation in ShuffleNet v1  no longer exists. Element-wise operations like ReLU and depth- wise convolutions exist only in one branch. Also, the three successive element- wise operations, “Concat”, “Channel Shuffle” and “Channel Split”, are merged into a single element-wise operation. These changes are beneficial according to G4.&lt;/p&gt;
 </content>
             
             
@@ -135,7 +203,7 @@
                             
                             
                             
-                                <category scheme="https://example.com/categories/categories/" term="categories" label="categories" />
+                                <category scheme="https://liudyboy.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" term="深度学习" label="深度学习" />
                             
                         
                     
@@ -145,7 +213,7 @@
                             
                             
                             
-                                <category scheme="https://example.com/tags/tags/" term="tags" label="tags" />
+                                <category scheme="https://liudyboy.github.io/tags/%E5%8A%A0%E9%80%9F/" term="加速" label="加速" />
                             
                         
                     
