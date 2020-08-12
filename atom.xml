@@ -4,11 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-<<<<<<< HEAD
-    <updated>2020-08-12T18:18:02&#43;08:00</updated>
-=======
-    <updated>2020-08-10T21:46:33&#43;08:00</updated>
->>>>>>> d3f863da497d905f4ac5ea07dc7c380387c68b77
+    <updated>2020-08-12T18:18:47&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -24,11 +20,7 @@
             <title type="text">面向对象设计原则</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" />
             <id>https://liudyboy.github.io/posts/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</id>
-<<<<<<< HEAD
             <updated>2020-08-11T09:44:04&#43;08:00</updated>
-=======
-            <updated>2020-08-10T21:45:55&#43;08:00</updated>
->>>>>>> d3f863da497d905f4ac5ea07dc7c380387c68b77
             <published>2020-08-08T17:13:24&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -77,11 +69,7 @@
             <title type="text">C&#43;&#43;杂记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/c&#43;&#43;%E6%9D%82%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/c&#43;&#43;%E6%9D%82%E8%AE%B0/</id>
-<<<<<<< HEAD
             <updated>2020-08-12T10:08:07&#43;08:00</updated>
-=======
-            <updated>2020-08-08T17:13:36&#43;08:00</updated>
->>>>>>> d3f863da497d905f4ac5ea07dc7c380387c68b77
             <published>2020-08-07T17:22:12&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -336,7 +324,6 @@
 &lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;注意：在《clean code》书中对于基于typeid()来进行类判断的操作的代码是禁止的，因为这样抵消了多态的好处。&lt;/p&gt;
 &lt;/blockquote&gt;
-<<<<<<< HEAD
 &lt;h2 id=&#34;多态&#34;&gt;多态&lt;/h2&gt;
 &lt;p&gt;当一个子类传入一个函数时，函数上的参数声明为其父类，在函数内对该父类进行操作，函数返回后，只会更改这个子类内父类的部分其余不变。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -436,9 +423,6 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content>
-=======
-</content>
->>>>>>> d3f863da497d905f4ac5ea07dc7c380387c68b77
             
             
             
@@ -472,7 +456,7 @@
             <title type="text">常见的数学函数</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0/" />
             <id>https://liudyboy.github.io/posts/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0/</id>
-            <updated>2020-08-08T10:10:18&#43;08:00</updated>
+            <updated>2020-08-07T10:33:09&#43;08:00</updated>
             <published>2020-08-07T09:36:54&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -552,7 +536,7 @@ $$
             <title type="text">数学杂记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/</id>
-            <updated>2020-08-06T23:02:39&#43;08:00</updated>
+            <updated>2020-08-07T09:08:58&#43;08:00</updated>
             <published>2020-08-06T22:58:19&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -595,7 +579,7 @@ $$
             <title type="text">Regression</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/regression/" />
             <id>https://liudyboy.github.io/posts/regression/</id>
-            <updated>2020-08-06T23:01:21&#43;08:00</updated>
+            <updated>2020-08-07T09:08:58&#43;08:00</updated>
             <published>2020-08-06T22:54:38&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -644,7 +628,7 @@ $$
             <title type="text">深度学习加速 网络设计</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/" />
             <id>https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/</id>
-            <updated>2020-08-08T10:10:18&#43;08:00</updated>
+            <updated>2020-08-07T09:15:13&#43;08:00</updated>
             <published>2020-08-06T20:33:07&#43;08:00</published>
             <author>
                     <name>liudy</name>
