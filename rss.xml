@@ -23,7 +23,11 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
+<<<<<<< HEAD
         <lastBuildDate>Wed, 12 Aug 2020 18:18:02 &#43;0800</lastBuildDate>
+=======
+        <lastBuildDate>Mon, 10 Aug 2020 21:46:33 &#43;0800</lastBuildDate>
+>>>>>>> d3f863da497d905f4ac5ea07dc7c380387c68b77
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -330,6 +334,7 @@
 &lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;注意：在《clean code》书中对于基于typeid()来进行类判断的操作的代码是禁止的，因为这样抵消了多态的好处。&lt;/p&gt;
 &lt;/blockquote&gt;
+<<<<<<< HEAD
 &lt;h2 id=&#34;多态&#34;&gt;多态&lt;/h2&gt;
 &lt;p&gt;当一个子类传入一个函数时，函数上的参数声明为其父类，在函数内对该父类进行操作，函数返回后，只会更改这个子类内父类的部分其余不变。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -429,6 +434,9 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
+=======
+</description>
+>>>>>>> d3f863da497d905f4ac5ea07dc7c380387c68b77
                 
                 
                 
