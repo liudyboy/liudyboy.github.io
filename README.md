@@ -1,1 +1,1 @@
-My blog website please visit <liudy.top>
+My blog website please visit [liudy.top](liudy.top)
