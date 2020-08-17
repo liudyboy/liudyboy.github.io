@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sun, 16 Aug 2020 22:09:25 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 17 Aug 2020 22:22:46 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -1879,7 +1879,57 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
 &lt;p&gt;one piece of code that calls another piece of code should not know internals about that other piece of code&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;strong-cohesion&#34;&gt;Strong Cohesion&lt;/h2&gt;
-&lt;p&gt;功能上的聚合（funcitonal cohension）,我们将多个模块聚合在一起因为它们都是为了完成一个功能。&lt;/p&gt;
+&lt;p&gt;功能上的聚合（funcitonal cohension）,我们将多个模块聚合在一起因为它们都是为了完成一个功能（这里的目标是说同一个类里面）。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;HighCohesion&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_elementA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_elementB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MethodA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;returnValue&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SomeOtherMethod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_elementA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;SomeVeryOtherMethod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_elementB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;PrintValues&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;Console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;WriteLine&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_elementB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;loose-coupling&#34;&gt;Loose Coupling&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Coupling:&lt;/strong&gt; 指的是一个类知道另一个类信息的多少。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tight coupling:&lt;/strong&gt; 指一个类紧紧的跟另一个类绑定在一起，修改一个类你必须修改另一个类&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Loose coupling:&lt;/strong&gt; 类与类之间的内在关系越少越好。&lt;/p&gt;
+&lt;h2 id=&#34;be-careful-with-optimizations&#34;&gt;Be Careful with Optimizations&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Premature optimization is the root of all evil (or at least most of it) in programming.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;只要没有明显的性能要求要满足，尽量不要去进行优化。&lt;/p&gt;
+&lt;h2 id=&#34;principle-of-least-astonishment&#34;&gt;Principle of Least Astonishment&lt;/h2&gt;
+&lt;p&gt;在设计API接口的时候，不应该给调用者出现不期望的操作或信息（比如，控制信息，具有迷惑性错误信息）。&lt;/p&gt;
+&lt;h2 id=&#34;the-boy-scout-rule&#34;&gt;The Boy Scout Rule&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Always leave the campground cleaner than you found it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;不论什么时候我们发现代码有需要提升的地方，我们应该立刻进行修改。&lt;/p&gt;
 </description>
                 
                 
