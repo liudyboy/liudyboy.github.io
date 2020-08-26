@@ -3,33 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://liudyboy.github.io/posts/awesome-library/</loc>
+    <lastmod>2020-08-26T16:55:55+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://liudyboy.github.io/categories/</loc>
-    <lastmod>2020-08-26T11:42:33+08:00</lastmod>
+    <lastmod>2020-08-26T16:55:55+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/</loc>
-    <lastmod>2020-08-26T11:42:33+08:00</lastmod>
+    <lastmod>2020-08-26T16:55:55+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/</loc>
-    <lastmod>2020-08-26T11:42:33+08:00</lastmod>
+    <lastmod>2020-08-26T16:55:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/</loc>
+    <lastmod>2020-08-26T16:55:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/%E7%BB%8F%E9%AA%8C/</loc>
+    <lastmod>2020-08-26T16:55:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2020-08-26T16:55:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/awesomesoftwares/</loc>
+    <lastmod>2020-08-26T15:49:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2020-08-26T15:49:24+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/regression/</loc>
-    <lastmod>2020-08-26T09:11:05+08:00</lastmod>
+    <lastmod>2020-08-26T16:32:42+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/support-vector-regression/</loc>
     <lastmod>2020-08-26T09:11:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/</loc>
-    <lastmod>2020-08-26T11:42:33+08:00</lastmod>
   </url>
   
   <url>
@@ -50,11 +75,6 @@
   <url>
     <loc>https://liudyboy.github.io/posts/mpi%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2020-08-25T16:09:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2020-08-26T11:42:33+08:00</lastmod>
   </url>
   
   <url>
@@ -134,22 +154,17 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/accurate-fast-and-scalable-kernel-ridge-regression-on-parallel-and-distributed-systems-%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-08-17T17:35:15+08:00</lastmod>
+    <lastmod>2020-08-26T16:32:42+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/parallel-computing/</loc>
-    <lastmod>2020-08-17T17:35:15+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/regresion/</loc>
-    <lastmod>2020-08-17T17:35:15+08:00</lastmod>
+    <lastmod>2020-08-26T16:32:42+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-08-17T17:35:15+08:00</lastmod>
+    <lastmod>2020-08-26T16:32:42+08:00</lastmod>
   </url>
   
   <url>
