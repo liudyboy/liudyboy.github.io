@@ -23,10 +23,333 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 26 Aug 2020 17:45:16 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 28 Aug 2020 17:44:56 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Factor Analysis</title>
+                <link>https://liudyboy.github.io/posts/factor-analysis/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/posts/factor-analysis/</guid>
+                <pubDate>Thu, 27 Aug 2020 17:24:25 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;因子分析factor-analysis&#34;&gt;因子分析（factor analysis）&lt;/h2&gt;
+&lt;p&gt;因子分析（factor analysis）是一种用于挖掘我们所感兴趣的变量{$x_1, x_2, \cdots, x_p$}是否可以用更少的$q$个因子{$F_1,F_2,\cdots, F_q$}的线性组合来表示的方法($q\leq p$,且每个因子都是变量)。&lt;/p&gt;
+&lt;div&gt;
+$$
+x_1 = l_{11}F_1 + \cdots + l_{1q}F_q + \epsilon_1 \\
+x_2 = l_{21}F_1 + \cdots + l_{2q}F_q + \epsilon_2 \\
+\vdots \\
+x_p = l_{p1}F_1 + \cdots + l_{pq}F_q + \epsilon_p.
+$$
+&lt;/div&gt;
+&lt;p&gt;也可以表示为$X = \mathbf{A}S + \epsilon$, 其中$S \in \mathbb{R}^q$的向量称为公共因子（common factors）, $A\in \mathbb{R}^{p\times q}$是一个矩阵其中的元素$l_{ij}$称为第i个变量的第j个因子的“loadings”.$\epsilon_1,\cdots, \epsilon_p$是特有的因子(unique factors)。&lt;/p&gt;
+&lt;p&gt;对于变量$x_i$的方差，我们可以表示为&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{array}{rl}
+Var(x_i) &amp; = l_{i1}^2 Var(F_1) + \cdots + l_{iq}^2 Var(F_q) + Var(\epsilon_i) \\
+&amp;  = l_{i1}^2  + \cdots + l_{iq}^2 + \sigma_i^2
+\end{array}
+$$
+&lt;/div&gt;
+&lt;p&gt;变量$x_i, x_j$之间的协方差为：&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{array}{rl}
+Cov(x_i, x_j) &amp; = l_{i1}l_{j1} Var(F_1) + \cdots + l_{iq}l_{jq} Var(F_q) \\
+&amp;  = l_{i1}l_{j1}  + \cdots + l_{iq}l_{jq}
+\end{array}
+$$
+&lt;/div&gt;
+&lt;p&gt;注意以上计算，我们假定了$Var(F_i) = 1, Var(\epsilon_i)=\sigma_i^2$。并且我们称 $h_i^2 = l_{i1}^2  + \cdots + l_{iq}^2$ 为$\mathbf{communality}$, $\sigma_i^2$为$\mathbf{specificity}$.&lt;/p&gt;
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;p&gt;假定原变量有三个$x_1, x_2, x_3$，我们用两个因子来表示，则原变量的相关矩阵可以表示为如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;$x_1$&lt;/th&gt;
+&lt;th&gt;$x_2$&lt;/th&gt;
+&lt;th&gt;$x_3$&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$x_1$&lt;/td&gt;
+&lt;td&gt;$l_{11}^2 + l_{12}^2 + \sigma_1^2$&lt;/td&gt;
+&lt;td&gt;$l_{21}l_{11}+l_{22}l_{12}$&lt;/td&gt;
+&lt;td&gt;$l_{31}l_{11} + l_{32}l_{12}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$x_2$&lt;/td&gt;
+&lt;td&gt;$l_{21}l_{11}+l_{22}l_{12}$&lt;/td&gt;
+&lt;td&gt;$l_{21}^2 + l_{22}^2 + \sigma_{2}^2$&lt;/td&gt;
+&lt;td&gt;$l_{21}l_{31} + l_{22}l_{32}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$x_3$&lt;/td&gt;
+&lt;td&gt;$l_{31}l_{11} + l_{32}l_{12}$&lt;/td&gt;
+&lt;td&gt;$l_{21}l_{31} + l_{22}l_{32}$&lt;/td&gt;
+&lt;td&gt;$l_{31}^2  + l_{32}^2 + \sigma_3^2$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;即原变量的相关矩阵为$LL^T+diag(\sigma_{1}^2, \cdots, \sigma_{p}^2)$  ($L$为loadings 矩阵)&lt;/p&gt;
+&lt;h3 id=&#34;factor-analysis-的假设&#34;&gt;factor analysis 的假设&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;公共因子$F$于特有因子$\epsilon_i$是无关的：
+$$
+Cov(F, e_i) = 0
+$$&lt;/li&gt;
+&lt;li&gt;特有因子之间是无关的：
+$$
+Cov(e_i, e_j) = 0
+$$&lt;/li&gt;
+&lt;li&gt;给定公共因子后观测变量之间无关：
+$$
+Cov(x_i, x_j|F) = 0
+$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;目地&#34;&gt;目地&lt;/h3&gt;
+&lt;p&gt;使用因子分析（factor analysis）我们大部分是为了以下两个目地：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;得到 &lt;strong&gt;factor loadings&lt;/strong&gt; $l_{ij}$&lt;/li&gt;
+&lt;li&gt;得到 &lt;strong&gt;communalities&lt;/strong&gt; $h_i^2$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;求解因子&#34;&gt;求解因子&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;通过相关矩阵（Correlation Matrix）求解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先根据输入数据$\mathbf{X}$求得相关矩阵$\mathbf{R}$&lt;/li&gt;
+&lt;li&gt;因为$\mathbf{R}$是对称矩阵所以可以表示为$R=Q\Lambda Q^T$&lt;/li&gt;
+&lt;li&gt;已知$\mathbf{R = LL^T + \epsilon}$ ($\mathbf{L}$为loadings 矩阵)&lt;/li&gt;
+&lt;li&gt;忽略误差$\mathbf{\epsilon}$，可得$\mathbf{L = Q\sqrt{(\Lambda)}}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用PCA的方法求解：&lt;/p&gt;
+&lt;p&gt;将PCA中的主成分（principal components） 做为因子（factors）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;因子旋转factor-rotations&#34;&gt;因子旋转（Factor Rotations）&lt;/h2&gt;
+&lt;h3 id=&#34;varimax-rotation&#34;&gt;Varimax rotation&lt;/h3&gt;
+&lt;p&gt;旋转算法过程如下：&lt;/p&gt;
+&lt;p&gt;第$i$次迭代&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果截至条件满足，退出迭代&lt;/li&gt;
+&lt;li&gt;遍历所有成对的因子(factor)执行以下操作：
+&lt;ol&gt;
+&lt;li&gt;对选中的一对因子进行$\theta$角度的旋转（假定选中的因子为第一个和第二个）
+$$
+(\tilde{F_1}, \tilde{F_2}) = (F_1, F_2) \mathbf{R}
+$$&lt;/li&gt;
+&lt;li&gt;对相应的一对loadings进行$\theta$角度的旋转
+$$
+(\tilde{l_{\cdot 1}}, \tilde{l_{\cdot 2}}) = (l_{\cdot 1}, l_{\cdot 2}) \mathbf(R)
+$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其中旋转矩阵$R$表示如下：&lt;/p&gt;
+&lt;div&gt;
+$$
+R = \left | \begin{array}{lr}
+    cos(\theta) &amp;  -sin(\theta) \\
+    sin(\theta) &amp; cos(\theta)
+\end{array}
+\right|
+$$
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Varimax&lt;/strong&gt;方法旋转的角度计算如下：
+$$
+\theta = \frac{1}{4} \arctan\frac{2[p\sum_{j=1}^{p}v_jv_j - \sum_{j}^{p}u_j\sum_{j}^{p}v_j]}{p\sum_{j}^{p}(u_j^2 - v_j^2) - [(\sum_j^{p} u_j)^2 - (\sum_j^p v_j)^2]} \ ,
+$$
+$$
+u_j = (l_{j1}/h_j)^2 - (l_{j2} / h_j)^2,
+$$
+$$
+v_j = 2(l_{j1}/h_j)(l_{j2}/h_j)
+$$
+其中$p$代表原变量的个数,$l_{j1}$所选中的第一个因子(factor)在第$j$个原变量的因子载荷（loadings）。 $h_j$表示第$j$个原变量的共同度（communality）开根号的值。
+$$
+h_j^2 = l_{j1}^2 + l_{j2}^2 + \cdots + l_{jq}^2
+$$
+其中$q$表示设定的公共因子(factor)数量。&lt;/p&gt;
+&lt;p&gt;截至条件可以是以下条件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;迭代次数到达上限&lt;/li&gt;
+&lt;li&gt;通过计算SV的值，相邻两次迭代中SV值无变化时截至，比如：$SV(i)-SV(i-1) &amp;lt; 10^{-5}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div&gt;
+   $$
+  SV_{i} = \sum_{s=1}^q \{[p\sum_{j=1}^p (l_{js}^2)^2 - (\sum_{j=1}^p l_{js}^2)^2]/p^2\}
+   $$
+&lt;/div&gt;
+&lt;!-- 如果将**Varimax**方法，**Equimax**方法和**Quartimax**方法放在一起可以表示如下： --&gt;
+&lt;!-- &lt;div&gt; --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- \theta = \frac{1}{4}\tan^{-1}(\frac{X}{Y}) --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- X = \left \{  \begin{array}{lr} --&gt;
+&lt;!--     D - 2AB/n &amp; Varimax \\ --&gt;
+&lt;!--     D - mAB/n &amp; Equimax \\ --&gt;
+&lt;!--     D         &amp; Quartimax --&gt;
+&lt;!-- \end{array} --&gt;
+&lt;!--     \right. --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- X = \left \{  \begin{array}{lr} --&gt;
+&lt;!--     C - (A^2 - B^2)/n &amp; Varimax \\ --&gt;
+&lt;!--     C - m(A^2 - B^2)/2n &amp; Equimax \\ --&gt;
+&lt;!--     C         &amp; Quartimax --&gt;
+&lt;!-- \end{array} --&gt;
+&lt;!--     \right. --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- &lt;/div&gt; --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- u_{p(i)} = f_{pj(i)}^{2} - f_{pk(i)}^2 --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- v_{p(i)} = 2 f_{pj(i)}f_{pk(i)}\\ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- A = \sum_{p=1}^n u_{p{i}} \\ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- B = \sum_{p=1}^n v_{p(i)}  \\ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- C = \sum_{p=1}^n [u_{p(i)}^2 - v_{p(i)}^2] \\ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- D = \sum_{p=1}^{n}2u_{p(i)}v_{p(i)} \\ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- f_{pj(i)} = \frac{a_{ji}}{h_j} --&gt;
+&lt;!-- $$ --&gt;
+&lt;!-- 其中$j，k$表示选出的第$j$和第$k$个因子 --&gt;
+&lt;h5 id=&#34;参考&#34;&gt;参考&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec12_slides.pdf&#34;&gt;因子分析&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/factor-analysis/">Factor analysis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Principal Components, Curves and Surfaces</title>
+                <link>https://liudyboy.github.io/posts/principal-components-curves-and-surfaces/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/posts/principal-components-curves-and-surfaces/</guid>
+                <pubDate>Thu, 27 Aug 2020 09:45:26 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;主成分principal-components&#34;&gt;主成分(Principal Components)&lt;/h2&gt;
+&lt;p&gt;假定原数据$x_1， x_2, \cdots ,x_N $的维度是p ($x_i \in \mathbb{R}^p$). 我们使用帙为$q$的线性模型来表示这些数据（$q \leq p$）：
+$$
+f(\lambda) = \mu + \mathbf{V}_q \lambda
+$$
+其中$\mu \in \mathbb{R}^p$, $\mathbf{V}_q \in
+\mathbb{R}^{p\times q}$是由$q$个互相垂直的单位列向量组成，$\lambda \in \mathbb{R}^q$.&lt;/p&gt;
+&lt;p&gt;确定了模型之后，我们可以使用最小化以下损失函数来减少误差：&lt;/p&gt;
+&lt;p&gt;$$
+\min_{\mu, {\lambda_i}, \mathbf{V}_q}\sum_{i=1}^N(||x_i - \mu - \mathbf{V}_q \lambda_i||)^2
+$$&lt;/p&gt;
+&lt;p&gt;通过对$\mu$和$\lambda_i$求偏导，另其等于0，可以得到：
+$$
+\hat{\mu} = \bar{x}
+$$
+$$
+\hat{\lambda_i} = \mathbf{V}^T_q (x_i - \bar{x})
+$$
+最后我们就剩下要找到正交矩阵 $\mathbf{V}_q$ 最小化以下函数：&lt;/p&gt;
+&lt;p&gt;$$
+\min_{\mathbf{V}_q} \sum_{i=1}^N (||(x_i - \bar{x} - \mathbf{V}_q \mathbf{V}_q^T (x_i - \bar{x}))||)^2
+$$&lt;/p&gt;
+&lt;p&gt;为了方便我们假定$\bar{x} = 0$ (因为我们可以对原数据进行预处理$\tilde{x} = x_i - \bar{x}$). 我们可以将$\mathbf{H_q = \mathbf{V}_q \mathbf{V}_q^T}$视为投影矩阵(projection matrix)。其将原$x_i$映射到矩阵$V_q$的列空间 (column-space)。&lt;/p&gt;
+&lt;p&gt;为了找到符合要求的正交矩阵$\mathbf{V}_q$使用的是SVD分解的方法。&lt;/p&gt;
+&lt;p&gt;$$
+\mathbf{X} = \mathbf{UDV}^T
+$$&lt;/p&gt;
+&lt;p&gt;其中$\mathbf{U}$是$N\times p$的正交矩阵($\mathbf{U}^T\mathbf{U}=\mathbf{I}_p$)。$\mathbf{V}$是$p\times p$正交矩阵($\mathbf{V}^T\mathbf{V}=\mathbf{I}_p$)。$D$是$p\times p$的对角矩阵 (diagonal matrix)且$d_1 \leq d_2 \leq \cdots \leq d_p \leq 0$. 我们将矩阵$\mathbf{V}$的前$q$个列向量组成的矩阵作为$\mathbf{V}_q$. 而矩阵$\mathbf{UD}$的列向量则称为矩阵$\mathbf{X}$的主成分(principal components)。模型中的最优解$\tilde{\lambda}_i$则是主成分前$q$个列向量（$\mathbf{U}_q\mathbf{D_q} \in \mathbb{R}^{N\times q}$），每一行代表一个$\tilde{\lambda}_i$。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/sadfuss.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/%E9%99%8D%E7%BB%B4/">降维</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Awesome Library</title>
@@ -361,6 +684,8 @@
                 
                     <description>&lt;h4 id=&#34;危害性高而愤怒值低人们反应平淡危险性低而愤怒值高则人们反应过激&#34;&gt;危害性高而愤怒值低，人们反应平淡，危险性低而愤怒值高，则人们反应过激&lt;/h4&gt;
 &lt;p&gt;“为何游泳池不及枪恐怖呢？小孩被邻居家的枪射击而死，这样的事情令人不寒而栗，骇人听闻，简而言之，令人愤怒，但游泳池却不会引起愤怒”&lt;/p&gt;
+&lt;h4 id=&#34;旁观者效应bystander-effect&#34;&gt;“旁观者效应”（bystander effect）&lt;/h4&gt;
+&lt;p&gt;即悲剧事发时如果有多个目击者，反而会导致他们无动于衷。&lt;/p&gt;
 </description>
                 
                 
