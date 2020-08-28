@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2020-08-28T17:44:56&#43;08:00</updated>
+    <updated>2020-08-28T17:57:04&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">Factor Analysis</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/factor-analysis/" />
             <id>https://liudyboy.github.io/posts/factor-analysis/</id>
-            <updated>2020-08-28T14:35:26&#43;08:00</updated>
+            <updated>2020-08-28T17:56:55&#43;08:00</updated>
             <published>2020-08-27T17:24:25&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -227,7 +227,7 @@ $$
 &lt;!-- f_{pj(i)} = \frac{a_{ji}}{h_j} --&gt;
 &lt;!-- $$ --&gt;
 &lt;!-- 其中$j，k$表示选出的第$j$和第$k$个因子 --&gt;
-&lt;h5 id=&#34;参考&#34;&gt;参考&lt;/h5&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec12_slides.pdf&#34;&gt;因子分析&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;

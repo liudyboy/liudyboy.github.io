@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 28 Aug 2020 17:44:56 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 28 Aug 2020 17:57:04 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -236,7 +236,7 @@ $$
 &lt;!-- f_{pj(i)} = \frac{a_{ji}}{h_j} --&gt;
 &lt;!-- $$ --&gt;
 &lt;!-- 其中$j，k$表示选出的第$j$和第$k$个因子 --&gt;
-&lt;h5 id=&#34;参考&#34;&gt;参考&lt;/h5&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec12_slides.pdf&#34;&gt;因子分析&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
