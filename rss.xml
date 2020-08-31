@@ -23,10 +23,91 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 28 Aug 2020 17:57:04 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 31 Aug 2020 17:41:53 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Quadratic Discriminant Analysis</title>
+                <link>https://liudyboy.github.io/posts/quadratic-discriminant-analysis/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/posts/quadratic-discriminant-analysis/</guid>
+                <pubDate>Mon, 31 Aug 2020 16:57:19 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;blockquote&gt;
+&lt;p&gt;算法详解请看论文《Linear and Quadratic Discriminant Analysis Tutorial》&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;estimation-of-parameters-in-lda-and-qda&#34;&gt;Estimation of Parameters in LDA and QDA&lt;/h2&gt;
+&lt;h3 id=&#34;class-probabilities-priors&#34;&gt;class probabilities (priors)&lt;/h3&gt;
+&lt;p&gt;$$
+\hat{\pi}_k = \frac{n_k}{n}
+$$&lt;/p&gt;
+&lt;p&gt;where $n_k$ and n a re the number of training instances in the
+k-th class and in total, respectively.&lt;/p&gt;
+&lt;h3 id=&#34;the-mean-of-the-k-th-class&#34;&gt;The mean of the k-th class&lt;/h3&gt;
+&lt;div&gt;
+$$
+\hat{u}_k = \frac{1}{n_k}\sum_{i=1}^{n}x_i\mathbf{I}(\mathcal{C}(x_i)=k)
+$$
+&lt;/div&gt;
+where $\mathbf{I}(\cdot)$ is the indicator function.
+&lt;h3 id=&#34;the-covariance-matrix-of-the-k-th-class&#34;&gt;the covariance matrix of the k-th class&lt;/h3&gt;
+&lt;div&gt;
+$$
+\mathbb{R}^{d \times d} \ni \hat{\Sigma}_k  = \frac{1}{n_k} \sum_{i=1}^n(x_i-\hat{u}_k)(x_i-\hat{u}_k)T\mathbb{I}(\mathcal{C}(x_i) = k)
+$$
+&lt;/div&gt;
+Or use unbiased estimation of the covariance matrix:
+$$
+\mathbb{R}^{d \times d} \ni \hat{\Sigma}_k  = \frac{1}{n_k - 1} \sum_{i=1}^n(x_i-\hat{u}_k)(x_i-\hat{u}_k)T\mathbb{I}(\mathcal{C}(x_i) = k)
+$$
+&lt;p&gt;&lt;strong&gt;In LDA&lt;/strong&gt;, we assume that the covariance matrixes of the class are equla, thus:
+$$
+\hat{\Sigma} = \frac{\sum_{k=1}^{|\mathcal{C}|} n_k \hat{\Sigma}_k} {n}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;协方差矩阵一定是半正定矩阵&#34;&gt;协方差矩阵一定是半正定矩阵&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/sem.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;mpi-实现&#34;&gt;MPI 实现&lt;/h2&gt;
+&lt;p&gt;分别在计算先验概率、均值和协方差过程都进行了并行的计算，最后结果在master process 处获得。&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/%E5%88%86%E7%B1%BB/">分类</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Factor Analysis</title>
@@ -1112,6 +1193,7 @@ $$
 &lt;li&gt;&lt;code&gt;setZero()&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;fill(val)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;setOnes()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;setRandom()&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1123,6 +1205,7 @@ $$
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;  &lt;span class=&#34;n&#34;&gt;MatrixXf&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -1133,6 +1216,7 @@ $$
   &lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setZero&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 赋值全为0
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fill&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 赋值全为2
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setOnes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 赋值全为1
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setRandom&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 赋值为随机数
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ul&gt;
@@ -1826,7 +1910,7 @@ $$
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Zero()&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Constant(value)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Random()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Random()&lt;/code&gt; 对于浮点数生成的随机数范围是[-1, 1]，对于正数生成的随机数范围是整个取值空间&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Identity()&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;LinSpaced(size, low, high)&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -2675,6 +2759,27 @@ $$
   &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;对矩阵或向量中的所有元素求平方和&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;  &lt;span class=&#34;n&#34;&gt;MatrixD&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;squaredNorm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// 原矩阵保持不变
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;高级模块&#34;&gt;高级模块&lt;/h2&gt;
@@ -8313,7 +8418,94 @@ $$
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description></description>
+                    <description>&lt;h2 id=&#34;线性回归&#34;&gt;线性回归&lt;/h2&gt;
+&lt;p&gt;线性回归模型如下：
+$$
+\hat{y} = \omega_0 x_0 + \cdots + \omega_m x_m + bias
+$$
+其中$m$为样本的特征数目。&lt;/p&gt;
+&lt;p&gt;其目标函数为最小化以下函数：
+$$
+Cost(\hat{y}, y) = \frac{1}{2N}\sum_{j-1}^{N}||\hat{y}_j - y_j||^2
+$$
+通过求导可得：
+$$
+\frac{\partial Cost}{\partial \omega_i} = \frac{1}{N}\sum_{j=1}^{N} (\hat{y}_j - y_j) x_i^j
+$$
+其中$x_i^j$代表第$j$个样本的第$i$个特征值, N为训练的样本总数。&lt;/p&gt;
+&lt;p&gt;从概率论的角度：
+Least Square 的解析解可以用 Gaussian 分布以及最大似然估计求得&lt;/p&gt;
+&lt;h2 id=&#34;岭回归-ridge-regression&#34;&gt;岭回归 (ridge regression)&lt;/h2&gt;
+&lt;p&gt;该方法通过对模型权重进行了惩罚。其目标函数为：
+$$
+Cost(\hat{y}, y) = \frac{1}{2N}\sum_{j-1}^{N}||\hat{y}_j - y_j||^2 + \lambda \sum_i^{m}||w_i||^2_2
+$$
+其中$\lambda$为惩罚系数。需要注意此处对于$bias$没有进行惩罚。&lt;/p&gt;
+&lt;p&gt;通过求导可得：
+$$
+\frac{\partial Cost}{\partial \omega_i} = \frac{1}{N}\sum_{j=1}^{N} (\hat{y}_j - y_j) x_i^j + 2 \lambda w_i
+$$&lt;/p&gt;
+&lt;p&gt;从概率论的角度：   Ridge 回归可以用 Gaussian 分布和最大后验估计解释&lt;/p&gt;
+&lt;h2 id=&#34;lasso-regression&#34;&gt;Lasso regression&lt;/h2&gt;
+&lt;p&gt;该方法通过对模型权重进行了惩罚。其目标函数为：
+$$
+Cost(\hat{y}, y) = \frac{1}{2N}\sum_{j-1}^{N}||\hat{y}_j - y_j||^2 + \lambda \sum_i^{m}||w_i||_1
+$$
+其中$\lambda$为惩罚系数。需要注意此处对于$bias$没有进行惩罚。&lt;/p&gt;
+&lt;p&gt;通过求导可得：&lt;/p&gt;
+&lt;div&gt;
+$$
+\frac{\partial Cost}{\partial \omega_i} =
+ \left\{ \begin{array}{rl}
+\frac{1}{N}\sum_{j=1}^{N} (\hat{y}_j - y_j) x_i^j + \lambda &amp; if \ w_i &gt;= 0  \\ \frac{1}{N}\sum_{j=1}^{N} (\hat{y}_j - y_j) x_i^j - \lambda &amp; if \ w_i &lt; 0
+\end{array}\right.
+$$
+&lt;/div&gt;
+&lt;p&gt;从概率论的角度：LASSO 回归可以用 Laplace 分布和最大后验估计解释。
+从贝叶斯角度，正则项等价于引入参数的先验概率分布。常见的L1/L2正则，分别等价于引入先验信息：参数符合拉普拉斯分布/高斯分布。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/laga.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;logistic-regression&#34;&gt;Logistic Regression&lt;/h2&gt;
+&lt;p&gt;逻辑回归相关的函数：&lt;/p&gt;
+&lt;div&gt;
+$$
+z = \omega_0 + \omega_1x_1+ \cdots + \omega_n x_n\\
+\hat{y} = sigmoid(z) = \frac{1}{1+e^{-z}}\\
+cost(y, \hat{y}) = -[y\ln\hat{y}+(1-y)\ln(1-\hat{y})]
+$$
+&lt;/div&gt;
+&lt;p&gt;其中{$\omega_0 \cdots \omega_n$}为模型参数，{$x_1 \cdots x_n$}为样本的特征值。&lt;/p&gt;
+&lt;p&gt;复合函数分别求导可得：&lt;/p&gt;
+&lt;div&gt;
+$$
+\frac{\partial cost}{\partial \hat{y}}=-\frac{y}{\hat{y}}+\frac{1-y}{1-\hat{y}}\\
+\frac{\partial \hat{y}}{\partial z} = \hat{y}(1-\hat{y})\\
+\frac{\partial z}{\partial \omega_i} = x_i\\
+$$
+&lt;/div&gt;
+&lt;p&gt;最终可得$cost$函数关于$\omega_i$的导数：
+$$
+\frac{\partial cost}{\partial \omega_i} = (\hat{y} - y)x_i
+$$
+所以参数$\omega_i$更新公式为：
+$$
+\omega_i = \omega_i - \alpha(\hat{y}-y)x_i
+$$
+其中$\alpha$为学习率。&lt;/p&gt;
+&lt;h3 id=&#34;mpi-实现&#34;&gt;MPI 实现&lt;/h3&gt;
+&lt;p&gt;参数$w_i$更新可表示为;
+$$
+w_i = w_i - \alpha\frac{1}{N}\sum_{j=1}^{N}\nabla w_i^{j}
+$$
+$\nabla w_i^{j}$ 代表基于样本$j$所求的$w_i$的梯度。所以我们可以在计算梯度是进行并行执行，然后由master对梯度信息进行收集和计算全局的梯度。&lt;/p&gt;
+&lt;h4 id=&#34;mpi实现策略&#34;&gt;MPI实现策略&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/logisticRegression_mpi.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;elastic-net&#34;&gt;Elastic Net&lt;/h2&gt;
+&lt;p&gt;Elastic net回归将ridge和lasso回归结合了起来，它同时使用了$L_1$和$L_2$正则项:
+$$
+\hat{\beta_n} = \arg\min_{\beta \in \mathbb{R}^J} \sum_{i=1}^n (Y_i - \sum_{j=1}^J \beta_j X_{i, j})^2 + \lambda_1 \sum_{j=1}^J |\beta_j| + \lambda_2 \sum_{j=1}^J \beta_j^2.
+$$
+&lt;img src=&#34;https://liudyboy.github.io/imgs/lasso.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
                 
                 
                 
