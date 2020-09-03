@@ -23,11 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-<<<<<<< HEAD
-        <lastBuildDate>Thu, 03 Sep 2020 23:12:06 &#43;0800</lastBuildDate>
-=======
-        <lastBuildDate>Thu, 03 Sep 2020 16:20:37 &#43;0800</lastBuildDate>
->>>>>>> ca305078788412b4af3d2823688be5c18593a55e
+        <lastBuildDate>Thu, 03 Sep 2020 23:14:09 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -135,11 +131,8 @@ x_p = l_{p1}F_1 + \cdots + l_{pq}F_q + \epsilon_p.
 $$
 &lt;/div&gt;
 &lt;p&gt;也可以表示为$X = \mathbf{A}S + \epsilon$, 其中$S \in \mathbb{R}^q$的向量称为公共因子（common factors）, $A\in \mathbb{R}^{p\times q}$是一个矩阵其中的元素$l_{ij}$称为第i个变量的第j个因子的“loadings”.$\epsilon_1,\cdots, \epsilon_p$是特有的因子(unique factors)。&lt;/p&gt;
-<<<<<<< HEAD
 &lt;p&gt;需要注意的是，在因子分析中转换后的变量是因子，而“loadings”在转换后可以认为是定下来的矩阵。&amp;quot;loadings&amp;quot;表明了每个因子与原变量的相关程度。
 举一个应用因子分析的例子，假设我们想要知道学生们的逻辑思维能力和语言表达能力的好坏，然而这两个变量我们并不能直接测量出来。我们可测量的可能是对学生进行数学考试，物理考试，语文考试，英语考试，化学考试。在此场景中，可以认为{数学考试，物理考试，语文考试，英语考试，化学考试}为原变量，而{逻辑思维能力，语言表达能力}为因子。将原变量进行因子分析，因子的数目定为2，从“loadings”矩阵可能就可以看出逻辑思维能力与{数学，物理，化学}高度相关，而语言表达能力和{语文，英语}高度相关。&lt;/p&gt;
-=======
->>>>>>> ca305078788412b4af3d2823688be5c18593a55e
 &lt;p&gt;对于变量$x_i$的方差，我们可以表示为&lt;/p&gt;
 &lt;div&gt;
 $$
@@ -330,10 +323,7 @@ $$
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec12_slides.pdf&#34;&gt;因子分析&lt;/a&gt;&lt;/li&gt;
-<<<<<<< HEAD
 &lt;li&gt;&lt;a href=&#34;http://cda.psych.uiuc.edu/psychometrika_highly_cited_articles/kaiser_1958.pdf&#34;&gt;THE VARIMAX CRITERION FOR ANALYTIC ROTATION IN FACTOR ANALYSIS&lt;/a&gt;&lt;/li&gt;
-=======
->>>>>>> ca305078788412b4af3d2823688be5c18593a55e
 &lt;/ol&gt;
 </description>
                 
@@ -8510,7 +8500,6 @@ $$
 &lt;p&gt;从概率论的角度：LASSO 回归可以用 Laplace 分布和最大后验估计解释。
 从贝叶斯角度，正则项等价于引入参数的先验概率分布。常见的L1/L2正则，分别等价于引入先验信息：参数符合拉普拉斯分布/高斯分布。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/laga.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-<<<<<<< HEAD
 &lt;h2 id=&#34;elastic-net&#34;&gt;Elastic Net&lt;/h2&gt;
 &lt;p&gt;Elastic net回归将ridge和lasso回归结合了起来，它同时使用了$L_1$和$L_2$正则项:
 $$
@@ -8527,8 +8516,6 @@ $$
 $$
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/lasso.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-=======
->>>>>>> ca305078788412b4af3d2823688be5c18593a55e
 &lt;h2 id=&#34;logistic-regression&#34;&gt;Logistic Regression&lt;/h2&gt;
 &lt;p&gt;逻辑回归相关的函数：&lt;/p&gt;
 &lt;div&gt;
@@ -8564,15 +8551,6 @@ $$
 $\nabla w_i^{j}$ 代表基于样本$j$所求的$w_i$的梯度。所以我们可以在计算梯度是进行并行执行，然后由master对梯度信息进行收集和计算全局的梯度。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;MPI实现策略&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/logisticRegression_mpi.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-<<<<<<< HEAD
-=======
-&lt;h2 id=&#34;elastic-net&#34;&gt;Elastic Net&lt;/h2&gt;
-&lt;p&gt;Elastic net回归将ridge和lasso回归结合了起来，它同时使用了$L_1$和$L_2$正则项:
-$$
-\hat{\beta_n} = \arg\min_{\beta \in \mathbb{R}^J} \sum_{i=1}^n (Y_i - \sum_{j=1}^J \beta_j X_{i, j})^2 + \lambda_1 \sum_{j=1}^J |\beta_j| + \lambda_2 \sum_{j=1}^J \beta_j^2.
-$$
-&lt;img src=&#34;https://liudyboy.github.io/imgs/lasso.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
->>>>>>> ca305078788412b4af3d2823688be5c18593a55e
 </description>
                 
                 
