@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2020-09-02T18:07:32&#43;08:00</updated>
+    <updated>2020-09-03T16:20:37&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">Quadratic Discriminant Analysis</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/quadratic-discriminant-analysis/" />
             <id>https://liudyboy.github.io/posts/quadratic-discriminant-analysis/</id>
-            <updated>2020-08-31T17:02:37&#43;08:00</updated>
+            <updated>2020-09-03T08:54:49&#43;08:00</updated>
             <published>2020-08-31T16:57:19&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -29,10 +29,7 @@
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文记录二次判别分析(Quadratic Discriminant Analysis)的笔记</summary>
             
-                <content type="html">&lt;blockquote&gt;
-&lt;p&gt;算法详解请看论文《Linear and Quadratic Discriminant Analysis Tutorial》&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;estimation-of-parameters-in-lda-and-qda&#34;&gt;Estimation of Parameters in LDA and QDA&lt;/h2&gt;
+                <content type="html">&lt;h2 id=&#34;estimation-of-parameters-in-lda-and-qda&#34;&gt;Estimation of Parameters in LDA and QDA&lt;/h2&gt;
 &lt;h3 id=&#34;class-probabilities-priors&#34;&gt;class probabilities (priors)&lt;/h3&gt;
 &lt;p&gt;$$
 \hat{\pi}_k = \frac{n_k}{n}
@@ -64,6 +61,10 @@ $$&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/sem.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;mpi-实现&#34;&gt;MPI 实现&lt;/h2&gt;
 &lt;p&gt;分别在计算先验概率、均值和协方差过程都进行了并行的计算，最后结果在master process 处获得。&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/pdf/1906.02590.pdf&#34;&gt;Linear and Quadratic Discriminant Analysis: Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </content>
             
             
@@ -104,7 +105,7 @@ $$&lt;/p&gt;
             <title type="text">Factor Analysis</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/factor-analysis/" />
             <id>https://liudyboy.github.io/posts/factor-analysis/</id>
-            <updated>2020-08-28T17:56:55&#43;08:00</updated>
+            <updated>2020-09-03T16:19:29&#43;08:00</updated>
             <published>2020-08-27T17:24:25&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -244,7 +245,7 @@ $$
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Varimax&lt;/strong&gt;方法旋转的角度计算如下：
 $$
-\theta = \frac{1}{4} \arctan\frac{2[p\sum_{j=1}^{p}v_jv_j - \sum_{j}^{p}u_j\sum_{j}^{p}v_j]}{p\sum_{j}^{p}(u_j^2 - v_j^2) - [(\sum_j^{p} u_j)^2 - (\sum_j^p v_j)^2]} \ ,
+\theta = \frac{1}{4} \arctan\frac{2[p\sum_{j=1}^{p}u_jv_j - \sum_{j}^{p}u_j\sum_{j}^{p}v_j]}{p\sum_{j}^{p}(u_j^2 - v_j^2) - [(\sum_j^{p} u_j)^2 - (\sum_j^p v_j)^2]} \ ,
 $$
 $$
 u_j = (l_{j1}/h_j)^2 - (l_{j2} / h_j)^2,
@@ -6742,7 +6743,7 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
             <title type="text">C&#43;&#43;编程实践</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/c&#43;&#43;%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/" />
             <id>https://liudyboy.github.io/posts/c&#43;&#43;%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/</id>
-            <updated>2020-08-21T17:21:27&#43;08:00</updated>
+            <updated>2020-09-03T10:11:49&#43;08:00</updated>
             <published>2020-08-12T22:31:39&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -7104,7 +7105,11 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
 &lt;span class=&#34;mi&#34;&gt;11&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Destroy&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content>
+&lt;/div&gt;&lt;h2 id=&#34;特殊问题&#34;&gt;特殊问题&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;对半正定矩阵求行列式(determinant)时，理论上一定时非负的，但是实际计算中可能由于数值精度的问题会出现负数的情况(比如使用Eigen库来求行列式)！&lt;/li&gt;
+&lt;/ol&gt;
+</content>
             
             
             

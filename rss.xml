@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 02 Sep 2020 18:07:32 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 03 Sep 2020 16:20:37 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -38,10 +38,7 @@
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description>&lt;blockquote&gt;
-&lt;p&gt;算法详解请看论文《Linear and Quadratic Discriminant Analysis Tutorial》&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;estimation-of-parameters-in-lda-and-qda&#34;&gt;Estimation of Parameters in LDA and QDA&lt;/h2&gt;
+                    <description>&lt;h2 id=&#34;estimation-of-parameters-in-lda-and-qda&#34;&gt;Estimation of Parameters in LDA and QDA&lt;/h2&gt;
 &lt;h3 id=&#34;class-probabilities-priors&#34;&gt;class probabilities (priors)&lt;/h3&gt;
 &lt;p&gt;$$
 \hat{\pi}_k = \frac{n_k}{n}
@@ -73,6 +70,10 @@ $$&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/sem.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;mpi-实现&#34;&gt;MPI 实现&lt;/h2&gt;
 &lt;p&gt;分别在计算先验概率、均值和协方差过程都进行了并行的计算，最后结果在master process 处获得。&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/pdf/1906.02590.pdf&#34;&gt;Linear and Quadratic Discriminant Analysis: Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
                 
                 
@@ -250,7 +251,7 @@ $$
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Varimax&lt;/strong&gt;方法旋转的角度计算如下：
 $$
-\theta = \frac{1}{4} \arctan\frac{2[p\sum_{j=1}^{p}v_jv_j - \sum_{j}^{p}u_j\sum_{j}^{p}v_j]}{p\sum_{j}^{p}(u_j^2 - v_j^2) - [(\sum_j^{p} u_j)^2 - (\sum_j^p v_j)^2]} \ ,
+\theta = \frac{1}{4} \arctan\frac{2[p\sum_{j=1}^{p}u_jv_j - \sum_{j}^{p}u_j\sum_{j}^{p}v_j]}{p\sum_{j}^{p}(u_j^2 - v_j^2) - [(\sum_j^{p} u_j)^2 - (\sum_j^p v_j)^2]} \ ,
 $$
 $$
 u_j = (l_{j1}/h_j)^2 - (l_{j2} / h_j)^2,
@@ -7053,7 +7054,11 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
 &lt;span class=&#34;mi&#34;&gt;11&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Destroy&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;&lt;h2 id=&#34;特殊问题&#34;&gt;特殊问题&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;对半正定矩阵求行列式(determinant)时，理论上一定时非负的，但是实际计算中可能由于数值精度的问题会出现负数的情况(比如使用Eigen库来求行列式)！&lt;/li&gt;
+&lt;/ol&gt;
+</description>
                 
                 
                 
