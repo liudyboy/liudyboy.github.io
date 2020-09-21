@@ -4,7 +4,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
+<<<<<<< HEAD
     <updated>2020-09-21T09:38:27&#43;08:00</updated>
+=======
+    <updated>2020-09-03T23:16:39&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -1077,7 +1081,11 @@ $$&lt;/p&gt;
             <title type="text">Quadratic Discriminant Analysis</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/quadratic-discriminant-analysis/" />
             <id>https://liudyboy.github.io/posts/quadratic-discriminant-analysis/</id>
+<<<<<<< HEAD
             <updated>2020-09-07T09:10:18&#43;08:00</updated>
+=======
+            <updated>2020-09-02T23:11:58&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-31T16:57:19&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1255,7 +1263,11 @@ $$&lt;/p&gt;
             <title type="text">Factor Analysis</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/factor-analysis/" />
             <id>https://liudyboy.github.io/posts/factor-analysis/</id>
+<<<<<<< HEAD
             <updated>2020-09-04T08:52:05&#43;08:00</updated>
+=======
+            <updated>2020-09-03T23:11:11&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-27T17:24:25&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1509,7 +1521,7 @@ $$
             <title type="text">Principal Components, Curves and Surfaces</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/principal-components-curves-and-surfaces/" />
             <id>https://liudyboy.github.io/posts/principal-components-curves-and-surfaces/</id>
-            <updated>2020-08-28T09:08:08&#43;08:00</updated>
+            <updated>2020-08-27T22:44:43&#43;08:00</updated>
             <published>2020-08-27T09:45:26&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1587,7 +1599,11 @@ $$&lt;/p&gt;
             <title type="text">Awesome Library</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/awesome-library/" />
             <id>https://liudyboy.github.io/posts/awesome-library/</id>
+<<<<<<< HEAD
             <updated>2020-09-04T14:40:35&#43;08:00</updated>
+=======
+            <updated>2020-08-27T20:47:59&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-26T15:41:16&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1852,7 +1868,7 @@ $$&lt;/p&gt;
             <title type="text">Awesome Softwares</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/awesomesoftwares/" />
             <id>https://liudyboy.github.io/posts/awesomesoftwares/</id>
-            <updated>2020-08-26T15:49:24&#43;08:00</updated>
+            <updated>2020-08-27T20:47:59&#43;08:00</updated>
             <published>2020-08-26T14:04:58&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1911,7 +1927,7 @@ $$&lt;/p&gt;
             <title type="text">Support Vector Regression</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/support-vector-regression/" />
             <id>https://liudyboy.github.io/posts/support-vector-regression/</id>
-            <updated>2020-08-26T09:11:05&#43;08:00</updated>
+            <updated>2020-08-27T20:47:59&#43;08:00</updated>
             <published>2020-08-26T09:09:19&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1960,7 +1976,7 @@ $$&lt;/p&gt;
             <title type="text">MPI笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/mpi%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/mpi%E7%AC%94%E8%AE%B0/</id>
-            <updated>2020-08-25T16:09:39&#43;08:00</updated>
+            <updated>2020-08-25T23:01:11&#43;08:00</updated>
             <published>2020-08-25T16:00:52&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -2132,7 +2148,7 @@ $$&lt;/p&gt;
             <title type="text">魔鬼经济学笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E9%AD%94%E9%AC%BC%E7%BB%8F%E6%B5%8E%E5%AD%A6%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/%E9%AD%94%E9%AC%BC%E7%BB%8F%E6%B5%8E%E5%AD%A6%E7%AC%94%E8%AE%B0/</id>
-            <updated>2020-08-28T09:08:08&#43;08:00</updated>
+            <updated>2020-08-27T20:46:49&#43;08:00</updated>
             <published>2020-08-22T19:31:29&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -2185,7 +2201,7 @@ $$&lt;/p&gt;
             <title type="text">经济学常用指标</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B8%B8%E7%94%A8%E6%8C%87%E6%A0%87/" />
             <id>https://liudyboy.github.io/posts/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B8%B8%E7%94%A8%E6%8C%87%E6%A0%87/</id>
-            <updated>2020-08-26T08:58:17&#43;08:00</updated>
+            <updated>2020-08-22T19:31:35&#43;08:00</updated>
             <published>2020-08-22T10:24:23&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -2269,7 +2285,7 @@ $$
             <title type="text">Eigen笔记之matrix</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Bmatrix/" />
             <id>https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Bmatrix/</id>
-            <updated>2020-09-02T16:17:08&#43;08:00</updated>
+            <updated>2020-09-03T21:32:37&#43;08:00</updated>
             <published>2020-08-20T16:26:25&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -4499,7 +4515,7 @@ $$
             <title type="text">Eigen笔记之Tensor</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Btensor/" />
             <id>https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Btensor/</id>
-            <updated>2020-08-20T15:22:39&#43;08:00</updated>
+            <updated>2020-08-22T10:23:41&#43;08:00</updated>
             <published>2020-08-20T09:39:29&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -5918,7 +5934,7 @@ cout &amp;lt;&amp;lt; &amp;quot;a(0, 0): &amp;quot; &amp;lt;&amp;lt; a(0, 0);
             <title type="text">Policy Based Design</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/policy-based-design/" />
             <id>https://liudyboy.github.io/posts/policy-based-design/</id>
-            <updated>2020-08-19T18:07:45&#43;08:00</updated>
+            <updated>2020-08-19T20:05:35&#43;08:00</updated>
             <published>2020-08-19T17:54:41&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -6131,7 +6147,11 @@ cout &amp;lt;&amp;lt; &amp;quot;a(0, 0): &amp;quot; &amp;lt;&amp;lt; a(0, 0);
             <title type="text">矩阵笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E7%9F%A9%E9%98%B5%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/%E7%9F%A9%E9%98%B5%E7%AC%94%E8%AE%B0/</id>
+<<<<<<< HEAD
             <updated>2020-09-07T09:10:18&#43;08:00</updated>
+=======
+            <updated>2020-08-25T23:01:11&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-18T10:22:54&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -6321,7 +6341,7 @@ $$&lt;/p&gt;
             <title type="text">Accurate, Fast and Scalable Kernel Ridge Regression on Parallel and Distributed Systems 论文笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/accurate-fast-and-scalable-kernel-ridge-regression-on-parallel-and-distributed-systems-%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/accurate-fast-and-scalable-kernel-ridge-regression-on-parallel-and-distributed-systems-%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</id>
-            <updated>2020-08-26T16:32:42&#43;08:00</updated>
+            <updated>2020-08-27T20:47:59&#43;08:00</updated>
             <published>2020-08-17T15:51:32&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -6398,7 +6418,7 @@ $$&lt;/p&gt;
             <title type="text">Divide and Conquer Kernel Ridge Regression论文笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/divide-and-conquer-kernel-ridge-regression%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/divide-and-conquer-kernel-ridge-regression%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</id>
-            <updated>2020-08-17T15:59:26&#43;08:00</updated>
+            <updated>2020-08-19T20:05:35&#43;08:00</updated>
             <published>2020-08-17T11:13:13&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -6474,7 +6494,7 @@ $$&lt;/li&gt;
             <title type="text">设计模式</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" />
             <id>https://liudyboy.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</id>
-            <updated>2020-08-17T09:39:02&#43;08:00</updated>
+            <updated>2020-08-16T12:13:46&#43;08:00</updated>
             <published>2020-08-15T15:37:35&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -7734,7 +7754,7 @@ $$&lt;/li&gt;
             <title type="text">Test Driven Development</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/test-driven-development/" />
             <id>https://liudyboy.github.io/posts/test-driven-development/</id>
-            <updated>2020-08-17T09:39:02&#43;08:00</updated>
+            <updated>2020-08-15T15:28:13&#43;08:00</updated>
             <published>2020-08-15T15:09:38&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -7788,7 +7808,11 @@ End
             <title type="text">Markdown 笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/markdown-%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/markdown-%E7%AC%94%E8%AE%B0/</id>
+<<<<<<< HEAD
             <updated>2020-09-07T09:10:18&#43;08:00</updated>
+=======
+            <updated>2020-08-16T12:17:55&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-14T16:31:02&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -7874,7 +7898,7 @@ $$
             <title type="text">Kernel Ridge Regression</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/kernel-ridge-regression/" />
             <id>https://liudyboy.github.io/posts/kernel-ridge-regression/</id>
-            <updated>2020-08-21T17:15:25&#43;08:00</updated>
+            <updated>2020-08-22T10:23:41&#43;08:00</updated>
             <published>2020-08-14T15:38:42&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -7962,7 +7986,7 @@ $$
             <title type="text">Spacemacs 笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/spacemacs-%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/spacemacs-%E7%AC%94%E8%AE%B0/</id>
-            <updated>2020-08-14T15:35:59&#43;08:00</updated>
+            <updated>2020-08-15T10:21:02&#43;08:00</updated>
             <published>2020-08-14T15:03:20&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -8119,7 +8143,11 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
             <title type="text">C&#43;&#43;编程实践</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/c&#43;&#43;%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/" />
             <id>https://liudyboy.github.io/posts/c&#43;&#43;%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/</id>
+<<<<<<< HEAD
             <updated>2020-09-07T18:23:46&#43;08:00</updated>
+=======
+            <updated>2020-09-03T21:32:37&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-12T22:31:39&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -8766,7 +8794,7 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
             <title type="text">面向对象设计原则</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" />
             <id>https://liudyboy.github.io/posts/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</id>
-            <updated>2020-08-18T18:11:26&#43;08:00</updated>
+            <updated>2020-08-17T22:55:05&#43;08:00</updated>
             <published>2020-08-08T17:13:24&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -8891,7 +8919,11 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
             <title type="text">C&#43;&#43;杂记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/c&#43;&#43;%E6%9D%82%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/c&#43;&#43;%E6%9D%82%E8%AE%B0/</id>
+<<<<<<< HEAD
             <updated>2020-09-17T14:41:05&#43;08:00</updated>
+=======
+            <updated>2020-08-15T15:08:53&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-07T17:22:12&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -10209,7 +10241,7 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
             <title type="text">常见的数学函数</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0/" />
             <id>https://liudyboy.github.io/posts/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0/</id>
-            <updated>2020-08-07T10:33:09&#43;08:00</updated>
+            <updated>2020-08-08T10:10:18&#43;08:00</updated>
             <published>2020-08-07T09:36:54&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -10289,7 +10321,11 @@ $$
             <title type="text">数学杂记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/</id>
+<<<<<<< HEAD
             <updated>2020-09-18T11:12:17&#43;08:00</updated>
+=======
+            <updated>2020-09-03T21:54:52&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-06T22:58:19&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -10306,6 +10342,7 @@ $$
 $$
 cost(f, \lambda) = \sum_{i=1}^N (y_i - f(x_i))^2 + \lambda \int [f&#39;&#39;(x)]^2dx
 $$&lt;/p&gt;
+<<<<<<< HEAD
 &lt;h3 id=&#34;基本定义&#34;&gt;基本定义&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -10321,6 +10358,8 @@ $$&lt;/p&gt;
 &lt;p&gt;一个函数是symmetric，表示我们改变输入变量的位置输出保持不变即：$f(x_1, x_2, \cdot, x_n) = f(x_2, x_1, \cdots, x_n)$。比如函数f(x_1, x_2, x_3) = (x-x_1)(x-x_2)(x-x_3)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+=======
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
 </content>
             
             
@@ -10355,7 +10394,11 @@ $$&lt;/p&gt;
             <title type="text">Regression</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/regression/" />
             <id>https://liudyboy.github.io/posts/regression/</id>
+<<<<<<< HEAD
             <updated>2020-09-18T11:59:00&#43;08:00</updated>
+=======
+            <updated>2020-09-03T21:32:37&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-06T22:54:38&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -10426,6 +10469,7 @@ $$
 $$
 &lt;/div&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/lasso.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+<<<<<<< HEAD
 &lt;h2 id=&#34;polynomial-regression&#34;&gt;Polynomial Regression&lt;/h2&gt;
 &lt;p&gt;多项式回归（polynomial regression）模型的形式如下：
 $$
@@ -10472,6 +10516,8 @@ $$
 \sum_{i=1}^d C_{p+i-1}^{p-1}
 $$&lt;/p&gt;
 &lt;p&gt;对于输入的$X$我们首先对原特征进行多项式的转换得到新的特征，之后在新得到的特征上进行线性回归即可。&lt;/p&gt;
+=======
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
 &lt;h2 id=&#34;logistic-regression&#34;&gt;Logistic Regression&lt;/h2&gt;
 &lt;p&gt;在逻辑回归中，我们假定y服从伯努利分布$p(y|X, w) = Ber(y|u(x))$，其中$u(x) = sigmoid(w^TX)$&lt;/p&gt;
 &lt;p&gt;逻辑回归相关的函数：&lt;/p&gt;
@@ -10554,7 +10600,11 @@ $\nabla w_i^{j}$ 代表基于样本$j$所求的$w_i$的梯度。所以我们可�
             <title type="text">深度学习加速之网络设计</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/" />
             <id>https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/</id>
+<<<<<<< HEAD
             <updated>2020-09-07T09:10:18&#43;08:00</updated>
+=======
+            <updated>2020-08-08T10:10:18&#43;08:00</updated>
+>>>>>>> 2a0b36a91806b2633f74170626b15264c655b369
             <published>2020-08-06T20:33:07&#43;08:00</published>
             <author>
                     <name>liudy</name>
