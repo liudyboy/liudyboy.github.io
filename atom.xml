@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2020-12-01T18:01:27&#43;08:00</updated>
+    <updated>2020-12-02T18:02:18&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">Gradients Descent Methods</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/gradients-descent-methods/" />
             <id>https://liudyboy.github.io/posts/gradients-descent-methods/</id>
-            <updated>2020-12-01T18:01:14&#43;08:00</updated>
+            <updated>2020-12-02T15:37:57&#43;08:00</updated>
             <published>2020-11-30T14:30:38&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -45,7 +45,7 @@ $$
 \theta_{t+1, i} = \theta_{t, i} - \frac{\eta}{\sqrt{G_{t, ii} + \epsilon}} \nabla_{\theta_t}J(\theta_{t, i})
 $$
 $$
-G_{t, ii} = \sum_{i=0}^{t}\nabla_{\theta_t}J(\theta_{t, i})
+G_{t, ii} = \sum_{i=0}^{t}\nabla_{\theta_t}J(\theta_{t, i}) \cdot \nabla_{\theta_t}J(\theta_{t, i})
 $$
 $G_t \in \mathbb{R}^{d \times d}$ here is a diagonal matrix where each diagonal element $i, i$ is the sum of the squares of the
 gradients w.r.t. $\theta_i$ up to time step t, while $\epsilon$ is a smoothing term that avoids division by zero (usually on the order of $1e−8$).&lt;/p&gt;
@@ -59,10 +59,27 @@ $$
 RMS[g]_t = \sqrt{E[g^2]_t + \epsilon}
 $$&lt;/p&gt;
 &lt;p&gt;And the notation $E[g^2]_t$ is just a variable notation.&lt;/p&gt;
+&lt;h2 id=&#34;rmsprop&#34;&gt;RMSprop&lt;/h2&gt;
+&lt;p&gt;RMSprop and Adadelta have both been developed independently around the same time stemming from the need to resolve Adagrad’s radically diminishing learning rates.&lt;/p&gt;
+&lt;div&gt;
+$$
+E[g^2]_{t} = \gamma E[g^2]_{t-1} + (1 - \gamma)g^2_t ,
+$$
+&lt;/div&gt;
+$$
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{E[g^2]_t + \epsilon}}g_t.
+$$
+&lt;p&gt;Hinton suggests $\gamma$ to be set to 0.9, while a good default value for the learning rate $\eta$ is 0.001.&lt;/p&gt;
+&lt;h2 id=&#34;adam&#34;&gt;Adam&lt;/h2&gt;
+&lt;p&gt;Adam computes individual adaptive learning rates for different parameters from estimates of first and second moments of the gradients. This method is designed to combine the advantages of AdaGrad and RMSProp.
+&lt;img src=&#34;https://liudyboy.github.io/imgs/adam.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;adamax&#34;&gt;AdaMax&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/adamax.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/liudyboy/Archive_0/blob/master/An%20overview%20of%20gradient%20descent%20optimization.pdf&#34;&gt;An overview of gradient descent optimization&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/liudyboy/Archive_0/blob/master/ADADELTA:%20AN%20ADAPTIVE%20LEARNING%20RATE%20METHOD.pdf&#34;&gt;ADADELTA: AN ADAPTIVE LEARNING RATE METHOD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/liudyboy/Archive_0/blob/master/ADAM:%20A%20METHOD%20FOR%20STOCHASTIC%20OPTIMIZATION.pdf&#34;&gt;ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </content>
             
@@ -13434,7 +13451,7 @@ $$
             <title type="text">Spacemacs 笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/spacemacs-%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/spacemacs-%E7%AC%94%E8%AE%B0/</id>
-            <updated>2020-11-16T14:56:48&#43;08:00</updated>
+            <updated>2020-12-02T10:17:14&#43;08:00</updated>
             <published>2020-08-14T15:03:20&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -13568,7 +13585,7 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;C-c C-l and&lt;/td&gt;
+&lt;td&gt;C-c C-l&lt;/td&gt;
 &lt;td&gt;insert a Link&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -13602,6 +13619,30 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;org-mode&#34;&gt;Org mode&lt;/h2&gt;
+&lt;h4 id=&#34;shortcut-1&#34;&gt;Shortcut&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;short cut&lt;/th&gt;
+&lt;th&gt;usage&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Space t L&lt;/td&gt;
+&lt;td&gt;一行的文字太多不够显示，自动换行显示&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
