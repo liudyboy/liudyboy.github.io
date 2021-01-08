@@ -3,18 +3,138 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://liudyboy.github.io/categories/c-/</loc>
-    <lastmod>2020-12-04T10:08:37+08:00</lastmod>
+    <loc>https://liudyboy.github.io/categories/</loc>
+    <lastmod>2021-01-08T17:51:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/</loc>
+    <lastmod>2021-01-08T17:51:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/ml/</loc>
+    <lastmod>2021-01-08T17:51:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/</loc>
+    <lastmod>2021-01-08T17:51:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/pytorch/</loc>
+    <lastmod>2021-01-08T17:51:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/pytorch-notes/</loc>
+    <lastmod>2021-01-08T17:51:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/</loc>
+    <lastmod>2021-01-08T17:51:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/deep-learning/</loc>
+    <lastmod>2021-01-08T14:08:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/deep-learning-initializing-weights/</loc>
+    <lastmod>2021-01-08T14:08:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/deep-learning/</loc>
+    <lastmod>2021-01-07T16:53:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/deep-learning-loss-functions/</loc>
+    <lastmod>2020-12-31T10:24:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/dl/</loc>
+    <lastmod>2021-01-07T16:53:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/deep-learning-layers/</loc>
+    <lastmod>2021-01-07T16:53:44+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/c-/</loc>
-    <lastmod>2020-12-04T10:08:37+08:00</lastmod>
+    <lastmod>2020-12-25T12:02:01+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/categories/</loc>
-    <lastmod>2020-12-04T10:08:37+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/protocol-buffers/</loc>
+    <lastmod>2020-12-18T10:52:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2020-12-25T12:02:01+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/caffe-%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2020-12-18T11:52:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/protocl-buffers/</loc>
+    <lastmod>2020-12-18T11:44:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/batch-normalization/</loc>
+    <lastmod>2020-12-14T18:09:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/dl/</loc>
+    <lastmod>2020-12-14T18:09:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/algorithm/</loc>
+    <lastmod>2020-12-14T16:03:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/dropout/</loc>
+    <lastmod>2020-12-14T16:03:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/plantuml-%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2020-12-10T17:58:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/tools/</loc>
+    <lastmod>2020-12-10T17:58:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/tools/</loc>
+    <lastmod>2020-12-10T17:58:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/uml/</loc>
+    <lastmod>2020-12-10T17:58:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/c-/</loc>
+    <lastmod>2020-12-11T15:04:23+08:00</lastmod>
   </url>
   
   <url>
@@ -28,28 +148,13 @@
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/</loc>
-    <lastmod>2020-12-04T10:08:37+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liudyboy.github.io/categories/ml/</loc>
     <lastmod>2020-12-02T15:37:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/posts/</loc>
-    <lastmod>2020-12-04T10:08:37+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/</loc>
-    <lastmod>2020-12-04T10:08:37+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liudyboy.github.io/posts/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2020-12-04T10:08:37+08:00</lastmod>
+    <lastmod>2020-12-11T15:04:23+08:00</lastmod>
   </url>
   
   <url>
@@ -63,11 +168,6 @@
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/categories/tools/</loc>
-    <lastmod>2020-11-24T14:41:21+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liudyboy.github.io/tags/hdf5/</loc>
     <lastmod>2020-11-18T17:52:37+08:00</lastmod>
   </url>
@@ -75,11 +175,6 @@
   <url>
     <loc>https://liudyboy.github.io/posts/hdf5-note/</loc>
     <lastmod>2020-11-18T17:52:37+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2020-11-30T17:17:24+08:00</lastmod>
   </url>
   
   <url>
@@ -279,7 +374,7 @@
   
   <url>
     <loc>https://liudyboy.github.io/categories/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2020-09-29T09:35:36+08:00</lastmod>
+    <lastmod>2020-12-23T11:05:00+08:00</lastmod>
   </url>
   
   <url>
@@ -384,17 +479,17 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/eigen/</loc>
-    <lastmod>2020-11-25T14:50:24+08:00</lastmod>
+    <lastmod>2020-12-23T18:07:15+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Bmatrix/</loc>
-    <lastmod>2020-11-25T14:50:24+08:00</lastmod>
+    <lastmod>2020-12-23T18:07:15+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Btensor/</loc>
-    <lastmod>2020-08-20T15:22:39+08:00</lastmod>
+    <lastmod>2020-12-10T16:09:46+08:00</lastmod>
   </url>
   
   <url>
@@ -409,17 +504,17 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2020-09-29T09:35:36+08:00</lastmod>
+    <lastmod>2020-12-23T11:05:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/%E7%9F%A9%E9%98%B5/</loc>
-    <lastmod>2020-09-29T09:35:36+08:00</lastmod>
+    <lastmod>2020-12-23T11:05:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E7%9F%A9%E9%98%B5%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-09-29T09:35:36+08:00</lastmod>
+    <lastmod>2020-12-23T11:05:00+08:00</lastmod>
   </url>
   
   <url>
@@ -484,7 +579,7 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/c&#43;&#43;%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2020-10-15T11:39:31+08:00</lastmod>
+    <lastmod>2020-12-24T10:35:02+08:00</lastmod>
   </url>
   
   <url>
@@ -499,7 +594,7 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/c&#43;&#43;%E6%9D%82%E8%AE%B0/</loc>
-    <lastmod>2020-11-30T17:17:24+08:00</lastmod>
+    <lastmod>2020-12-25T12:02:01+08:00</lastmod>
   </url>
   
   <url>
