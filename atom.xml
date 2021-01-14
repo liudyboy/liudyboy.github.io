@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-01-14T10:48:35&#43;08:00</updated>
+    <updated>2021-01-14T17:53:42&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -671,7 +671,7 @@ $$&lt;/p&gt;
             <title type="text">Deep Learning Layers</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-layers/" />
             <id>https://liudyboy.github.io/posts/deep-learning-layers/</id>
-            <updated>2021-01-13T17:53:01&#43;08:00</updated>
+            <updated>2021-01-14T16:39:06&#43;08:00</updated>
             <published>2020-12-23T11:15:59&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -827,13 +827,44 @@ $$
 &lt;/div&gt;
 其中卷核的单个通道的大小为（k0, k1）, 步长stride为（s0, s1）。
 &lt;h4 id=&#34;img2col&#34;&gt;img2col&lt;/h4&gt;
-&lt;p&gt;在img2col操作中每个sample将会转化为一个矩阵（in_channels * k0 * k1, H2 * W2）&lt;/p&gt;
+&lt;p&gt;在img2col操作中每个sample将会转化为一个矩阵大小为（in_channels * k0 * k1, H2 * W2）&lt;/p&gt;
 &lt;p&gt;假定输入数据如下：
 &lt;img src=&#34;https://liudyboy.github.io/imgs/convv.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;kernel 为（2， 2， 2， 2），strides为(1, 1)，则sample 1转换后的矩阵为：
-&lt;img src=&#34;https://liudyboy.github.io/imgs/colsam.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;kernel 为（2， 2， 2， 2），strides为(1, 1)，则转换后的矩阵为：
+&lt;img src=&#34;https://liudyboy.github.io/imgs/consampel.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;backward&#34;&gt;Backward&lt;/h4&gt;
 &lt;p&gt;可知forward的输出结果Output大小为(N, num_filters, H2, H2);&lt;/p&gt;
+&lt;p&gt;经过转换后forward计算实际是
+$$
+Y=KM
+$$
+其中K为卷积核组成的矩阵(num_filters, in_channels * k0 * k1), M为单个样本转换后得到的矩阵(in_channels * k0 * k1, H2 * W2)&lt;/p&gt;
+&lt;p&gt;Y对K的导数为：
+$$
+\frac{\partial Y_i}{\partial K_i} = (\sum_j M_j)^T
+$$
+其中$\sum_j M_j$表示将矩阵M按照列的维度进行相加得到一个列向量,$Y_i$代表矩阵Y中的第i行，$K_i$代表矩阵K中的第i行。&lt;/p&gt;
+&lt;p&gt;引入loss对Y的导数，进而求出loss对K的导数，可得：&lt;/p&gt;
+&lt;div&gt;
+$$
+\frac{\partial loss}{\partial Y_i}  = Y&#39;_i \\
+\frac{\partial loss}{\partial Y_i} \frac{\partial Y_i}{\partial K_i} = (\sum_j Y&#39;_{i,j} M_j)^T
+$$
+&lt;/div&gt;
+其中$Y&#39;_i$代表loss对$Y_i$的导数为行向量
+&lt;p&gt;Y 对M求导为：
+$$
+\frac{\partial Y_j}{\partial M_j} = (\sum_i K_i)^T
+$$
+其中$\sum_i K_i$表示将矩阵K按照行的维度进行相加得到一个行向量,$Y_j$代表矩阵Y中的第j列，$M_j$代表矩阵M中的第j列。&lt;/p&gt;
+&lt;p&gt;引入loss对Y的导数，进而求出loss对M的导数，可得：&lt;/p&gt;
+&lt;div&gt;
+$$
+\frac{\partial loss}{\partial Y_j}  = Y&#39;_j \\
+\frac{\partial loss}{\partial Y_j} \frac{\partial Y_j}{\partial M_j} = (\sum_i Y&#39;_{j,i} K_i)^T
+$$
+&lt;/div&gt;
+其中$Y&#39;_j$代表loss对$Y_j$的导数为列向量
 </content>
             
             
