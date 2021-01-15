@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-01-14T17:55:33&#43;08:00</updated>
+    <updated>2021-01-15T18:05:32&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -671,7 +671,7 @@ $$&lt;/p&gt;
             <title type="text">Deep Learning Layers</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-layers/" />
             <id>https://liudyboy.github.io/posts/deep-learning-layers/</id>
-            <updated>2021-01-14T16:39:06&#43;08:00</updated>
+            <updated>2021-01-15T17:32:10&#43;08:00</updated>
             <published>2020-12-23T11:15:59&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -865,6 +865,21 @@ $$
 $$
 &lt;/div&gt;
 其中$Y&#39;_j$代表loss对$Y_j$的导数为列向量
+&lt;h2 id=&#34;max-pool-layer&#34;&gt;Max Pool Layer&lt;/h2&gt;
+&lt;p&gt;对于输入的数据(N, C, H, W),对其中每个通道执行一个基于窗口$(P^h, P^w)$的最大化池的操作。&lt;/p&gt;
+&lt;h3 id=&#34;implementation-1&#34;&gt;Implementation&lt;/h3&gt;
+&lt;p&gt;首先对输入特征图像（N, C, H, W）进行一个padding操作得到一个新的特征图像 (N, C, H1, W1), 可得经过卷积操作后所得到的特征图像大小为(N, C, H2, W2)&lt;/p&gt;
+&lt;div&gt;
+$$
+H2 = \lfloor \frac{H1 - P^h}{s0} + 1 \rfloor \\
+W2 = \lfloor \frac{W1 - P^w}{s1} + 1 \rfloor
+$$
+&lt;/div&gt;
+其中步长（s0, s1）;
+&lt;h4 id=&#34;img2col-1&#34;&gt;img2col&lt;/h4&gt;
+&lt;p&gt;在img2col操作中每个sample将会转化为一个矩阵&lt;/p&gt;
+&lt;p&gt;假定输入数据如下：
+&lt;img src=&#34;https://liudyboy.github.io/imgs/convv.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 </content>
             
             
