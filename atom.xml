@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-01-15T18:05:32&#43;08:00</updated>
+    <updated>2021-01-18T09:57:03&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -671,7 +671,7 @@ $$&lt;/p&gt;
             <title type="text">Deep Learning Layers</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-layers/" />
             <id>https://liudyboy.github.io/posts/deep-learning-layers/</id>
-            <updated>2021-01-15T17:32:10&#43;08:00</updated>
+            <updated>2021-01-18T08:59:39&#43;08:00</updated>
             <published>2020-12-23T11:15:59&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -879,7 +879,10 @@ $$
 &lt;h4 id=&#34;img2col-1&#34;&gt;img2col&lt;/h4&gt;
 &lt;p&gt;在img2col操作中每个sample将会转化为一个矩阵&lt;/p&gt;
 &lt;p&gt;假定输入数据如下：
-&lt;img src=&#34;https://liudyboy.github.io/imgs/convv.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://liudyboy.github.io/imgs/convv.png&#34; alt=&#34;&#34;&gt;
+经过转换后矩阵表示为：
+&lt;img src=&#34;https://liudyboy.github.io/imgs/maxocov.png&#34; alt=&#34;&#34;&gt;
+可以看出转换后的矩阵与卷积层中转换的矩阵相同。&lt;/p&gt;
 </content>
             
             
@@ -2395,7 +2398,7 @@ $$
             <title type="text">Git Notes</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/git-notes/" />
             <id>https://liudyboy.github.io/posts/git-notes/</id>
-            <updated>2020-11-24T14:41:21&#43;08:00</updated>
+            <updated>2021-01-15T18:23:53&#43;08:00</updated>
             <published>2020-11-24T09:12:00&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -2429,7 +2432,11 @@ git merge branch1
 &lt;li&gt;执行以下命令忽略之前的commit, 删除大文件再commit
 &lt;code&gt;git reset --soft HEAD^&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</content>
+&lt;h3 id=&#34;git-ignore-无效&#34;&gt;git ignore 无效&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git rm -r --cached .
+git add .
+git commit -m &#39;update .gitignore&#39;
+&lt;/code&gt;&lt;/pre&gt;</content>
             
             
             
