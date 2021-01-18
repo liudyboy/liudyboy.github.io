@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 18 Jan 2021 09:57:03 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 18 Jan 2021 16:25:55 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -862,7 +862,7 @@ $$
 &lt;h2 id=&#34;max-pool-layer&#34;&gt;Max Pool Layer&lt;/h2&gt;
 &lt;p&gt;对于输入的数据(N, C, H, W),对其中每个通道执行一个基于窗口$(P^h, P^w)$的最大化池的操作。&lt;/p&gt;
 &lt;h3 id=&#34;implementation-1&#34;&gt;Implementation&lt;/h3&gt;
-&lt;p&gt;首先对输入特征图像（N, C, H, W）进行一个padding操作得到一个新的特征图像 (N, C, H1, W1), 可得经过卷积操作后所得到的特征图像大小为(N, C, H2, W2)&lt;/p&gt;
+&lt;p&gt;首先对输入特征图像（N, C, H, W）进行一个padding操作得到一个新的特征图像 (N, C, H1, W1), 可得经过池化操作后所得到的特征图像大小为(N, C, H2, W2)&lt;/p&gt;
 &lt;div&gt;
 $$
 H2 = \lfloor \frac{H1 - P^h}{s0} + 1 \rfloor \\
@@ -876,7 +876,7 @@ $$
 &lt;img src=&#34;https://liudyboy.github.io/imgs/convv.png&#34; alt=&#34;&#34;&gt;
 经过转换后矩阵表示为：
 &lt;img src=&#34;https://liudyboy.github.io/imgs/maxocov.png&#34; alt=&#34;&#34;&gt;
-可以看出转换后的矩阵与卷积层中转换的矩阵相同。&lt;/p&gt;
+矩阵大小为{$C * H2 * W2, P^h  * P^w$}.&lt;/p&gt;
 </description>
                 
                 
