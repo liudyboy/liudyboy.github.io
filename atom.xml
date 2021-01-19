@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-01-19T20:20:51&#43;08:00</updated>
+    <updated>2021-01-19T22:32:23&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">Factorization Machines</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/factorization-machines/" />
             <id>https://liudyboy.github.io/posts/factorization-machines/</id>
-            <updated>2021-01-19T20:12:28&#43;08:00</updated>
+            <updated>2021-01-19T22:00:16&#43;08:00</updated>
             <published>2021-01-19T19:49:21&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -37,6 +37,8 @@ $$
 其中$\mathbf{w_0} \in R$ 是一个实数代表global bias，$\mathbf{w} \in R^d$ 是一个向量表示每个特征的重要性，$\mathbf{V} \in R^{d\times k}$ 代表的是feature embeddings,每个特征都用一个$v_i \in R^k$的向量表示，$&amp;lt;\mathbf{v_i}, \mathbf{v_j}&amp;gt;$表示了两个特征之间的交互关系(features interactions)。&lt;/p&gt;
 &lt;p&gt;对2-way factorizaion mathinces进行复杂度分析可知其计算复杂度为$O(kd^2)$，因为$\sum_{i=1}^{d} \sum_{j=i+1}^{d} &amp;lt;\mathbf{v_i}, \mathbf{v_j}&amp;gt; x_i x_j$ 中$&amp;lt;\mathbf{v_i}, \mathbf{v_j}&amp;gt;$的计算复杂度为k,而后两个$\sum$的复杂度为$d^2$。对于这个高额的计算复杂度而已通过如下公式变换将复杂度降至$O(kd)$:
 &lt;img src=&#34;https://liudyboy.github.io/imgs/reofaow.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;高维的n-way factorization machines 在理论上是可行的，但是在实际中并没有采用因为数值计算不稳定和高额的计算复杂度。&lt;/p&gt;
+&lt;h2 id=&#34;deep-factorization-mathines&#34;&gt;Deep Factorization Mathines&lt;/h2&gt;
 </content>
             
             
