@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-01-19T19:22:57&#43;08:00</updated>
+    <updated>2021-01-19T20:20:51&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -16,6 +16,57 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
+        <entry>
+            <title type="text">Factorization Machines</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/factorization-machines/" />
+            <id>https://liudyboy.github.io/posts/factorization-machines/</id>
+            <updated>2021-01-19T20:12:28&#43;08:00</updated>
+            <published>2021-01-19T19:49:21&#43;08:00</published>
+            <author>
+                    <name>liudy</name>
+                    <uri>https://liudyboy.github.io/</uri>
+                    <email>liudy95@126.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文记录factorization machines 相关的笔记</summary>
+            
+                <content type="html">&lt;h2 id=&#34;2-way-factorization-machines&#34;&gt;2-Way Factorization Machines&lt;/h2&gt;
+&lt;p&gt;假定$x \in R^d$表示一个样本的特征向量，y代表标签（可以是实数，或者类的标签值，比如“click/non-click”）。2-way factorization machines 表示为：
+$$
+\hat{y}(x) = \mathbf{w_0} + \sum_{i=1}^d \mathbf{w_i}x_i + \sum_{i=1}^{d} \sum_{j=i+1}^{d} &amp;lt;\mathbf{v_i}, \mathbf{v_j}&amp;gt; x_i x_j
+$$
+其中$\mathbf{w_0} \in R$ 是一个实数代表global bias，$\mathbf{w} \in R^d$ 是一个向量表示每个特征的重要性，$\mathbf{V} \in R^{d\times k}$ 代表的是feature embeddings,每个特征都用一个$v_i \in R^k$的向量表示，$&amp;lt;\mathbf{v_i}, \mathbf{v_j}&amp;gt;$表示了两个特征之间的交互关系(features interactions)。&lt;/p&gt;
+&lt;p&gt;对2-way factorizaion mathinces进行复杂度分析可知其计算复杂度为$O(kd^2)$，因为$\sum_{i=1}^{d} \sum_{j=i+1}^{d} &amp;lt;\mathbf{v_i}, \mathbf{v_j}&amp;gt; x_i x_j$ 中$&amp;lt;\mathbf{v_i}, \mathbf{v_j}&amp;gt;$的计算复杂度为k,而后两个$\sum$的复杂度为$d^2$。对于这个高额的计算复杂度而已通过如下公式变换将复杂度降至$O(kd)$:
+&lt;img src=&#34;https://liudyboy.github.io/imgs/reofaow.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/categories/recommendation/" term="Recommendation" label="Recommendation" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/tags/recommendation/" term="recommendation" label="recommendation" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Deep Learning Activation Functions</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-activation-functions/" />
