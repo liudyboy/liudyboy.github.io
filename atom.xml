@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-01-19T08:57:49&#43;08:00</updated>
+    <updated>2021-01-19T18:10:36&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -16,6 +16,133 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
+        <entry>
+            <title type="text">Deep Learning Activation Functions</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-activation-functions/" />
+            <id>https://liudyboy.github.io/posts/deep-learning-activation-functions/</id>
+            <updated>2021-01-19T18:08:21&#43;08:00</updated>
+            <published>2021-01-19T15:39:36&#43;08:00</published>
+            <author>
+                    <name>liudy</name>
+                    <uri>https://liudyboy.github.io/</uri>
+                    <email>liudy95@126.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文记录深度学习中常用的激活函数</summary>
+            
+                <content type="html">&lt;h2 id=&#34;sigmoid&#34;&gt;Sigmoid&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/sigmoidlogisticgraph.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;$$
+y = sigmoid(x) = \frac{1}{1 + e^{-x}}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Derivative:&lt;/strong&gt;
+$$
+\frac{\partial y}{\partial x} = \frac{1}{1 + e^{-x}} - \frac{1}{(1 + e^{-x})^2} = y(1-y)
+$$&lt;/p&gt;
+&lt;h3 id=&#34;advantages&#34;&gt;Advantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Smooth gradient, preventing “jumps” in output values.&lt;/li&gt;
+&lt;li&gt;Output values bound between 0 and 1, normalizing the output of each neuron.&lt;/li&gt;
+&lt;li&gt;Clear predictions—For X above 2 or below -2, tends to bring the Y value (the prediction) to the edge of the curve, very close to 1 or 0. This enables clear predictions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;disadvantages&#34;&gt;Disadvantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Vanishing gradient—for very high or very low values of X, there is almost no change to the prediction, causing a vanishing gradient problem. This can result in the network refusing to learn further, or being too slow to reach an accurate prediction.&lt;/li&gt;
+&lt;li&gt;Outputs not zero centered.&lt;/li&gt;
+&lt;li&gt;Computationally expensive&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tanh&#34;&gt;TanH&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/tanhhyperbolic.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;$$
+y = tanh(x) = \frac{e^{x} - e^{-x}}{e^x + e^{-x}} = 2 sigmoid(2x) - 1
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Derivative:&lt;/strong&gt;
+$$
+\frac{\partial y}{\partial x} = \frac{4e^{2x}}{(e^{2x} + 1)^2} = (1 + y)(1 - y)
+$$&lt;/p&gt;
+&lt;h3 id=&#34;advantages-1&#34;&gt;Advantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Zero centered—making it easier to model inputs that have strongly negative, neutral, and strongly positive values.&lt;/li&gt;
+&lt;li&gt;Otherwise like the Sigmoid function.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;disadvantages-1&#34;&gt;Disadvantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Like the Sigmoid function&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;relu-rectified-linear-unit&#34;&gt;ReLU (Rectified Linear Unit)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/relu22.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;advantages-2&#34;&gt;Advantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Computationally efficient—allows the network to converge very quickly&lt;/li&gt;
+&lt;li&gt;Non-linear—although it looks like a linear function, ReLU has a derivative function and allows for backpropagation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;disadvantages-2&#34;&gt;Disadvantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The Dying ReLU problem—when inputs approach zero, or are negative, the gradient of the function becomes zero, the network cannot perform backpropagation and cannot learn.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;leaky-relu&#34;&gt;Leaky ReLU&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/leakyrelu.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;advantages-3&#34;&gt;Advantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Prevents dying ReLU problem—this variation of ReLU has a small positive slope in the negative area, so it does enable backpropagation, even for negative input values&lt;/li&gt;
+&lt;li&gt;Otherwise like ReLU&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;disadvantages-3&#34;&gt;Disadvantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Results not consistent—leaky ReLU does not provide consistent predictions for negative input values.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;parametric-relu&#34;&gt;Parametric ReLU&lt;/h2&gt;
+&lt;h3 id=&#34;advantages-4&#34;&gt;Advantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Allows the negative slope to be learned—unlike leaky ReLU, this function provides the slope of the negative part of the function as an argument. It is, therefore, possible to perform backpropagation and learn the most appropriate value of α.&lt;/li&gt;
+&lt;li&gt;Otherwise like ReLU&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;disadvantages-4&#34;&gt;Disadvantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;May perform differently for different problems.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;softmax&#34;&gt;Softmax&lt;/h2&gt;
+&lt;h3 id=&#34;advantages-5&#34;&gt;Advantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Able to handle multiple classes only one class in other activation functions—normalizes the outputs for each class between 0 and 1, and divides by their sum, giving the probability of the input value being in a specific class.&lt;/li&gt;
+&lt;li&gt;Useful for output neurons—typically Softmax is used only for the output layer, for neural networks that need to classify inputs into multiple categories.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;swish&#34;&gt;Swish&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/swish.png&#34; alt=&#34;&#34;&gt;
+Swish is a new, self-gated activation function discovered by researchers at Google. According to their paper, it performs better than ReLU with a similar level of computational efficiency. In experiments on ImageNet with identical models running ReLU and Swish, the new function achieved top -1 classification accuracy 0.6-0.9% higher.&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jianshu.com/p/857d5859d2cc&#34;&gt;激活函数 sigmoid、tanh、relu&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/categories/dl/" term="DL" label="DL" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/tags/deep-learnning/" term="Deep learnning" label="Deep learnning" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Statistics Practice</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/statistics-practice/" />
@@ -671,7 +798,7 @@ $$&lt;/p&gt;
             <title type="text">Deep Learning Layers</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-layers/" />
             <id>https://liudyboy.github.io/posts/deep-learning-layers/</id>
-            <updated>2021-01-18T14:19:48&#43;08:00</updated>
+            <updated>2021-01-19T09:03:38&#43;08:00</updated>
             <published>2020-12-23T11:15:59&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -883,6 +1010,11 @@ $$
 经过转换后矩阵表示为：
 &lt;img src=&#34;https://liudyboy.github.io/imgs/maxocov.png&#34; alt=&#34;&#34;&gt;
 矩阵大小为{$C * H2 * W2, P^h  * P^w$}.&lt;/p&gt;
+&lt;h3 id=&#34;drawbacks&#34;&gt;Drawbacks&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;不能够区分重要的特征是出现一次还是出现了多次，比如，在同一个池化窗口里面最大值出现了多次&lt;/li&gt;
+&lt;li&gt;不能够感知最大值出现的位置信息,位置信息丢失&lt;/li&gt;
+&lt;/ol&gt;
 </content>
             
             
