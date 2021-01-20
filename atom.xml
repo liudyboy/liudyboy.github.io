@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-01-20T09:17:21&#43;08:00</updated>
+    <updated>2021-01-20T18:10:34&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -73,7 +73,7 @@ $$
             <title type="text">Deep Learning Activation Functions</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-activation-functions/" />
             <id>https://liudyboy.github.io/posts/deep-learning-activation-functions/</id>
-            <updated>2021-01-19T18:08:21&#43;08:00</updated>
+            <updated>2021-01-20T16:48:01&#43;08:00</updated>
             <published>2021-01-19T15:39:36&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -103,6 +103,8 @@ $$&lt;/p&gt;
 &lt;li&gt;Outputs not zero centered.&lt;/li&gt;
 &lt;li&gt;Computationally expensive&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;hard_sigmoid&#34;&gt;hard_sigmoid&lt;/h2&gt;
+&lt;p&gt;Hard sigmoid activation function.&lt;/p&gt;
 &lt;h2 id=&#34;tanh&#34;&gt;TanH&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/tanhhyperbolic.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;$$
@@ -123,6 +125,9 @@ $$&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;relu-rectified-linear-unit&#34;&gt;ReLU (Rectified Linear Unit)&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/relu22.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;$$
+y = max(0, x)
+$$&lt;/p&gt;
 &lt;h3 id=&#34;advantages-2&#34;&gt;Advantages&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Computationally efficient—allows the network to converge very quickly&lt;/li&gt;
@@ -134,6 +139,18 @@ $$&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;leaky-relu&#34;&gt;Leaky ReLU&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/leakyrelu.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div&gt;
+$$
+y =  \left\{ \begin{array}{rl}
+    x  &amp; if \  x &gt; 0 \\
+    \gamma x &amp; if \  x \leq 0
+\end{array} \right. = \max(0, x) + \gamma\min(0, x)
+$$
+&lt;/div&gt;
+where $\gamma$ is a small constant number. When $\gamma &lt; 1$, Leaky ReLU can be written as:
+$$
+y = \max(x, \gamma x)
+$$
 &lt;h3 id=&#34;advantages-3&#34;&gt;Advantages&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Prevents dying ReLU problem—this variation of ReLU has a small positive slope in the negative area, so it does enable backpropagation, even for negative input values&lt;/li&gt;
@@ -144,6 +161,20 @@ $$&lt;/p&gt;
 &lt;li&gt;Results not consistent—leaky ReLU does not provide consistent predictions for negative input values.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;parametric-relu&#34;&gt;Parametric ReLU&lt;/h2&gt;
+&lt;p&gt;Parametric ReLU introduces a learnable parameter, different neural could have different parameter. The PReLU for i neural can be written as follow:&lt;/p&gt;
+&lt;div&gt;
+$$
+y = PReLU_i(x)=  \left\{ \begin{array}{rl}
+    x  &amp; if \  x &gt; 0 \\
+\gamma_i x &amp; if \  x \leq 0
+\end{array} \right. = \max(0, x) + \gamma_i \min(0, x)
+$$
+&lt;/div&gt;
+The differences from ReLULayer are:
+&lt;ol&gt;
+&lt;li&gt;negative slopes are learnable though backprop&lt;/li&gt;
+&lt;li&gt;negative slopes can vary across channels. The number of axes of input blob should be greater than or equal to 2. The 1st axis (0-based) is seen as channels.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h3 id=&#34;advantages-4&#34;&gt;Advantages&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Allows the negative slope to be learned—unlike leaky ReLU, this function provides the slope of the negative part of the function as an argument. It is, therefore, possible to perform backpropagation and learn the most appropriate value of α.&lt;/li&gt;
@@ -153,6 +184,27 @@ $$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;May perform differently for different problems.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;elu-exponential-linear-unit&#34;&gt;ELU (Exponential Linear Unit)&lt;/h2&gt;
+&lt;div&gt;
+$$
+y = ELU(x)=  \left\{ \begin{array}{rl}
+    x  &amp; if \  x &gt; 0 \\
+\gamma (e^x - 1) &amp;  if \  x \leq 0
+\end{array} \right. = \max(0, x) + \min(0, \gamma(e^x - 1))
+$$
+&lt;/div&gt;
+where the $\gamma \geq 0$ is a super parameter
+&lt;h2 id=&#34;softplus&#34;&gt;Softplus&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/softpluls.png&#34; alt=&#34;&#34;&gt;
+The softplus function is a smooth approximation to the ReLU activation function, and is sometimes used in the neural networks in place of ReLU.&lt;/p&gt;
+&lt;p&gt;$$
+y = Softplus(x) = log(1 + e^x)
+$$&lt;/p&gt;
+&lt;h2 id=&#34;softsign&#34;&gt;softsign&lt;/h2&gt;
+&lt;p&gt;Softsign activation function
+$$
+softsign(x) = \frac{x}{abs(x) + 1}
+$$&lt;/p&gt;
 &lt;h2 id=&#34;softmax&#34;&gt;Softmax&lt;/h2&gt;
 &lt;h3 id=&#34;advantages-5&#34;&gt;Advantages&lt;/h3&gt;
 &lt;ul&gt;
@@ -161,7 +213,16 @@ $$&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;swish&#34;&gt;Swish&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/swish.png&#34; alt=&#34;&#34;&gt;
+$$
+y = swish(x) = x * sigmoid(x)
+$$
 Swish is a new, self-gated activation function discovered by researchers at Google. According to their paper, it performs better than ReLU with a similar level of computational efficiency. In experiments on ImageNet with identical models running ReLU and Swish, the new function achieved top -1 classification accuracy 0.6-0.9% higher.&lt;/p&gt;
+&lt;h2 id=&#34;selu&#34;&gt;selu&lt;/h2&gt;
+&lt;p&gt;Scaled Exponential Linear Unit&lt;/p&gt;
+&lt;h2 id=&#34;gelu&#34;&gt;gelu&lt;/h2&gt;
+&lt;p&gt;applies the gaussian error linear unit(GELU) activation&lt;/p&gt;
+&lt;h2 id=&#34;elu&#34;&gt;elu&lt;/h2&gt;
+&lt;p&gt;Exponential linear unit&lt;/p&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.jianshu.com/p/857d5859d2cc&#34;&gt;激活函数 sigmoid、tanh、relu&lt;/a&gt;&lt;/li&gt;
