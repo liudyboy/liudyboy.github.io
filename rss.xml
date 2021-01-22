@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 21 Jan 2021 20:03:01 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 22 Jan 2021 17:25:30 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -2501,7 +2501,8 @@ $$
 &lt;p&gt;Adam computes individual adaptive learning rates for different parameters from estimates of first and second moments of the gradients. This method is designed to combine the advantages of AdaGrad and RMSProp.
 &lt;img src=&#34;https://liudyboy.github.io/imgs/adam.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;adamax&#34;&gt;AdaMax&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/adamax.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/adamax.png&#34; alt=&#34;&#34;&gt;
+&lt;strong&gt;Notice:&lt;/strong&gt; in the formulation $\theta_t \leftarrow \theta_{t-1} - (\alpha / (1 - \beta_1^t)) \cdot m_t / u_t$, the $u_t$ can be zero, so we need add a small constant  $\epsilon = 1e-12$ to it $\theta_t \leftarrow \theta_{t-1} - (\alpha / (1 - \beta_1^t)) \cdot m_t /(u_t + \epsilon) $&lt;/p&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/liudyboy/Archive_0/blob/master/An%20overview%20of%20gradient%20descent%20optimization.pdf&#34;&gt;An overview of gradient descent optimization&lt;/a&gt;&lt;/li&gt;
