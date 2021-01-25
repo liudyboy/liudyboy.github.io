@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-01-25T09:01:01&#43;08:00</updated>
+    <updated>2021-01-25T18:07:08&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -16,6 +16,102 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
+        <entry>
+            <title type="text">Self Attentive Sequential Recommendation 论文笔记</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/self-attentive-sequential-recommendation/" />
+            <id>https://liudyboy.github.io/posts/self-attentive-sequential-recommendation/</id>
+            <updated>2021-01-25T11:26:05&#43;08:00</updated>
+            <published>2021-01-25T10:39:36&#43;08:00</published>
+            <author>
+                    <name>liudy</name>
+                    <uri>https://liudyboy.github.io/</uri>
+                    <email>liudy95@126.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">This article is note about paper  Self Attentive Sequential Recommendation</summary>
+            
+                <content type="html">&lt;h2 id=&#34;methods&#34;&gt;Methods&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/saras.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;embedding-layer&#34;&gt;Embedding Layer&lt;/h3&gt;
+&lt;p&gt;In embedding layer, we transform the training sequence $((S_1^u, S_2^u, \cdots, S^u_{|S^U|-1})$ into a fixed-length sequence $s = (s_1, s_2, \cdots, s_n)$, where n represent the maximum length that the model can handle. $E \in R^{n \times d}$ is the input embedding matrix. To add the positions information, we inject a learnable position embedding $P \in R^{n \times d}$
+$$
+\hat{\mathbf{E}} = \mathbf{E + P}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;self-attention-block&#34;&gt;Self-Attention Block&lt;/h3&gt;
+&lt;p&gt;The scaled dot-product attention is defined as;
+$$
+Attention(\mathbf{Q, K, V}) =  softmax(\frac{\mathbf{QK}^T}{\sqrt{d}})\mathbf{V}.
+$$
+where Q represents the queries, K the keys and V the values.&lt;/p&gt;
+&lt;p&gt;First we convert the input $\hat{E}$ to three matrix, then feeds into an attention layer:
+$$
+S = SA{\hat{\mathbf{E}}} = Attention(\mathbf{\hat{E}W^Q, \hat{E}W^K, \hat{E}W^V})
+$$
+where the projection matrices $W^Q, W^K, W^V \in R^{d \times d}$ are learnable.&lt;/p&gt;
+&lt;p&gt;The self-attention is able to aggregate all previous item&#39;s embeddings with adaptive weights, but it is stills a linear model. To endow the model with nonlinearity, we apply a point-wish two-layer fead-forward network to all $S_i$ identically (sharing parameters):
+$$
+F_i = FFN(S_i) = ReLU(S_iW^1 + b^1) W^2 + b^2
+$$
+where $W^1, W^2 \in R^{d \times d}$ are matrices and $b^1, b^2$ are d dimensional vectors.&lt;/p&gt;
+&lt;h3 id=&#34;stacking-self-attention-blocks&#34;&gt;Stacking Self-Attention Blocks&lt;/h3&gt;
+&lt;p&gt;We stack the self-attention block as follow:&lt;/p&gt;
+&lt;div&gt;
+$$
+S^b = SA(F^{b-1}), \\
+F_i^b = FFN(S_i^b), \forall i \in {1, 2, \cdots, n}
+$$
+&lt;/div&gt;
+&lt;p&gt;To overcome the problems&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;the increased model capacity leads to overfitting;&lt;/li&gt;
+&lt;li&gt;the training process becomes unstable (due to vanishing gradients etc.);&lt;/li&gt;
+&lt;li&gt;models with more parameters often require more training time.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We perform the following operations:
+$$
+g&#39;(x) = x + Dropout(g(LayerNorm(x)))
+$$
+where g(x) represents the self attention layer or the fed-forward network.&lt;/p&gt;
+&lt;h3 id=&#34;prediction-layer&#34;&gt;Prediction Layer&lt;/h3&gt;
+&lt;p&gt;We adopt an MF layer to predict the relevance of items i:
+$$
+r_{i, t} = F_t^b N_i^T
+$$
+where $r_{i, t}$ is the relevance of item i being the next item given the first t items, and $N \in R^{|I| \times d}$ is an item embedding matrix.&lt;/p&gt;
+&lt;p&gt;To reduce the model size and alleviate overfitting, we can use a single item embedding $M$;
+$$
+r_{i, t} = F_t^b M_i^T
+$$
+where the $M$ is the embedding matrix we used before. Empirically, using a shared item embedding significantly improves the performance of the model.&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/categories/recommendation/" term="Recommendation" label="Recommendation" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/tags/sequential-recommendation/" term="sequential recommendation" label="sequential recommendation" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Economic Note</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/economic-note/" />
@@ -986,7 +1082,7 @@ $$&lt;/p&gt;
             <title type="text">Deep Learning Layers</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-layers/" />
             <id>https://liudyboy.github.io/posts/deep-learning-layers/</id>
-            <updated>2021-01-19T09:03:38&#43;08:00</updated>
+            <updated>2021-01-25T17:27:40&#43;08:00</updated>
             <published>2020-12-23T11:15:59&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1203,6 +1299,38 @@ $$
 &lt;li&gt;不能够区分重要的特征是出现一次还是出现了多次，比如，在同一个池化窗口里面最大值出现了多次&lt;/li&gt;
 &lt;li&gt;不能够感知最大值出现的位置信息,位置信息丢失&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;rnn&#34;&gt;RNN&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/rnn.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;对于输入序列中的每个单元，每一层都进行如下计算：
+$$
+h_t = tanh(W_{in}x_t + b_{ih} + W_{hh}h_{(t-1)} + b_{hh})
+$$
+其中$h_t, x_t$分别是在t时刻的hidden state和输入。tanh 是非线性激活函数。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/rnnisa.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div&gt;
+$$
+a^t = g_1(W_{aa}a^{t-1} + W_{ax}x^t + b_a) \\
+y^t = g_2(W_{ya}a^t + b^y)
+$$
+&lt;/div&gt;
+&lt;p&gt;这种典型的RNN的优点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以处理任意长度的输入序列&lt;/li&gt;
+&lt;li&gt;模型大小没有随着输入大小而增长&lt;/li&gt;
+&lt;li&gt;计算中考虑到了历史信息&lt;/li&gt;
+&lt;li&gt;模型参数在时间的维度上共享&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;计算很慢&lt;/li&gt;
+&lt;li&gt;时间跨度长的信息很难获取&lt;/li&gt;
+&lt;li&gt;不能够考虑到未来的信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;elman-rnn&#34;&gt;Elman RNN&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/elman-net.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;implementation-2&#34;&gt;Implementation&lt;/h3&gt;
+&lt;p&gt;输入数据格式input(seq_len, batch, input_size), $h_0$(num_layers, batch, hidden_size)&lt;/p&gt;
+&lt;p&gt;output(seq_len, batch, hidden_size), $h_n$(num_layers, batch, hidden_size)&lt;/p&gt;
 </content>
             
             
