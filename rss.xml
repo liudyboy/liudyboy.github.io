@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 25 Jan 2021 18:07:08 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 25 Jan 2021 19:04:48 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -187,6 +187,33 @@ $$
 &lt;img src=&#34;https://liudyboy.github.io/imgs/reofaow.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;高维的n-way factorization machines 在理论上是可行的，但是在实际中并没有采用因为数值计算不稳定和高额的计算复杂度。&lt;/p&gt;
 &lt;h2 id=&#34;deep-factorization-mathines&#34;&gt;Deep Factorization Mathines&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/dfm.png&#34; alt=&#34;&#34;&gt;
+DeepFM consists of two components, FM component and deep component, that share the same input. For feature i, a scalar wi is used to weigh its order-1 importance, a latent vector Vi is used to measure its impact of interactions with other features. Vi is fed in FM component to model order-2 feature interactions, and fed in deep component to model high-order feature interactions.&lt;/p&gt;
+&lt;p&gt;Predicted model is as follow:
+$$
+\hat{y} = sigmoid(y_{FM}  + y_{DNN})
+$$
+where $\hat{y} \in (0, 1)$ is the predicted CTR, $y_FM$ is the output of
+FM component, and $y_DNN$ is the output of deep component.&lt;/p&gt;
+&lt;h3 id=&#34;fm-component&#34;&gt;FM Component&lt;/h3&gt;
+&lt;p&gt;$$
+y_{FM} = &amp;lt;w, x&amp;gt; + \sum_{i = 1}^d \sum_{j = i + 1}^d &amp;lt;V_i, V_j&amp;gt; x_i x_j
+$$
+where $w \in R^d$ and $V_i \in R^k$ (k is given).&lt;/p&gt;
+&lt;h3 id=&#34;deep-component&#34;&gt;Deep Component&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/deepcomda.png&#34; alt=&#34;&#34;&gt;
+Beacause the raw feature input vector for CTR prediction is usually highly sparse, super high-dimensional, categorical-continuous-mixed, and grouped in fields (e.g., gender, location, age). This suggests an embedding layer to compress the input vector to a low dimensional, dense real-value vector. Embedding layer is as follow:
+&lt;img src=&#34;https://liudyboy.github.io/imgs/emdaea.png&#34; alt=&#34;&#34;&gt;
+the latent feature vectors (V) in FM now server as network weights which are learned and used to compress the input field vectors to the embedding vectors.&lt;/p&gt;
+&lt;p&gt;It is worth pointing out that FM component and deep com- ponent share the same feature embedding, which brings two important benefits:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;it learns both low- and high-order fea- ture interactions from raw features;&lt;/li&gt;
+&lt;li&gt;there is no need for ex- pertise feature engineering of the input&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/liudyboy/Recommendation/blob/main/DeepFM:%20A%20Factorization-Machine%20based%20Neural%20Network%20for%20CTR%20Prediction.pdf.pdf&#34;&gt;DeepFM: A Factorization-Machine based Neural Network for CTR Prediction&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
                 
                 
