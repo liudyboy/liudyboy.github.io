@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-01-27T19:24:13&#43;08:00</updated>
+    <updated>2021-01-27T20:06:58&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -16,6 +16,66 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
+        <entry>
+            <title type="text">ZeRO Offload: Democratizing Billion Scale Model Training Notes</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/zero-offload-democratizing-billion-scale-model-training-notes/" />
+            <id>https://liudyboy.github.io/posts/zero-offload-democratizing-billion-scale-model-training-notes/</id>
+            <updated>2021-01-27T20:01:54&#43;08:00</updated>
+            <published>2021-01-27T19:39:24&#43;08:00</published>
+            <author>
+                    <name>liudy</name>
+                    <uri>https://liudyboy.github.io/</uri>
+                    <email>liudy95@126.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Methods We offload the gradients, optimizer states and optimizer computation to CPU, while keeping the parameters and forward and backward computation on GPU.
+The communication time between GPU-&amp;gt;CPU or CPU-&amp;gt;GPU are overlap with computation time.
+scaling to Multi-GPUs ZeRO-Offload partitions gradients and optimizer states among different GPUs, and each GPU offloads the partition it owns to the CPU memory and keeps it there for the entire training.</summary>
+            
+                <content type="html">&lt;h2 id=&#34;methods&#34;&gt;Methods&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/zeornn.png&#34; alt=&#34;&#34;&gt;
+We offload the gradients, optimizer states and optimizer computation to CPU, while keeping the parameters and forward and backward computation on GPU.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/sheaer.png&#34; alt=&#34;&#34;&gt;
+The communication time between GPU-&amp;gt;CPU or CPU-&amp;gt;GPU are overlap with computation time.&lt;/p&gt;
+&lt;h3 id=&#34;scaling-to-multi-gpus&#34;&gt;scaling to Multi-GPUs&lt;/h3&gt;
+&lt;p&gt;ZeRO-Offload partitions gradients and optimizer states among different GPUs, and each GPU offloads the partition it owns to the CPU memory and keeps it there for the entire training. During the backward propagation, gradients are computed and averaged using reduce-scatter on the GPU, and each GPU only offloads the averaged gradients belonging to its partition to the CPU memory. Once the gradients are available on the CPU, optimizer state partitions are updated in parallel by each data parallel process directly on the CPU. After the update, parameter partitions are moved back to GPU followed by an all-gather operation on the GPU.&lt;/p&gt;
+&lt;p&gt;reduce-scatter operation as follow:
+&lt;img src=&#34;https://liudyboy.github.io/imgs/reducescall.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;all-gather operation as follow:
+&lt;img src=&#34;https://liudyboy.github.io/imgs/allgareret.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;referencd&#34;&gt;Referencd&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitee.com/liudy5/Papers/blob/main/DistributedLearning/ZeRO-Offload-%20Democratizing%20Billion-Scale%20Model%20Training.pdf&#34;&gt;ZeRO-Offload: Democratizing Billion-Scale Model Training&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/categories/paper-notes/" term="Paper notes" label="Paper notes" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/tags/deep-learning/" term="deep learning" label="deep learning" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">DL Development Note</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/dl-development-note/" />
