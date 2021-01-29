@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 29 Jan 2021 10:59:28 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 29 Jan 2021 18:18:32 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -1756,9 +1756,9 @@ $$&lt;/p&gt;
 &lt;p&gt;对于多层的RNN堆叠，我们可以直接单独分析单个RNN，假定输入的序列长度为2, forward 阶段计算如下：&lt;/p&gt;
 &lt;div&gt;
 $$
-y_0 = tanh(x_0 W_i + h_0 W_h + b) \\
+y_0 = tanh(x_0 W_i + h_0 W_h + b_0) \\
 h_1 = y_0 \\
-y_1 = tanh(x_1 W_i + h_1 W_h +b)
+y_1 = tanh(x_1 W_i + h_1 W_h +b_1)
 $$
 &lt;/div&gt;
 以下求导忽略非线性函数tanh。
@@ -1782,6 +1782,11 @@ $$
 \frac{\partial  y_1}{\partial W_h} = [h_1^T, \cdots, h_1^T]
 $$&lt;/p&gt;
 &lt;div&gt; 其中$W_h \in R^{hidden\_size \times hidden\_size}$, $h_1^T$代表行向量$h_1$的转置。&lt;/div&gt;
+&lt;p&gt;$y_1$对$b_1$求导：
+$$
+\frac{\partial  y_1}{\partial b_1} = \mathbf{1}
+$$&lt;/p&gt;
+&lt;div&gt; 其中$\mathbf{1} \in R^{hidden\_size}是一个行向量$&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 在求$y_0$对$x_0, W_i, W_h$求导的时候，要关系到$\frac{\partial y_1}{\partial h_1}$.&lt;/p&gt;
 </description>
                 
