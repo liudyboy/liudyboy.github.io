@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 29 Jan 2021 18:18:32 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 01 Feb 2021 18:05:02 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -1747,7 +1747,7 @@ $$&lt;/p&gt;
 &lt;div&gt; 第二层的RNN：$W_{ih} \in R^{hidden\_size \times hidden\_size}$, $W_{hh} \in R^{hidden\_size \times hidden\_size}$, $b \in R^{hidden\_size}$ &lt;/div&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;implementation-2&#34;&gt;Implementation&lt;/h3&gt;
+&lt;h4 id=&#34;implementation-2&#34;&gt;Implementation&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;输入数据格式：input(batch, seq_len, input_size), $h_0$(batch, num_layers, hidden_size)&lt;/li&gt;
 &lt;li&gt;输出数据格式：output(batch, seq_len, hidden_size), $h_n$(batch, num_layers, hidden_size)&lt;/li&gt;
@@ -1788,6 +1788,28 @@ $$
 $$&lt;/p&gt;
 &lt;div&gt; 其中$\mathbf{1} \in R^{hidden\_size}是一个行向量$&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 在求$y_0$对$x_0, W_i, W_h$求导的时候，要关系到$\frac{\partial y_1}{\partial h_1}$.&lt;/p&gt;
+&lt;h3 id=&#34;lstm&#34;&gt;LSTM&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/lstmla.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;LSTM 中关键的组成为cell state和各种不同的gates。cell state将相关关键信息进行传递。&lt;/p&gt;
+&lt;h4 id=&#34;forget-gate&#34;&gt;Forget Gate&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/forgetgate.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;从前面hidden state传来的信息和当前输入传来的信息一起通过sigmoid函数。输出值会在[0,1]之间，越接近0表示需要要忘记，越接近1表示需要保存。&lt;/p&gt;
+&lt;h4 id=&#34;input-gate&#34;&gt;Input Gate&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/inputgate.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;input gate 用于更新cell state。首先将前hidden state 和当前输入x传进一个sigmoid 函数,这个函数会决定哪些值是重要的哪些不重要需要忘记。同时将前hidden state 和当前输入x传进一个tanh 函数将值压缩至[-1, 1]之间帮助归化网络(regulate the network)。之后将sigmodi和tanh处理后的值进行相乘得到最后的结果。&lt;/p&gt;
+&lt;h4 id=&#34;cell-state&#34;&gt;Cell State&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/cellstte.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;现在我们拥有足够的信息可以计算cell state。首先让cell state与forget gate输出的forget vetor进行相乘。接着与input gate 的结果进行相加生成新的cell state。&lt;/p&gt;
+&lt;h4 id=&#34;output-gate&#34;&gt;Output Gate&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/outputgtea.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;首先，将前hidden state和当前输入x传入sigmoid函数，且将更新后的cell state传入tanh函数，之后将sigmoid和tanh函数的结果进行相乘得到新的hidden state.输出的结果即是hidden state。&lt;/p&gt;
+&lt;h3 id=&#34;gru&#34;&gt;GRU&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/gru.png&#34; alt=&#34;&#34;&gt;
+GRU去掉了cell state使用hidden state来传递信息。它只包含两种gates: reset gate 和update gate。&lt;/p&gt;
+&lt;h4 id=&#34;update-gate&#34;&gt;Update gate&lt;/h4&gt;
+&lt;p&gt;update gate 类似于LSTM中的forgate gate和input gate，其决定了丢弃什么信息和添加什么信息。&lt;/p&gt;
+&lt;h4 id=&#34;reset-gate&#34;&gt;Reset Gate&lt;/h4&gt;
+&lt;p&gt;reset gate用来决定需要丢弃多少过去的信息。&lt;/p&gt;
 </description>
                 
                 
