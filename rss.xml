@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 01 Feb 2021 18:05:02 &#43;0800</lastBuildDate>
+        <lastBuildDate>Tue, 02 Feb 2021 18:07:50 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -1791,6 +1791,16 @@ $$&lt;/p&gt;
 &lt;h3 id=&#34;lstm&#34;&gt;LSTM&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/lstmla.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;LSTM 中关键的组成为cell state和各种不同的gates。cell state将相关关键信息进行传递。&lt;/p&gt;
+&lt;div&gt;
+$$
+i_t = \sigma (W_{ii}x_t + W_{hi}h_{t-1} + b_i) \\
+f_t = \sigma (W_{if} x_t + W_{hf} h_{t-1} + b_f) \\
+g_t = tanh(W_{ig} x_t + W_{hg} h_{t-1} + b_g) \\
+o_t = \sigma (W_{io} x_t + W_{ho}h_{t-1} + b_o) \\
+c_t = f_t \odot c_{t-1} + i_t \odot g_t \\
+h_t = o_t \odot tanh(c_t)
+$$
+&lt;/div&gt;
 &lt;h4 id=&#34;forget-gate&#34;&gt;Forget Gate&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/forgetgate.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;从前面hidden state传来的信息和当前输入传来的信息一起通过sigmoid函数。输出值会在[0,1]之间，越接近0表示需要要忘记，越接近1表示需要保存。&lt;/p&gt;
@@ -1810,6 +1820,11 @@ GRU去掉了cell state使用hidden state来传递信息。它只包含两种gate
 &lt;p&gt;update gate 类似于LSTM中的forgate gate和input gate，其决定了丢弃什么信息和添加什么信息。&lt;/p&gt;
 &lt;h4 id=&#34;reset-gate&#34;&gt;Reset Gate&lt;/h4&gt;
 &lt;p&gt;reset gate用来决定需要丢弃多少过去的信息。&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://colah.github.io/posts/2015-08-Understanding-LSTMs/&#34;&gt;Understanding LSTMs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21&#34;&gt;Illustrated Guide to LSTM’s and GRU’s: A step by step explanation&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
                 
                 
