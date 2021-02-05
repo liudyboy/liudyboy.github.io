@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 04 Feb 2021 18:22:29 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 05 Feb 2021 18:07:19 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -1814,28 +1814,28 @@ $$
 $h_t$ 对 $tanh(c_t)$求导：
 $$
 \frac{\partial h_t}{\partial tanh(c_t)} = o_t
-$$&lt;/p&gt;
-&lt;p&gt;$h_t$ 对 $c_t$求导：
+$$
+$h_t$ 对 $c_t$求导：
 $$
 \frac{\partial h_t}{\partial c_t} = o_t \odot tanh&#39;(c_t)
 $$
 $h_t$ 对 $c_{t-1}$求导：
 $$
-\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial c_{t-1}= o_t \odot tanh&#39;(c_t) \odot f_t
+\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial c_{t-1}}= o_t \odot tanh&#39;(c_t) \odot f_t
 $$&lt;/p&gt;
 &lt;p&gt;$h_t$ 对 $f_{t}$求导：
 $$
-\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial f_{t}= o_t \odot tanh&#39;(c_t) \odot c_{t-1}
+\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial f_{t}}= o_t \odot tanh&#39;(c_t) \odot c_{t-1}
 $$&lt;/p&gt;
 &lt;p&gt;$h_t$ 对 $i_{t}$求导：
 $$
-\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial i_{t}= o_t \odot tanh&#39;(c_t) \odot g_{t}
+\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial i_{t}}= o_t \odot tanh&#39;(c_t) \odot g_{t}
 $$&lt;/p&gt;
 &lt;p&gt;$h_t$ 对 $g_{t}$求导：
 $$
-\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial g_{t}= o_t \odot tanh&#39;(c_t) \odot i_{t}
-$$&lt;/p&gt;
-&lt;p&gt;接下来的求导为忽略sigmoid函数和tanh函数的结果
+\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial g_{t}}= o_t \odot tanh&#39;(c_t) \odot i_{t}
+$$
+接下来的求导为忽略sigmoid函数和tanh函数的结果
 $c_t$ 对$f_t$求导：
 $$
 \frac{\partial c_t}{\partial f_t} = c_{t-1}

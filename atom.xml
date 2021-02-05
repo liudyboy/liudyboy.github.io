@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-02-04T18:22:29&#43;08:00</updated>
+    <updated>2021-02-05T18:07:19&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -1510,7 +1510,7 @@ $$&lt;/p&gt;
             <title type="text">Deep Learning Layers</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-layers/" />
             <id>https://liudyboy.github.io/posts/deep-learning-layers/</id>
-            <updated>2021-02-04T10:05:03&#43;08:00</updated>
+            <updated>2021-02-05T10:40:31&#43;08:00</updated>
             <published>2020-12-23T11:15:59&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1840,28 +1840,28 @@ $$
 $h_t$ 对 $tanh(c_t)$求导：
 $$
 \frac{\partial h_t}{\partial tanh(c_t)} = o_t
-$$&lt;/p&gt;
-&lt;p&gt;$h_t$ 对 $c_t$求导：
+$$
+$h_t$ 对 $c_t$求导：
 $$
 \frac{\partial h_t}{\partial c_t} = o_t \odot tanh&#39;(c_t)
 $$
 $h_t$ 对 $c_{t-1}$求导：
 $$
-\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial c_{t-1}= o_t \odot tanh&#39;(c_t) \odot f_t
+\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial c_{t-1}}= o_t \odot tanh&#39;(c_t) \odot f_t
 $$&lt;/p&gt;
 &lt;p&gt;$h_t$ 对 $f_{t}$求导：
 $$
-\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial f_{t}= o_t \odot tanh&#39;(c_t) \odot c_{t-1}
+\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial f_{t}}= o_t \odot tanh&#39;(c_t) \odot c_{t-1}
 $$&lt;/p&gt;
 &lt;p&gt;$h_t$ 对 $i_{t}$求导：
 $$
-\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial i_{t}= o_t \odot tanh&#39;(c_t) \odot g_{t}
+\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial i_{t}}= o_t \odot tanh&#39;(c_t) \odot g_{t}
 $$&lt;/p&gt;
 &lt;p&gt;$h_t$ 对 $g_{t}$求导：
 $$
-\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial g_{t}= o_t \odot tanh&#39;(c_t) \odot i_{t}
-$$&lt;/p&gt;
-&lt;p&gt;接下来的求导为忽略sigmoid函数和tanh函数的结果
+\frac{\partial h_t}{\partial c_t} \frac{\partial c_t}{\partial g_{t}}= o_t \odot tanh&#39;(c_t) \odot i_{t}
+$$
+接下来的求导为忽略sigmoid函数和tanh函数的结果
 $c_t$ 对$f_t$求导：
 $$
 \frac{\partial c_t}{\partial f_t} = c_{t-1}
