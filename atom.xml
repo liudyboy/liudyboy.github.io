@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-02-22T18:17:58&#43;08:00</updated>
+    <updated>2021-02-23T18:06:24&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -16,6 +16,69 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
+        <entry>
+            <title type="text">Accelerating Technology</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/accelerating-technology/" />
+            <id>https://liudyboy.github.io/posts/accelerating-technology/</id>
+            <updated>2021-02-23T15:09:37&#43;08:00</updated>
+            <published>2021-02-23T11:27:46&#43;08:00</published>
+            <author>
+                    <name>liudy</name>
+                    <uri>https://liudyboy.github.io/</uri>
+                    <email>liudy95@126.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文记录性能调优，加速程序运行的相关技术</summary>
+            
+                <content type="html">&lt;h2 id=&#34;deep-learning&#34;&gt;Deep learning&lt;/h2&gt;
+&lt;h3 id=&#34;大数据allreduce&#34;&gt;大数据AllReduce&lt;/h3&gt;
+&lt;p&gt;已知集合通信对于小数据量的表现比较差，进行多次的小数据量的通信不如将小数据组成一个大数据，再进行一次集合通信。&lt;/p&gt;
+&lt;h4 id=&#34;gradient-bucketing&#34;&gt;Gradient Bucketing&lt;/h4&gt;
+&lt;p&gt;Gradient bucketing is motivated by the observation that collective communications are more efficient on large tensors.&lt;/p&gt;
+&lt;p&gt;Instead of launching a dedicated AllReduce immediately when each gradient tensor becomes available, we can achieve higher throughput and lower latency if it waits for a short period of time and buckets multiple gradients into one AllReduce operation.&lt;/p&gt;
+&lt;p&gt;The optimal value of bucket size need be measured by each use cases.&lt;/p&gt;
+&lt;h3 id=&#34;overlap-computation-with-communication&#34;&gt;Overlap computation with communication&lt;/h3&gt;
+&lt;p&gt;While the layer backward phase is finished, the AllReduce operation will be activated.&lt;/p&gt;
+&lt;h4 id=&#34;prioritize-gradient&#34;&gt;prioritize gradient&lt;/h4&gt;
+&lt;p&gt;In order to start the next training iteration early, we can prioritize gradient synchronizations and parameter updates based on the forward order instead of the backward order. This means gradient buckets containing the initial layers should receive higher priorities than those in the final layers.&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;reference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://gitee.com/liudy5/Papers/blob/main/DistributedLearning/PyTorch%20Distributed%20%20Experiences%20on%20Accelerating%20Data%20Parallel%20Training.pdf&#34;&gt;PyTorch Distributed: Experiences on Accelerating Data Parallel Training&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://gitee.com/liudy5/Papers/blob/main/DistributedLearning/Parity%20Models:%20Erasure-Coded%20Resilience%20for%20Prediction%20Serving%20Systems.pdf&#34;&gt;Parity models: Erasure-coded resilience for prediction serving systems&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/categories/note/" term="Note" label="Note" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/tags/accelerating/" term="accelerating" label="accelerating" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">ZeRO Offload: Democratizing Billion Scale Model Training Notes</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/zero-offload-democratizing-billion-scale-model-training-notes/" />
@@ -1510,7 +1573,7 @@ $$&lt;/p&gt;
             <title type="text">Deep Learning Layers</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-layers/" />
             <id>https://liudyboy.github.io/posts/deep-learning-layers/</id>
-            <updated>2021-02-05T10:40:31&#43;08:00</updated>
+            <updated>2021-02-23T17:54:18&#43;08:00</updated>
             <published>2020-12-23T11:15:59&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1893,6 +1956,10 @@ GRU去掉了cell state使用hidden state来传递信息。它只包含两种gate
 &lt;p&gt;update gate 类似于LSTM中的forgate gate和input gate，其决定了丢弃什么信息和添加什么信息。&lt;/p&gt;
 &lt;h4 id=&#34;reset-gate&#34;&gt;Reset Gate&lt;/h4&gt;
 &lt;p&gt;reset gate用来决定需要丢弃多少过去的信息。&lt;/p&gt;
+&lt;h2 id=&#34;dropout&#34;&gt;Dropout&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/dropout2.svg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;implementation-4&#34;&gt;Implementation&lt;/h3&gt;
+&lt;p&gt;在实现上，只需要将输入的X，按照伯努里分布随机的将其中的值赋值为0，然后将处理后的值继续进行前向传播即可。&lt;/p&gt;
 &lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://colah.github.io/posts/2015-08-Understanding-LSTMs/&#34;&gt;Understanding LSTMs&lt;/a&gt;&lt;/li&gt;
