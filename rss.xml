@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 08 Mar 2021 18:12:43 &#43;0800</lastBuildDate>
+        <lastBuildDate>Tue, 09 Mar 2021 18:34:15 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -10128,6 +10128,8 @@ $$&lt;/p&gt;
 &lt;p&gt;一个小巧的神经网络库C++&lt;/p&gt;
 &lt;h2 id=&#34;petschttpswwwmcsanlgovpetsc&#34;&gt;&lt;a href=&#34;https://www.mcs.anl.gov/petsc/&#34;&gt;PETSc&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;并行可扩展的科学计算库&lt;/p&gt;
+&lt;h2 id=&#34;magma-httpsiclutkedumagmaindexhtml&#34;&gt;&lt;a href=&#34;https://icl.utk.edu/magma/index.html&#34;&gt;MAGMA &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The MAGMA project aims to develop a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current &amp;quot;Multicore+GPU&amp;quot; systems.&lt;/p&gt;
 </description>
                 
                 

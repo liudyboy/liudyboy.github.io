@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-03-08T18:12:43&#43;08:00</updated>
+    <updated>2021-03-09T18:34:15&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -9996,7 +9996,7 @@ $$&lt;/p&gt;
             <title type="text">Awesome Library</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/awesome-library/" />
             <id>https://liudyboy.github.io/posts/awesome-library/</id>
-            <updated>2020-10-12T10:46:34&#43;08:00</updated>
+            <updated>2021-03-09T09:30:35&#43;08:00</updated>
             <published>2020-08-26T15:41:16&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -10247,6 +10247,8 @@ $$&lt;/p&gt;
 &lt;p&gt;一个小巧的神经网络库C++&lt;/p&gt;
 &lt;h2 id=&#34;petschttpswwwmcsanlgovpetsc&#34;&gt;&lt;a href=&#34;https://www.mcs.anl.gov/petsc/&#34;&gt;PETSc&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;并行可扩展的科学计算库&lt;/p&gt;
+&lt;h2 id=&#34;magma-httpsiclutkedumagmaindexhtml&#34;&gt;&lt;a href=&#34;https://icl.utk.edu/magma/index.html&#34;&gt;MAGMA &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The MAGMA project aims to develop a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current &amp;quot;Multicore+GPU&amp;quot; systems.&lt;/p&gt;
 </content>
             
             
