@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-03-16T08:50:52&#43;08:00</updated>
+    <updated>2021-03-16T18:28:45&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -16,6 +16,57 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
+        <entry>
+            <title type="text">Spectral Clustering</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/spectral-clustering/" />
+            <id>https://liudyboy.github.io/posts/spectral-clustering/</id>
+            <updated>2021-03-16T18:13:08&#43;08:00</updated>
+            <published>2021-03-16T17:04:01&#43;08:00</published>
+            <author>
+                    <name>liudy</name>
+                    <uri>https://liudyboy.github.io/</uri>
+                    <email>liudy95@126.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文记录Spectral Clustering 的笔记</summary>
+            
+                <content type="html">&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/clustera.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;首先采用高斯核计算样本之间的距离,其中$||s_i - s_j||^2$求的是l2 norm 的平方。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/ngjasd.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;On Spectral Clustering: Analysis and an algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/categories/algorithm/" term="Algorithm" label="Algorithm" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/tags/ml/" term="ML" label="ML" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Deep Learning Training</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/deep-learning-training/" />
@@ -10315,7 +10366,7 @@ $$&lt;/p&gt;
             <title type="text">Awesome Library</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/awesome-library/" />
             <id>https://liudyboy.github.io/posts/awesome-library/</id>
-            <updated>2021-03-15T16:38:18&#43;08:00</updated>
+            <updated>2021-03-16T10:05:37&#43;08:00</updated>
             <published>2020-08-26T15:41:16&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -10581,6 +10632,20 @@ $$&lt;/p&gt;
 &lt;h2 id=&#34;swighttpsgithubcomswig-fortranswig&#34;&gt;&lt;a href=&#34;https://github.com/swig-fortran/swig&#34;&gt;swig&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;SWIG is a compiler that integrates C and C++ with languages including Perl, Python, Tcl, Ruby, PHP, Java, C#, D, Go, Lua,Octave, R, Scheme (Guile, MzScheme/Racket), Scilab, Ocaml.&lt;/p&gt;
 &lt;p&gt;Convert the c/C++ to another language.&lt;/p&gt;
+&lt;h2 id=&#34;dplasmahttpicleecsutkeduprojectsdevparsecindexhtml&#34;&gt;&lt;a href=&#34;http://icl.eecs.utk.edu/projectsdev/parsec/index.html&#34;&gt;DPLASMA&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Distributed Parallel Linear Algebra Software for Multicore Architectures&lt;/p&gt;
+&lt;h2 id=&#34;plapackhttpswwwcsutexaseduusersplapacknewusinghtml&#34;&gt;&lt;a href=&#34;https://www.cs.utexas.edu/users/plapack/new/using.html&#34;&gt;PLAPACK&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;PLAPACK is a library infrastructure for the parallel implementation of linear algebra algorithms and applications on distributed memory supercomputers such as the Intel Paragon, IBM SP2, Cray T3D/T3E, SGI PowerChallenge, and Convex Exemplar.&lt;/p&gt;
+&lt;h2 id=&#34;dscpackhttpwwwcsepsueduresearchsclsoftwaredscpack&#34;&gt;&lt;a href=&#34;http://www.cse.psu.edu/research/scl/software/dscpack&#34;&gt;DSCPACK&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;DSCPACK can be used to solve sparse linear systems using direct methods on multiprocessors and networks-of-workstations. This package is suitable for systems where the coefficient matrix is symmetric and sparse. This solver is written in C; it uses MPI for inter-processor communication and the BLAS library for improved cache-performance.&lt;/p&gt;
+&lt;h2 id=&#34;superluhttpsportalnerscgovprojectsparsesuperlu&#34;&gt;&lt;a href=&#34;https://portal.nersc.gov/project/sparse/superlu/&#34;&gt;SuperLU&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;SuperLU is a general purpose library for the direct solution of large, sparse, nonsymmetric systems of linear equations. The library is written in C and is callable from either C or Fortran program. It uses MPI, OpenMP and CUDA to support various forms of parallelism.&lt;/p&gt;
+&lt;h2 id=&#34;cvxopthttpcvxoptorg&#34;&gt;&lt;a href=&#34;http://cvxopt.org/&#34;&gt;CVXOPT&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;CVXOPT is a free software package for convex optimization based on the Python programming language.&lt;/p&gt;
+&lt;h2 id=&#34;sdphttpsdpasourceforgenetindexhtml&#34;&gt;&lt;a href=&#34;http://sdpa.sourceforge.net/index.html&#34;&gt;SDP&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Semidefinite programming (SDP) has become an extremely active subject in the field of optimization/mathematical programming. It consists in minimizing/maximizing a linear objective function restricted to linear constraints on the cone of positive semidefinite symmetric matrices.&lt;/p&gt;
+&lt;h2 id=&#34;elementalhttpsgithubcomelementalelemental&#34;&gt;&lt;a href=&#34;https://github.com/elemental/Elemental&#34;&gt;Elemental&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Elemental is a modern C++ library for distributed-memory dense and sparse-direct linear algebra, conic optimization, and lattice reduction.&lt;/p&gt;
 </content>
             
             
@@ -16315,7 +16380,7 @@ cout &amp;lt;&amp;lt; &amp;quot;a(0, 0): &amp;quot; &amp;lt;&amp;lt; a(0, 0);
             <title type="text">矩阵笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E7%9F%A9%E9%98%B5%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/%E7%9F%A9%E9%98%B5%E7%AC%94%E8%AE%B0/</id>
-            <updated>2021-01-14T09:47:56&#43;08:00</updated>
+            <updated>2021-03-16T15:41:59&#43;08:00</updated>
             <published>2020-08-18T10:22:54&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -16518,6 +16583,16 @@ $$
 $$
 \frac{\partial y_{i}}{X} = [w_i^T, \cdots , w_i^T]
 $$&lt;/p&gt;
+&lt;h2 id=&#34;矩阵的特征值&#34;&gt;矩阵的特征值&lt;/h2&gt;
+&lt;h3 id=&#34;特征值lambda&#34;&gt;特征值$\lambda$&lt;/h3&gt;
+&lt;p&gt;设A是一个$n \times n$的矩阵， $\xi$是一个n维非零列向量，若存在一个数$\lambda$,使得
+$$
+A\xi = \lambda \xi
+$$
+则称$\lambda$是A的一个特征值，$\xi$为A的属于特征值$\lambda$的一个特征向量。&lt;/p&gt;
+&lt;h4 id=&#34;几何意义&#34;&gt;几何意义&lt;/h4&gt;
+&lt;p&gt;如果把矩阵理解为一个坐标系（不一定直角的，也可能是严重变形的“尺子”），有一类向量叫特征向量，其中的任一个向量，在该坐标系（矩阵）上的投影，都只是自身固定的伸缩。&lt;/p&gt;
+&lt;p&gt;一个变换矩阵的所有特征向量组成了这个变换矩阵的一组基。所谓基，可以理解为坐标系的轴。我们平常用到的大多是直角坐标系，在线性代数中可以把这个坐标系扭曲、拉伸、旋转，称为基变换。我们可以按需求去设定基，但是基的轴之间必须是线性无关的，也就是保证坐标系的不同轴不要指向同一个方向或可以被别的轴组合而成，否则的话原来的空间就“撑”不起来了。在主成分分析（PCA）中，我们通过在拉伸最大的方向设置基，忽略一些小的量，可以极大的压缩数据而减小失真。&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/liudyboy/Archive_0/blob/master/Vector%20Matrix%20and%20Tensor%20Derivatives.pdf&#34;&gt;Vector Matrix and Tensor Derivatives&lt;/a&gt;&lt;/li&gt;
