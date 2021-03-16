@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-03-12T18:25:51&#43;08:00</updated>
+    <updated>2021-03-16T08:50:52&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -77,7 +77,7 @@
             <title type="text">Accelerating Technology</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/accelerating-technology/" />
             <id>https://liudyboy.github.io/posts/accelerating-technology/</id>
-            <updated>2021-03-08T11:28:15&#43;08:00</updated>
+            <updated>2021-03-15T09:32:04&#43;08:00</updated>
             <published>2021-02-23T11:27:46&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -283,6 +283,10 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;85
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;86
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;89
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;90
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;91
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;#34;core/base.h&amp;#34;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
@@ -342,7 +346,11 @@
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
     &lt;span class=&#34;n&#34;&gt;finish&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MPI_Wtime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
     &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;me&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HEAD&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scale&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; M broadcast cost time: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;finish&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; seconds&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;=======&lt;/span&gt;
     &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scale&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; M broadcast cost time: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;finish&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; seconds&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b3957219ff8fb4be792797d2db8956c60f6b05ff&lt;/span&gt;
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 
   &lt;span class=&#34;c1&#34;&gt;// finish = MPI_Wtime();
@@ -10307,7 +10315,7 @@ $$&lt;/p&gt;
             <title type="text">Awesome Library</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/awesome-library/" />
             <id>https://liudyboy.github.io/posts/awesome-library/</id>
-            <updated>2021-03-11T11:33:21&#43;08:00</updated>
+            <updated>2021-03-15T16:38:18&#43;08:00</updated>
             <published>2020-08-26T15:41:16&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -10564,6 +10572,15 @@ $$&lt;/p&gt;
 &lt;p&gt;Dask is a flexible library for parallel computing in Python.&lt;/p&gt;
 &lt;h2 id=&#34;legionhttpslegionstanfordedu&#34;&gt;&lt;a href=&#34;https://legion.stanford.edu/&#34;&gt;Legion&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Legion is a data-centric parallel programming system for writing portable high performance programs targeted at distributed heterogeneous architectures.&lt;/p&gt;
+&lt;h2 id=&#34;arpackhttpswwwimeunicampbrchicoarpack&#34;&gt;&lt;a href=&#34;https://www.ime.unicamp.br/~chico/arpack++/&#34;&gt;ARPACK++&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ARPACK++ is an object-oriented version of the ARPACK package.&lt;/p&gt;
+&lt;h2 id=&#34;arpackhttpswwwcaamriceedusoftwarearpack&#34;&gt;&lt;a href=&#34;https://www.caam.rice.edu/software/ARPACK/&#34;&gt;ARPACK&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ARPACK is a collection of Fortran77 subroutines designed to solve large scale eigenvalue problems.&lt;/p&gt;
+&lt;h2 id=&#34;spectrahttpsspectraliborg&#34;&gt;&lt;a href=&#34;https://spectralib.org/&#34;&gt;Spectra&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Spectra stands for Sparse Eigenvalue Computation Toolkit as a Redesigned ARPACK. It is a C++ library for large scale eigenvalue problems, built on top of Eigen, an open source linear algebra library.&lt;/p&gt;
+&lt;h2 id=&#34;swighttpsgithubcomswig-fortranswig&#34;&gt;&lt;a href=&#34;https://github.com/swig-fortran/swig&#34;&gt;swig&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;SWIG is a compiler that integrates C and C++ with languages including Perl, Python, Tcl, Ruby, PHP, Java, C#, D, Go, Lua,Octave, R, Scheme (Guile, MzScheme/Racket), Scilab, Ocaml.&lt;/p&gt;
+&lt;p&gt;Convert the c/C++ to another language.&lt;/p&gt;
 </content>
             
             
