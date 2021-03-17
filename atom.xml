@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-03-17T08:58:15&#43;08:00</updated>
+    <updated>2021-03-17T18:23:13&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -17,10 +17,75 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
         <entry>
+            <title type="text">K-Means</title>
+            <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/k-means/" />
+            <id>https://liudyboy.github.io/posts/k-means/</id>
+            <updated>2021-03-17T17:48:48&#43;08:00</updated>
+            <published>2021-03-17T17:14:56&#43;08:00</published>
+            <author>
+                    <name>liudy</name>
+                    <uri>https://liudyboy.github.io/</uri>
+                    <email>liudy95@126.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文记录K-Means 算法的笔记</summary>
+            
+                <content type="html">&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;p&gt;k-means算法是一种聚类算法，所谓聚类，即根据相似性原则，将具有较高相似度的数据对象划分至同一类簇，将具有较高相异度的数据对象划分至不同类簇。&lt;/p&gt;
+&lt;p&gt;算法流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择聚类的个数k（kmeans算法传递超参数的时候，只需设置最大的K值）&lt;/li&gt;
+&lt;li&gt;任意产生k个聚类，然后确定聚类中心，或者直接生成k个中心。&lt;/li&gt;
+&lt;li&gt;根据中心划分类簇&lt;/li&gt;
+&lt;li&gt;根据新生成的类簇再计算其聚类新中心&lt;/li&gt;
+&lt;li&gt;重复以上步骤直到满足收敛要求。（eg. 中心点不再改变。）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;并行化&#34;&gt;并行化&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/kmeans.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;算法流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;各计算节点获取相应的样本数量&lt;/li&gt;
+&lt;li&gt;master节点初始化k个聚类中心，然后广播给各节点&lt;/li&gt;
+&lt;li&gt;各节点基于中心点，对本地数据进行类簇的划分&lt;/li&gt;
+&lt;li&gt;各节点根据新划分的类簇，计算同一类簇的和得到center_sum&lt;/li&gt;
+&lt;li&gt;各worker节点统计类簇大小group_count，并将group_count 和center_sum发送给master&lt;/li&gt;
+&lt;li&gt;master 根据接收到的center_sum和group_count计算新的中心点，然后发送给个节点&lt;/li&gt;
+&lt;li&gt;重复以上步䠫直至收敛&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/categories/algorithm/" term="Algorithm" label="Algorithm" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://liudyboy.github.io/tags/ml/" term="ML" label="ML" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">Spectral Clustering</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/spectral-clustering/" />
             <id>https://liudyboy.github.io/posts/spectral-clustering/</id>
-            <updated>2021-03-16T18:13:08&#43;08:00</updated>
+            <updated>2021-03-17T15:24:29&#43;08:00</updated>
             <published>2021-03-16T17:04:01&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -33,9 +98,27 @@
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/clustera.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;首先采用高斯核计算样本之间的距离,其中$||s_i - s_j||^2$求的是l2 norm 的平方。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/ngjasd.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;非正则化的拉普拉斯矩阵（unnormalized graph Laplacian matrix）定义为：
+$$
+L = D - W
+$$
+其中W为邻接矩阵（adjacency matrix）D为度矩阵(degree matrix)定义为
+$$
+D_{i, i} = \sum_{j=1}^n w_{i, j}.
+$$&lt;/p&gt;
+&lt;p&gt;正则化的拉普拉斯矩阵（normalized graph Laplacians）定义为;&lt;/p&gt;
+&lt;p&gt;$$
+L_{sym} = D^{-\frac{1}{2}}LD^{-\frac{1}{2}} = I - D^{-\frac{1}{2}}WD^{-\frac{1}{2}}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需要注意在第二张图中的&amp;quot;first k eigenvectors&amp;quot;指的是k个最小的特征值对应的特征向量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;并行化&#34;&gt;并行化&lt;/h2&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;&#34;&gt;On Spectral Clustering: Analysis and an algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;A Tutorial on Spectral Clustering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </content>
             
@@ -12149,7 +12232,7 @@ $$
             <title type="text">Eigen笔记之matrix</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Bmatrix/" />
             <id>https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Bmatrix/</id>
-            <updated>2021-03-10T09:03:58&#43;08:00</updated>
+            <updated>2021-03-17T10:54:45&#43;08:00</updated>
             <published>2020-08-20T16:26:25&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -14162,6 +14245,25 @@ $$
   &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// 原矩阵保持不变
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;求是对称矩阵的最大k个特征值对应的特征向量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;Eigen/Dense&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;Eigen&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SelfAdjointEigenSolver&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Eigen&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MatrixXf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;solver&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;solver&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;Eigen&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MatrixXf&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;X&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;solver&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;eigenvectors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rowwise&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;高级模块&#34;&gt;高级模块&lt;/h2&gt;
