@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 17 Mar 2021 18:23:13 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 18 Mar 2021 18:12:00 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -10604,6 +10604,20 @@ $$&lt;/p&gt;
 &lt;p&gt;Semidefinite programming (SDP) has become an extremely active subject in the field of optimization/mathematical programming. It consists in minimizing/maximizing a linear objective function restricted to linear constraints on the cone of positive semidefinite symmetric matrices.&lt;/p&gt;
 &lt;h2 id=&#34;elementalhttpsgithubcomelementalelemental&#34;&gt;&lt;a href=&#34;https://github.com/elemental/Elemental&#34;&gt;Elemental&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Elemental is a modern C++ library for distributed-memory dense and sparse-direct linear algebra, conic optimization, and lattice reduction.&lt;/p&gt;
+&lt;h2 id=&#34;slepchttpsslepcupvesdocumentationinstalhtm&#34;&gt;&lt;a href=&#34;https://slepc.upv.es/documentation/instal.htm&#34;&gt;SLEPc&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;SLEPc, the Scalable Library for Eigenvalue Problem Computations, is a software library for the solution of large sparse eigenproblems on parallel computers. It can be used for the solution of linear eigenvalue problems formulated in either standard or generalized form, as well as other related problems such as the singular value decomposition. It can also be used to solve nonlinear eigenvalue problems, either those formulated as polynomial eigenproblems or more general nonlinear problems.&lt;/p&gt;
+&lt;h2 id=&#34;blazehttpsbitbucketorgblaze-libblazesrcmaster&#34;&gt;&lt;a href=&#34;https://bitbucket.org/blaze-lib/blaze/src/master/&#34;&gt;blaze&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Blaze is an open-source, high-performance C++ math library for dense and sparse arithmetic.
+The Blaze library offers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;high performance through the integration of BLAS libraries and manually tuned HPC math kernels&lt;/li&gt;
+&lt;li&gt;vectorization by SSE, SSE2, SSE3, SSSE3, SSE4, AVX, AVX2, AVX-512, FMA, SVML and SLEEF&lt;/li&gt;
+&lt;li&gt;parallel execution by OpenMP, HPX, C++11 threads and Boost threads&lt;/li&gt;
+&lt;li&gt;the intuitive and easy to use API of a domain specific language&lt;/li&gt;
+&lt;li&gt;unified arithmetic with dense and sparse vectors and matrices&lt;/li&gt;
+&lt;li&gt;thoroughly tested matrix and vector arithmetic&lt;/li&gt;
+&lt;li&gt;completely portable, high quality C++ source code&lt;/li&gt;
+&lt;/ul&gt;
 </description>
                 
                 
@@ -10773,7 +10787,7 @@ $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;int MPI_Allreduce(input_data_p, output_data_p, count, datatype, operator, comm)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;所有的进程都获得全局操作后的结果。&lt;/p&gt;
+&lt;p&gt;所有的进程都获得全局操作后的结果。在input_data_p使用&lt;code&gt;MPI_IN_PLACE&lt;/code&gt;可以在input_data_p的存储位置放置结果内容。&lt;/p&gt;
 &lt;p&gt;支持的操作：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;MPI_MAX : maximum&lt;/li&gt;
