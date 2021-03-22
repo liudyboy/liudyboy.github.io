@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-03-22T09:02:36&#43;08:00</updated>
+    <updated>2021-03-22T18:11:37&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -16496,7 +16496,7 @@ cout &amp;lt;&amp;lt; &amp;quot;a(0, 0): &amp;quot; &amp;lt;&amp;lt; a(0, 0);
             <title type="text">矩阵笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/%E7%9F%A9%E9%98%B5%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/%E7%9F%A9%E9%98%B5%E7%AC%94%E8%AE%B0/</id>
-            <updated>2021-03-16T15:41:59&#43;08:00</updated>
+            <updated>2021-03-22T10:46:11&#43;08:00</updated>
             <published>2020-08-18T10:22:54&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -16709,9 +16709,45 @@ $$
 &lt;h4 id=&#34;几何意义&#34;&gt;几何意义&lt;/h4&gt;
 &lt;p&gt;如果把矩阵理解为一个坐标系（不一定直角的，也可能是严重变形的“尺子”），有一类向量叫特征向量，其中的任一个向量，在该坐标系（矩阵）上的投影，都只是自身固定的伸缩。&lt;/p&gt;
 &lt;p&gt;一个变换矩阵的所有特征向量组成了这个变换矩阵的一组基。所谓基，可以理解为坐标系的轴。我们平常用到的大多是直角坐标系，在线性代数中可以把这个坐标系扭曲、拉伸、旋转，称为基变换。我们可以按需求去设定基，但是基的轴之间必须是线性无关的，也就是保证坐标系的不同轴不要指向同一个方向或可以被别的轴组合而成，否则的话原来的空间就“撑”不起来了。在主成分分析（PCA）中，我们通过在拉伸最大的方向设置基，忽略一些小的量，可以极大的压缩数据而减小失真。&lt;/p&gt;
+&lt;h2 id=&#34;hermitian-matrix&#34;&gt;Hermitian matrix.&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Hermitian matrix:&lt;/strong&gt; A square matrix such that aij is the complex conjugate of aji for all elements aij of the matrix i.e. a matrix in which corresponding elements with respect to the diagonal are conjugates of each other. The diagonal elements are always real numbers.&lt;/p&gt;
+&lt;div&gt;
+$$
+\left[ \begin{array}{ccc}
+1 &amp; 1 - i &amp; 2 \\
+1 + i &amp; 3 &amp; i \\
+2 &amp; -i &amp; 0
+\end{array}
+    \right]
+$$
+&lt;/div&gt;
+&lt;h2 id=&#34;eigensolver-method&#34;&gt;Eigensolver Method&lt;/h2&gt;
+&lt;p&gt;The solution to the real or hermitian dense symmetric eigensolver problem usually takes place via three main steps&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Reduction of the matrix to tri-diagonal form, typically using Householder
+Reduction,&lt;/li&gt;
+&lt;li&gt;Solution of the real symmetric tri-diagonal eigenproblem via one of the
+following methods:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Bisection for the eigenvalues and inverse iteration for the eigenvectors
+&lt;sup&gt;[2],[3]&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;QR algorithm &lt;sup&gt;[4]&lt;/sup&gt;,&lt;/li&gt;
+&lt;li&gt;Divide &amp;amp; Conquer method (D&amp;amp;C) &lt;sup&gt;[5]&lt;/sup&gt;,&lt;/li&gt;
+&lt;li&gt;Multiple Relatively Robust Representations (MRRR algorithm) &lt;sup&gt;[6]&lt;/sup&gt;,&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Back transformation to find the eigenvectors for the full problem from the
+eigenvectors of the tridiagonal problem.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/liudyboy/Archive_0/blob/master/Vector%20Matrix%20and%20Tensor%20Derivatives.pdf&#34;&gt;Vector Matrix and Tensor Derivatives&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;The numerical computation of the characteristic values of a real symmetric matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;The calculation of specified eigenvectors by inverse iteration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;The QR transformation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;A parallel divide and conquer algorithm for the symmetric eigenvalue problem on distributed memory architectures&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;A New O(n^2) Algorithm for the Symmetric Tridiagonal Eigenvalue/Eigenvector Problem&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </content>
             
