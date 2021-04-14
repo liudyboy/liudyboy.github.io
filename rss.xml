@@ -23,10 +23,379 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 06 Apr 2021 15:44:44 &#43;0800</lastBuildDate>
+        <lastBuildDate>Wed, 14 Apr 2021 17:07:52 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
+        
+            <item>
+                <title>MT Note</title>
+                <link>https://liudyboy.github.io/posts/mt-note/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/posts/mt-note/</guid>
+                <pubDate>Tue, 13 Apr 2021 10:24:26 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;basic&#34;&gt;Basic&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;片上异构: 16 CPU + 4 DSP Cluster&lt;/li&gt;
+&lt;li&gt;DSP Cluster 包含24个核心，每四个核心组成一个超节点（超节点内支持硬件快速同步）&lt;/li&gt;
+&lt;li&gt;CPU 与 DSP之间共享的片上缓存为6MB&lt;/li&gt;
+&lt;li&gt;每个核心内包含两个计算单元SPU与VPU分别用来处理标量操作和向量操作&lt;/li&gt;
+&lt;li&gt;SPU: 片上缓存为64KB。VPU(支持16位数的操作): 片上缓存为768KB。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;question&#34;&gt;Question&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;对于lvector double 该如何进行赋值？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;lvector double a;
+a = 4;
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;lvector double 支持与标量直接相乘吗 ？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;lvector double a;
+a = a * 3;
+&lt;/code&gt;&lt;/pre&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/optimization/">optimization</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/note/">note</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Optimization Techniques</title>
+                <link>https://liudyboy.github.io/posts/optimization-techniques/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/posts/optimization-techniques/</guid>
+                <pubDate>Wed, 07 Apr 2021 10:06:40 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;double-buffering&#34;&gt;Double Buffering&lt;/h2&gt;
+&lt;p&gt;Double buffering is a term used to describe a device with two buffers. The usage of multiple buffers increases the overall throughput of a device and helps prevents bottlenecks. For example, with graphics, double buffering can show one image or frame while a separate frame is being buffered to be shown next. This method makes animations and games look more realistic than the same done in a single buffer mode.&lt;/p&gt;
+&lt;h2 id=&#34;cache-blocking&#34;&gt;Cache Blocking&lt;/h2&gt;
+&lt;p&gt;An important class of algorithmic changes involves blocking data structures to fit in cache. By organizing data memory accesses, one can load the cache with a small subset of a much larger data set. The idea is then to work on this block of data in cache. By using/reusing this data in cache we reduce the need to go to memory (reduce memory bandwidth pressure.
+&lt;strong&gt;The key idea behind blocking is to exploit the inherent data reuse available in the application by ensuring that data remains in cache across multiple uses.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In terms of code change, blocking typically involves a combination of loop splitting and interchange. In most application codes,&lt;/p&gt;
+&lt;p&gt;Original Source:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NBODIES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NBODIES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+     &lt;span class=&#34;n&#34;&gt;OUT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;compute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;In this example, data (body2) is streamed from memory. Assuming NBODIES is large, we would have no reuse in cache. This application is memory bandwidth bound. The application will run at the speed of memory to CPU speeds, less than optimal.&lt;/p&gt;
+&lt;p&gt;Modified Source (with 1-D blocking):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NBODIES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BLOCK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NBODIES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body22&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body22&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BLOCK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body22&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+         &lt;span class=&#34;n&#34;&gt;OUT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;compute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;body22&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;In this modified code, data (body22) is kept and reused in cache, resulting in better performance.
+If BLOCK is chosen such that this set of values fits in cache, memory traffic is brought down by a factor of BLOCK.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;ctime&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4000000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b_size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;clock_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;normal cost time: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+  &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;block&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;cache blocking cost time: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;delete&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;delete&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;normal cost time: 10503367&lt;/p&gt;
+&lt;p&gt;cache blocking cost time: 9575784&lt;/p&gt;
+&lt;h2 id=&#34;keep-memory&#34;&gt;Keep Memory&lt;/h2&gt;
+&lt;p&gt;In order to  avoid unnecessary reallocation and release, we can keep some reused parameters (such as modle parameters) in the core memory.&lt;/p&gt;
+&lt;h2 id=&#34;memory-coalescing-and-cache-utilization&#34;&gt;Memory Coalescing and cache utilization&lt;/h2&gt;
+&lt;p&gt;Main memory gets loaded via cache line chunks - usually 64 or 128 bytes - through a hierarchy of caches: from DRAM to L3 to L2 and L1 and finally to the CPU registers.Modern cache sizes have increased significantly, and we can have around 35MB of space in L3 cache shared with all the processors. Reading from L3 cache is approximately 3x faster than from DRAM.&lt;/p&gt;
+&lt;p&gt;In order to utilizing this feature, we should &lt;em&gt;removing data memory fragmentation&lt;/em&gt;. The following are some examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;While facing sparse input vectors or matrix, we can create one long contiguous vector that consecutively stores non-zero indices and values. To keep track of variable numbers of non-zeros, we keep another vector of offsets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In neural networks, the neuron weights in the same layer can be located contiguously in the main memory increasing cache efficiency.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hyper-threading&#34;&gt;Hyper-threading&lt;/h2&gt;
+&lt;p&gt;Hyper-Threading allows the processor to virtually double its number of cores and execute twice as many threads simultaneously, jumping back and forth between threads to execute instructions for one whenever the other is stalled.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the program need  randomly access the memory, threads do get stalled due to cache miss. At that point, hyper-threading will be favorable because another thread can utilize the wait time to process a different data instance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;vectorization&#34;&gt;Vectorization&lt;/h2&gt;
+&lt;p&gt;Matrix-vector multiplication, matrix in store in row-major.
+&lt;img src=&#34;https://liudyboy.github.io/imgs/mvm.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Matrix-vector multiplication, matrix in store in column-major.
+&lt;img src=&#34;https://liudyboy.github.io/imgs/mvj.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitee.com/liudy5/Papers/blob/main/Others/Introduction%20to%20Instruction%20Scheduling.pdf&#34;&gt;Introduction to Instruction Scheduling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitee.com/liudy5/Papers/blob/main/Others/Memory%20Optimizations.pdf&#34;&gt;Memory Optimizations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitee.com/liudy5/Papers/blob/main/Optimization/ACCELERATING%20SLIDE%20DEEP%20LEARNING%20ON%20MODERN%20CPUS:%20VECTORIZATION,%20QUANTIZATIONS,%20MEMORY%20OPTIMIZATIONS,%20AND%20MORE.pdf&#34;&gt;Accelerating SLIDE Deep Learning on Modern CPUs: Vectorization, Quantizations, Memory Optimizations and More&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitee.com/liudy5/Papers/blob/main/Optimization/SLIDE%20:%20IN%20DEFENSE%20OF%20SMART%20ALGORITHMS%20OVER%20HARDWARE%0AACCELERATION%20FOR%20LARGE-SCALE%20DEEP%20LEARNING%20SYSTEMS.pdf&#34;&gt;SLIDE : IN DEFENSE OF SMART ALGORITHMS OVER HARDWARE ACCELERATION FOR LARGE -SCALE DEEP LEARNING SYSTEMS&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/notes/">Notes</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/optimization/">Optimization</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Pipelining Computation and Optimization Strategies for Scaling GROMACS on the Sunway Many Core Processor论文笔记</title>
+                <link>https://liudyboy.github.io/posts/pipelining-computation-and-optimization-strategies-for-scaling-gromacs-on-the-sunway-many-core-processor%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/posts/pipelining-computation-and-optimization-strategies-for-scaling-gromacs-on-the-sunway-many-core-processor%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</guid>
+                <pubDate>Tue, 06 Apr 2021 21:16:11 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/optimization/">Optimization</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Parallel Computing in DNNs Using CPU and MIC论文笔记</title>
+                <link>https://liudyboy.github.io/posts/parallel-computing-in-dnns-using-cpu-and-mic%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</link>
+                <guid isPermaLink="true">https://liudyboy.github.io/posts/parallel-computing-in-dnns-using-cpu-and-mic%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</guid>
+                <pubDate>Tue, 06 Apr 2021 20:38:09 &#43;0800</pubDate>
+                
+                    <author>liudy95@126.com (liudy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;p&gt;In this papper, we speed up the training process of DNNs applied for automatic speech recognition with CPU+MIC architecture. In this architecture, the training process of DNNs is executed both on MIC and CPU.&lt;/p&gt;
+&lt;h2 id=&#34;parallelism-mechanism&#34;&gt;parallelism mechanism&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/miccpu.png&#34; alt=&#34;&#34;&gt;
+In our research, we divide the batch into two parts which are calculated individually by host (CPU) and MIC. Host and MIC will exchange the parameters of networks sometimes. The synchronization is performed as a result of averaging parameters on Host and MIC. As we all know that the time consumption of data loading from disk to memory cost much. So we apply an asynchronous I/O method to try to hide some latency.&lt;/p&gt;
+&lt;p&gt;we employ cache- blocking method to improve data locality of program.&lt;/p&gt;
+&lt;h3 id=&#34;io-overlapping&#34;&gt;IO overlapping&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/ioover.png&#34; alt=&#34;&#34;&gt;
+In our method, two threads are created. One is in charge of loading data and the other is responsible for calculating. The control of two threads is based on asynchronous signals supported by pthread library.&lt;/p&gt;
+&lt;h3 id=&#34;parallel-computing-in-both-cpu-and-mic&#34;&gt;Parallel Computing in both CPU and MIC&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/asy.png&#34; alt=&#34;&#34;&gt;
+An asynchronous method is also applied in Memory- to-Memory (host to MIC) level. We aim to reduce data transferring cost between CPU and MIC and allow them to calculate independently and simultaneously. The Imple- mentation is slightly different from the method described above. Only one thread is created on the CPU and the signal mechanism is support by MIC’s library.&lt;/p&gt;
+&lt;h2 id=&#34;load-balancing-optimization&#34;&gt;Load Balancing Optimization&lt;/h2&gt;
+&lt;p&gt;Load balancing is critical to performance for multi- thread application. The key objective for load balancing is to minimize idle time on threads since an idle core during computation is a wasted resource and will increase the overall execution time of a parallel application.&lt;/p&gt;
+&lt;p&gt;In our solution, the persen- tage of workload assigned to CPU and MIC is adjusted ac- cording to the historical performance. We regard the number of samples trained per second as the performance measure and record it after training every batch. The load balance between CPU and MIC is achieved by dividing the batch dynamically during iterations.&lt;/p&gt;
+&lt;p&gt;Actually, the load balance problem can be abstracted as an optimal solution. Let T as the execution time of entire DNNs training, Ti as the execution time of the ith batch and $T_{other}$ as the cost time of other operation like loading data or communication. T can be computed by the formula,
+$$
+T = \sum_{i=1}^N T_i + T_{other}
+$$
+The allocation plan is expressed with P which is a two-tuple (x, 1 − x) and x represents the percentage of workload assigned to CPU, 1 − x represents the percentage of workload assigned to MIC.&lt;/p&gt;
+&lt;p&gt;To simplify the problem, we assume that change of the allocation plan P has no effect on $T_{other}$. So we can express $T_i$ as follow:
+$$
+T_i = f(x_i)
+$$
+Which is to say, $T_i$ is influenced by the proportion of workload assigned to CPU and MIC, $x_i$. Then we adopt gradient descent method to find optimum allocation P. At first, we need to calculate gradient. We need to use the historical records to calculate gradient approximately in formula,
+$$
+\nabla_{i} = \frac{\partial T_i}{\partial x_i} = \frac{T_i - T_{i-1}}{x_i - x_{i-1}}
+$$
+So we can get the allocation Pi+1 for the i + 1th batch with formula,
+$$
+P_{i+1} = (x_i - \gamma \nabla_i,  1 - x_i + \gamma \nabla_i).
+$$
+In the formula, $\gamma$ is the step length rate which controls the size of load migration when performing load balancing.&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://liudyboy.github.io/tags/parallel-computing/">parallel computing</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>K-Means</title>
@@ -120,6 +489,12 @@ $$&lt;/p&gt;
 &lt;li&gt;需要注意在第二张图中的&amp;quot;first k eigenvectors&amp;quot;指的是k个最小的特征值对应的特征向量。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;并行化&#34;&gt;并行化&lt;/h2&gt;
+&lt;h3 id=&#34;困难&#34;&gt;困难&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;如何分布式的计算相似矩阵？&lt;/li&gt;
+&lt;li&gt;如何分布式的进行相似矩阵的三角化？&lt;/li&gt;
+&lt;li&gt;如何分布式的求解三角矩阵的特征向量与特征值？&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;&#34;&gt;On Spectral Clustering: Analysis and an algorithm&lt;/a&gt;&lt;/li&gt;
@@ -11986,39 +12361,34 @@ be necessary&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;n&#34;&gt;MPI_Group_translate_ranks&lt;/span&gt;
-&lt;span class=&#34;err&#34;&gt;``&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;## 注意
-&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;大部分&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI实现只允许MPI_COMM_WORLD的0号进程访问标准输入stdin&lt;/span&gt;
-
-&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P2P通信函数&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Send&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Isend&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Recv&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Irecv&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`可以混合使用。比如可以使用`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Recv&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`接收`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Isend&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`发的数据。&lt;/span&gt;
-
-&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;在使用异步通信的时候使用`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Barrier&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`函数只能保证所有的进程都执行到这里跟数据的收发是否完成没有关系。要保证和检测异步通信的&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;完成&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;需使用`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Wait&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Test&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`。对于`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Isend&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;其中的“完成”并不是只整个通信完成&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;可能数据被缓冲到系统的&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buffer了&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，只是表明发送数据的地址可以被重用。对于`&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI_Irecv&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;`，&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;其中“完成”是指用来接收的&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buffer收到了信息&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;，可以访问信息了。&lt;/span&gt;
-
-&lt;span class=&#34;cp&#34;&gt;## 参考
-&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
-&lt;span class=&#34;mf&#34;&gt;1.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Parallel&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Computation&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;One&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sided&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;communication&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//github.com/liudyboy/Archive_0/blob/master/Parallel%20Computation%20One-sided%20communication.pdf)
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
-&lt;span class=&#34;mf&#34;&gt;2.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Remote&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Memory&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Access&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Programming&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MPI3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RMA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Advanced&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MPI&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Programming&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;](&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//github.com/liudyboy/Archive_0/blob/master/MPI%20Remote%20Memory%20Access%20Programming%20(MPI3-RMA).pdf)
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;&lt;h2 id=&#34;注意&#34;&gt;注意&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;大部分MPI实现只允许MPI_COMM_WORLD的0号进程访问标准输入stdin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;P2P通信函数&lt;code&gt;MPI_Send&lt;/code&gt;, &lt;code&gt;MPI_Isend&lt;/code&gt;, &lt;code&gt;MPI_Recv&lt;/code&gt;, &lt;code&gt;MPI_Irecv&lt;/code&gt;可以混合使用。比如可以使用&lt;code&gt;MPI_Recv&lt;/code&gt;接收&lt;code&gt;MPI_Isend&lt;/code&gt;发的数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在使用异步通信的时候使用&lt;code&gt;MPI_Barrier&lt;/code&gt;函数只能保证所有的进程都执行到这里跟数据的收发是否完成没有关系。要保证和检测异步通信的&amp;quot;完成&amp;quot;需使用&lt;code&gt;MPI_Wait&lt;/code&gt;,&lt;code&gt;MPI_Test&lt;/code&gt;。对于&lt;code&gt;MPI_Isend&lt;/code&gt;, 其中的“完成”并不是只整个通信完成(可能数据被缓冲到系统的buffer了)，只是表明发送数据的地址可以被重用。对于&lt;code&gt;MPI_Irecv&lt;/code&gt;， 其中“完成”是指用来接收的buffer收到了信息，可以访问信息了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/liudyboy/Archive_0/blob/master/Parallel%20Computation%20One-sided%20communication.pdf&#34;&gt;Parallel Computation One-sided communication&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/liudyboy/Archive_0/blob/master/MPI%20Remote%20Memory%20Access%20Programming%20(MPI3-RMA).pdf&#34;&gt;MPI Remote Memory Access Programming (MPI3-RMA)and Advanced MPI Programming&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
                 
                 
                 
@@ -16634,7 +17004,7 @@ $$
 &lt;h4 id=&#34;几何意义&#34;&gt;几何意义&lt;/h4&gt;
 &lt;p&gt;如果把矩阵理解为一个坐标系（不一定直角的，也可能是严重变形的“尺子”），有一类向量叫特征向量，其中的任一个向量，在该坐标系（矩阵）上的投影，都只是自身固定的伸缩。&lt;/p&gt;
 &lt;p&gt;一个变换矩阵的所有特征向量组成了这个变换矩阵的一组基。所谓基，可以理解为坐标系的轴。我们平常用到的大多是直角坐标系，在线性代数中可以把这个坐标系扭曲、拉伸、旋转，称为基变换。我们可以按需求去设定基，但是基的轴之间必须是线性无关的，也就是保证坐标系的不同轴不要指向同一个方向或可以被别的轴组合而成，否则的话原来的空间就“撑”不起来了。在主成分分析（PCA）中，我们通过在拉伸最大的方向设置基，忽略一些小的量，可以极大的压缩数据而减小失真。&lt;/p&gt;
-&lt;h2 id=&#34;hermitian-matrix&#34;&gt;Hermitian matrix.&lt;/h2&gt;
+&lt;h2 id=&#34;hermitian-matrix&#34;&gt;Hermitian matrix&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Hermitian matrix:&lt;/strong&gt; A square matrix such that aij is the complex conjugate of aji for all elements aij of the matrix i.e. a matrix in which corresponding elements with respect to the diagonal are conjugates of each other. The diagonal elements are always real numbers.&lt;/p&gt;
 &lt;div&gt;
 $$
@@ -16646,6 +17016,35 @@ $$
     \right]
 $$
 &lt;/div&gt;
+&lt;h2 id=&#34;householder-method&#34;&gt;Householder Method&lt;/h2&gt;
+&lt;p&gt;Householder&#39;s transformation&lt;sup&gt;[8]&lt;/sup&gt; is aim to find a symmetric tridiagonal matrix T that is similar to a given symmetric matrix A (T and A have same eigenvalues).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;/strong&gt; Let $w \in R^n$ with $w^tw = 1$. Then the $n \times n$ matrix
+$$
+P = I - 2ww^t
+$$
+is called a Householder transformation(or Householder matrix).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;**Theorem: ** If $P = I - 2ww^t$ is a householder&#39;s matrix, then P is symmetric and orthogonal. So $P^{-1} = P^t = P$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Some basics about the Householder matix;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$Pw = -w$. For any x orthogonal to $w (i.e., \ w^tx = 0)$, then $Px = x$. These imply that P has eigenvalues 1 and -1.&lt;/li&gt;
+&lt;li&gt;For any two distinct vectors x and y in $R^n$ with same length, the Householder matrix
+$$
+P = I - 2ww^t,
+$$
+$$
+w = (x - y)/||x-y||_2
+$$
+satisfies
+$$
+Px = y.
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The second property mean given any two vectors x and y, we can find a matrix satisfies $Px = y$.
+For any $x \in R^n$, let $y = (\pm ||x||_2, 0, \dots, 0)^t \in R_n$, then $||x||_2 = ||y||_2$. There is a Householder matix P such that $Px = y$. This is the key step of Householder method.&lt;/p&gt;
 &lt;h2 id=&#34;eigensolver-method&#34;&gt;Eigensolver Method&lt;/h2&gt;
 &lt;p&gt;The solution to the real or hermitian dense symmetric eigensolver problem usually takes place via three main steps&lt;/p&gt;
 &lt;ol&gt;
@@ -16665,6 +17064,10 @@ following methods:&lt;/li&gt;
 &lt;li&gt;Back transformation to find the eigenvectors for the full problem from the
 eigenvectors of the tridiagonal problem.&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h3 id=&#34;transform&#34;&gt;Transform&lt;/h3&gt;
+&lt;p&gt;The set of all eigenvalues is called the &lt;strong&gt;spectrum&lt;/strong&gt; of A and denoted by $spec[A]$.&lt;/p&gt;
+&lt;p&gt;Transforming A to $A-\tau I$ is called &lt;em&gt;shifting&lt;/em&gt; and $\tau \in R$ is called a &lt;em&gt;shift&lt;/em&gt;. It is easily verified that $(\lambda, x)$ is an eigenpair of A if and only if $(\lambda - \tau, x)$ is an eigenpair of $A - \tau I$. Thus, the spectrum is shifted by $\tau$ and the eigenvectors are invariant.&lt;/p&gt;
+&lt;p&gt;Given a nonsingular $Q \in C^{n\time n}$, transforming A to $Q^{-1}AQ$ is called a &lt;em&gt;similarity transformation&lt;/em&gt; ot a change of basis. In this case, $(\lambda, x)$ is an eigenpair of A if and only if $(\lambda, Q^{-1}x)$ is an eigenpair of $Q^{-1}AQ$. Thus, the spectrum is invariant under similarity transformations, while the eigenvectors change in a simple way.&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/liudyboy/Archive_0/blob/master/Vector%20Matrix%20and%20Tensor%20Derivatives.pdf&#34;&gt;Vector Matrix and Tensor Derivatives&lt;/a&gt;&lt;/li&gt;
@@ -16673,6 +17076,8 @@ eigenvectors of the tridiagonal problem.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;&#34;&gt;The QR transformation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;&#34;&gt;A parallel divide and conquer algorithm for the symmetric eigenvalue problem on distributed memory architectures&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;&#34;&gt;A New O(n^2) Algorithm for the Symmetric Tridiagonal Eigenvalue/Eigenvector Problem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitee.com/liudy5/Papers/blob/main/Math/MRRR-based%20Eigensolvers%20for%20Multi-core%20Processors%20and%20Supercomputers.pdf&#34;&gt;MRRR-based Eigensolvers for Multi-core Processors and Supercomputers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitee.com/liudy5/Papers/blob/main/Math/Householder%E2%80%99s%20method.pdf&#34;&gt;Householder&#39;s method&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
                 
@@ -18459,7 +18864,7 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;markdown-mode&#34;&gt;Markdown mode&lt;/h2&gt;
-&lt;h4 id=&#34;shortcut&#34;&gt;Shortcut&lt;/h4&gt;
+&lt;h3 id=&#34;shortcut&#34;&gt;Shortcut&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -18515,7 +18920,7 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;org-mode&#34;&gt;Org mode&lt;/h2&gt;
-&lt;h4 id=&#34;shortcut-1&#34;&gt;Shortcut&lt;/h4&gt;
+&lt;h3 id=&#34;shortcut-1&#34;&gt;Shortcut&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -18538,6 +18943,13 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h2 id=&#34;setting&#34;&gt;Setting&lt;/h2&gt;
+&lt;h3 id=&#34;保存时自动清除空格&#34;&gt;保存时自动清除空格&lt;/h3&gt;
+&lt;p&gt;在.spacemacs文件中加入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(add-hook &#39;before-save-hook &#39;delete-trailing-whitespace)
+(add-hook &#39;before-save-hook &#39;whitespace-cleanup)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;显示自动换行&#34;&gt;显示自动换行&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;M-x spacemacs/toggle-visual-line-navigation-on&lt;/code&gt;&lt;/p&gt;
 </description>
                 
                 

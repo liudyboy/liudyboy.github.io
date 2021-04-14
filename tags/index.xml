@@ -9,10 +9,46 @@
     <managingEditor>liudy95@126.com (liudy)</managingEditor>
     <webMaster>liudy95@126.com (liudy)</webMaster>
     <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-    <lastBuildDate>Wed, 17 Mar 2021 17:14:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Apr 2021 10:24:26 +0800</lastBuildDate>
     
 	<atom:link href="https://liudyboy.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>note</title>
+      <link>https://liudyboy.github.io/tags/note/</link>
+      <pubDate>Tue, 13 Apr 2021 10:24:26 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimization</title>
+      <link>https://liudyboy.github.io/tags/optimization/</link>
+      <pubDate>Wed, 07 Apr 2021 10:06:40 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>parallel</title>
+      <link>https://liudyboy.github.io/tags/parallel/</link>
+      <pubDate>Tue, 06 Apr 2021 20:38:09 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/parallel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>parallel computing</title>
+      <link>https://liudyboy.github.io/tags/parallel-computing/</link>
+      <pubDate>Tue, 06 Apr 2021 20:38:09 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/parallel-computing/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>ML</title>
@@ -249,15 +285,6 @@
     </item>
     
     <item>
-      <title>parallel</title>
-      <link>https://liudyboy.github.io/tags/parallel/</link>
-      <pubDate>Tue, 29 Sep 2020 15:54:05 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/tags/parallel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>高斯</title>
       <link>https://liudyboy.github.io/tags/%E9%AB%98%E6%96%AF/</link>
       <pubDate>Wed, 23 Sep 2020 10:03:05 +0800</pubDate>
@@ -407,15 +434,6 @@
       <pubDate>Tue, 18 Aug 2020 10:22:54 +0800</pubDate>
       <author>liudy95@126.com (liudy)</author>
       <guid>https://liudyboy.github.io/tags/%E7%9F%A9%E9%98%B5/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>parallel computing</title>
-      <link>https://liudyboy.github.io/tags/parallel-computing/</link>
-      <pubDate>Mon, 17 Aug 2020 15:51:32 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/tags/parallel-computing/</guid>
       <description></description>
     </item>
     
