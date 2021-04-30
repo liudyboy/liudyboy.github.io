@@ -9,17 +9,53 @@
     <managingEditor>liudy95@126.com (liudy)</managingEditor>
     <webMaster>liudy95@126.com (liudy)</webMaster>
     <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-    <lastBuildDate>Tue, 13 Apr 2021 10:24:26 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 29 Apr 2021 09:26:17 +0800</lastBuildDate>
     
 	<atom:link href="https://liudyboy.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>note</title>
+      <title>c&#43;&#43;</title>
+      <link>https://liudyboy.github.io/tags/c-/</link>
+      <pubDate>Thu, 29 Apr 2021 09:26:17 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/c-/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Architecture</title>
+      <link>https://liudyboy.github.io/tags/architecture/</link>
+      <pubDate>Tue, 27 Apr 2021 10:14:20 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/architecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Note</title>
       <link>https://liudyboy.github.io/tags/note/</link>
-      <pubDate>Tue, 13 Apr 2021 10:24:26 +0800</pubDate>
+      <pubDate>Tue, 27 Apr 2021 10:14:20 +0800</pubDate>
       <author>liudy95@126.com (liudy)</author>
       <guid>https://liudyboy.github.io/tags/note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notes</title>
+      <link>https://liudyboy.github.io/tags/notes/</link>
+      <pubDate>Wed, 21 Apr 2021 16:44:05 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spacemacs</title>
+      <link>https://liudyboy.github.io/tags/spacemacs/</link>
+      <pubDate>Wed, 21 Apr 2021 16:44:05 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/spacemacs/</guid>
       <description></description>
     </item>
     
@@ -128,24 +164,6 @@
       <pubDate>Wed, 13 Jan 2021 21:16:43 +0800</pubDate>
       <author>liudy95@126.com (liudy)</author>
       <guid>https://liudyboy.github.io/tags/statistics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Notes</title>
-      <link>https://liudyboy.github.io/tags/notes/</link>
-      <pubDate>Sun, 10 Jan 2021 12:10:50 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/tags/notes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>c&#43;&#43;</title>
-      <link>https://liudyboy.github.io/tags/c-/</link>
-      <pubDate>Fri, 18 Dec 2020 10:46:32 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/tags/c-/</guid>
       <description></description>
     </item>
     
@@ -452,15 +470,6 @@
       <pubDate>Fri, 14 Aug 2020 16:31:02 +0800</pubDate>
       <author>liudy95@126.com (liudy)</author>
       <guid>https://liudyboy.github.io/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spacemacs</title>
-      <link>https://liudyboy.github.io/tags/spacemacs/</link>
-      <pubDate>Fri, 14 Aug 2020 15:03:20 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/tags/spacemacs/</guid>
       <description></description>
     </item>
     

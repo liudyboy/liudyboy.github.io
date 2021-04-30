@@ -9,10 +9,37 @@
     <managingEditor>liudy95@126.com (liudy)</managingEditor>
     <webMaster>liudy95@126.com (liudy)</webMaster>
     <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-    <lastBuildDate>Tue, 13 Apr 2021 10:24:26 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 29 Apr 2021 09:26:17 +0800</lastBuildDate>
     
 	<atom:link href="https://liudyboy.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Note</title>
+      <link>https://liudyboy.github.io/categories/note/</link>
+      <pubDate>Thu, 29 Apr 2021 09:26:17 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/categories/note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>basic</title>
+      <link>https://liudyboy.github.io/categories/basic/</link>
+      <pubDate>Tue, 27 Apr 2021 10:14:20 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/categories/basic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notes</title>
+      <link>https://liudyboy.github.io/categories/notes/</link>
+      <pubDate>Wed, 21 Apr 2021 16:44:05 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/categories/notes/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>optimization</title>
@@ -20,24 +47,6 @@
       <pubDate>Tue, 13 Apr 2021 10:24:26 +0800</pubDate>
       <author>liudy95@126.com (liudy)</author>
       <guid>https://liudyboy.github.io/categories/optimization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Note</title>
-      <link>https://liudyboy.github.io/categories/note/</link>
-      <pubDate>Wed, 07 Apr 2021 10:06:40 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/categories/note/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Notes</title>
-      <link>https://liudyboy.github.io/categories/notes/</link>
-      <pubDate>Wed, 07 Apr 2021 10:06:40 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/categories/notes/</guid>
       <description></description>
     </item>
     
