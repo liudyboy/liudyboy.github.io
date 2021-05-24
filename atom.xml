@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-04-30T11:01:58&#43;08:00</updated>
+    <updated>2021-05-24T21:17:06&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -15,7 +15,7 @@
                 <email>liudy95@126.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.74.3">Hugo</generator>
         <entry>
             <title type="text">Effective C&#43;&#43;</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/effective-c&#43;&#43;/" />
@@ -19828,7 +19828,7 @@ $$
 
 或者
 
-&amp;lt;链接地址&amp;gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;链接地址&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;添加文献引用&#34;&gt;添加文献引用&lt;/h2&gt;
@@ -19964,7 +19964,7 @@ $$
             <title type="text">Spacemacs 笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/spacemacs-%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/spacemacs-%E7%AC%94%E8%AE%B0/</id>
-            <updated>2021-04-07T16:12:50&#43;08:00</updated>
+            <updated>2021-05-08T17:54:11&#43;08:00</updated>
             <published>2020-08-14T15:03:20&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -20170,11 +20170,32 @@ SCHEDULED: &amp;lt;2004-12-25 Sat&amp;gt;
 &lt;h2 id=&#34;setting&#34;&gt;Setting&lt;/h2&gt;
 &lt;h3 id=&#34;保存时自动清除空格&#34;&gt;保存时自动清除空格&lt;/h3&gt;
 &lt;p&gt;在.spacemacs文件中加入&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;(add-hook &#39;before-save-hook &#39;delete-trailing-whitespace)
-(add-hook &#39;before-save-hook &#39;whitespace-cleanup)
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;显示自动换行&#34;&gt;显示自动换行&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;before-save-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;delete-trailing-whitespace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;before-save-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;whitespace-cleanup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;显示自动换行&#34;&gt;显示自动换行&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;M-x spacemacs/toggle-visual-line-navigation-on&lt;/code&gt;&lt;/p&gt;
-</content>
+&lt;h3 id=&#34;clang-format&#34;&gt;clang-format&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;&lt;span class=&#34;nv&#34;&gt;clang-format&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;-style=google&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;-dump-config&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;clang-format&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;require&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;clang-format&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;global-set-key&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;C-c C-f&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;clang-format-region&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
             
             
             
