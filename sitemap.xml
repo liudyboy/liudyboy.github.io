@@ -3,853 +3,693 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://liudyboy.github.io/categories/algorithm/</loc>
-    <lastmod>2021-06-15T18:02:01+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liudyboy.github.io/categories/</loc>
-    <lastmod>2021-06-25T14:12:40+08:00</lastmod>
+    <lastmod>2021-12-01T11:02:23+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/</loc>
-    <lastmod>2021-06-25T14:12:40+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/note/</loc>
-    <lastmod>2021-06-15T18:02:01+08:00</lastmod>
+    <lastmod>2021-12-01T11:02:23+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/</loc>
-    <lastmod>2021-06-25T14:12:40+08:00</lastmod>
+    <lastmod>2021-12-01T11:02:23+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/posts/svm/</loc>
-    <lastmod>2021-06-15T18:02:01+08:00</lastmod>
+    <loc>https://liudyboy.github.io/categories/programing/</loc>
+    <lastmod>2021-12-01T11:02:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/python/</loc>
+    <lastmod>2021-11-25T17:54:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/pythons-note/</loc>
+    <lastmod>2021-11-25T17:54:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/</loc>
-    <lastmod>2021-06-25T14:12:40+08:00</lastmod>
+    <lastmod>2021-12-01T11:02:23+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/categories/categories/</loc>
-    <lastmod>2021-06-23T21:13:50+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/library/</loc>
+    <lastmod>2021-12-01T11:02:23+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/posts/english-notes/</loc>
-    <lastmod>2021-06-12T10:02:00+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/ray-%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-12-01T11:02:23+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/tags/tags/</loc>
-    <lastmod>2021-06-23T21:13:50+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/c-/</loc>
-    <lastmod>2021-06-22T20:36:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/effective-modern-c&#43;&#43;-note/</loc>
-    <lastmod>2021-06-15T10:00:02+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/note/</loc>
-    <lastmod>2021-06-22T20:11:17+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/notes/</loc>
-    <lastmod>2021-06-22T20:11:17+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/cuda_note/</loc>
-    <lastmod>2021-06-23T21:13:50+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/effective-c&#43;&#43;/</loc>
-    <lastmod>2021-04-30T10:21:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/architecture/</loc>
-    <lastmod>2021-04-27T11:43:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/basic/</loc>
-    <lastmod>2021-04-27T11:43:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/fundamentals-of-architecture/</loc>
-    <lastmod>2021-04-27T11:43:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/notes/</loc>
-    <lastmod>2021-06-02T10:16:23+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/org-mode-note/</loc>
-    <lastmod>2021-06-02T10:16:23+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/spacemacs/</loc>
-    <lastmod>2021-06-02T10:16:23+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/mt-note/</loc>
-    <lastmod>2021-04-20T11:46:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/optimization/</loc>
-    <lastmod>2021-04-20T11:46:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/optimization/</loc>
-    <lastmod>2021-06-22T20:11:17+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/optimization-techniques/</loc>
-    <lastmod>2021-06-22T20:11:17+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/pipelining-computation-and-optimization-strategies-for-scaling-gromacs-on-the-sunway-many-core-processor%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-04-06T21:17:44+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-04-06T21:17:44+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/parallel/</loc>
-    <lastmod>2021-04-06T21:14:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/parallel-computing/</loc>
-    <lastmod>2021-04-06T21:14:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/parallel-computing-in-dnns-using-cpu-and-mic%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-04-06T21:14:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/k-means/</loc>
-    <lastmod>2021-03-17T17:48:48+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/ml/</loc>
-    <lastmod>2021-04-08T10:07:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/spectral-clustering/</loc>
-    <lastmod>2021-04-08T10:07:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/deep-learning/</loc>
-    <lastmod>2021-03-08T14:26:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/deep-learning/</loc>
-    <lastmod>2021-03-08T14:26:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/deep-learning-training/</loc>
-    <lastmod>2021-03-08T14:26:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/accelerating/</loc>
-    <lastmod>2021-03-15T09:32:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/accelerating-technology/</loc>
-    <lastmod>2021-03-15T09:32:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/paper-notes/</loc>
-    <lastmod>2021-01-28T14:26:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/zero-offload-democratizing-billion-scale-model-training-notes/</loc>
-    <lastmod>2021-01-28T14:26:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/dl/</loc>
-    <lastmod>2021-02-23T17:54:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/dl-development-note/</loc>
-    <lastmod>2021-01-26T17:11:58+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/recommendation/</loc>
-    <lastmod>2021-01-26T18:08:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/self-attentive-sequential-recommendation/</loc>
-    <lastmod>2021-01-25T11:26:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/sequential-recommendation/</loc>
-    <lastmod>2021-01-25T11:26:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/economic/</loc>
-    <lastmod>2021-01-21T15:38:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/economic/</loc>
-    <lastmod>2021-01-21T15:38:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/economic-note/</loc>
-    <lastmod>2021-01-21T15:38:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/factorization-machines/</loc>
-    <lastmod>2021-01-26T18:08:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/recommendation/</loc>
-    <lastmod>2021-01-26T18:08:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/deep-learning-activation-functions/</loc>
-    <lastmod>2021-01-21T17:10:24+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/deep-learnning/</loc>
-    <lastmod>2021-01-21T17:10:24+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/programe/</loc>
-    <lastmod>2021-01-14T10:48:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/statistics/</loc>
-    <lastmod>2021-01-14T10:48:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/statistics-practice/</loc>
-    <lastmod>2021-01-14T10:48:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/history-augmented-collaborative-filtering-for-financial-recommendations-%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-01-11T09:09:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/pytorch/</loc>
-    <lastmod>2021-01-12T14:19:38+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/pytorch-notes/</loc>
-    <lastmod>2021-01-12T14:19:38+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/deep-learning-initializing-weights/</loc>
-    <lastmod>2021-01-08T14:08:30+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/deep-learning-loss-functions/</loc>
-    <lastmod>2020-12-31T10:24:54+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/deep-learning-layers/</loc>
-    <lastmod>2021-02-23T17:54:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/protocol-buffers/</loc>
-    <lastmod>2020-12-18T10:52:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2021-06-22T20:36:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/caffe-%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-12-18T11:52:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/protocl-buffers/</loc>
-    <lastmod>2020-12-18T11:44:59+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/batch-normalization/</loc>
-    <lastmod>2020-12-14T18:09:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/dl/</loc>
-    <lastmod>2020-12-14T18:09:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/dropout/</loc>
-    <lastmod>2020-12-14T16:03:50+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/plantuml-%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2020-12-10T17:58:28+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/git-%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2021-11-29T17:41:07+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/tools/</loc>
-    <lastmod>2020-12-10T17:58:28+08:00</lastmod>
+    <lastmod>2021-11-29T17:41:07+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/categories/tools/</loc>
-    <lastmod>2021-01-15T18:23:53+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/ftp-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2021-11-18T22:17:58+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/tags/uml/</loc>
-    <lastmod>2020-12-10T17:58:28+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/git-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2021-11-19T15:41:33+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/categories/c-/</loc>
-    <lastmod>2020-12-11T15:04:23+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/gpu/</loc>
+    <lastmod>2021-11-21T15:21:19+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/tags/gradient-descent/</loc>
-    <lastmod>2021-01-22T14:24:49+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/gpu-cluster-scheduling/</loc>
+    <lastmod>2021-11-07T17:04:53+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/posts/gradients-descent-methods/</loc>
-    <lastmod>2021-01-22T14:24:49+08:00</lastmod>
+    <loc>https://liudyboy.github.io/categories/research/</loc>
+    <lastmod>2021-11-09T10:31:45+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/categories/ml/</loc>
-    <lastmod>2021-01-22T14:24:49+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/scheduling/</loc>
+    <lastmod>2021-11-07T17:04:53+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/posts/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2020-12-11T15:04:23+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/parallel/</loc>
+    <lastmod>2021-11-09T10:31:45+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/tags/git/</loc>
-    <lastmod>2021-01-15T18:23:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/git-notes/</loc>
-    <lastmod>2021-01-15T18:23:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/hdf5/</loc>
-    <lastmod>2021-03-12T09:28:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/hdf5-note/</loc>
-    <lastmod>2021-03-12T09:28:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/ensemble/</loc>
-    <lastmod>2020-11-11T11:54:29+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/ensemble-methods/</loc>
-    <lastmod>2020-11-11T11:54:29+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/emacs/</loc>
-    <lastmod>2020-11-09T14:15:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/emacs-org-note/</loc>
-    <lastmod>2020-11-09T14:15:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/org/</loc>
-    <lastmod>2020-11-09T14:15:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/dnns/</loc>
-    <lastmod>2020-11-03T14:40:37+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/efficient/</loc>
-    <lastmod>2020-11-03T14:40:37+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/efficient-gpu-memory-management-for-nonlinear-dnns-%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-11-03T14:40:37+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/openmp/</loc>
-    <lastmod>2020-11-09T11:56:03+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/openmp%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-11-09T11:56:03+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/parallel-computing/</loc>
-    <lastmod>2020-11-09T11:56:03+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/library/</loc>
-    <lastmod>2020-10-28T09:31:01+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/mannual/</loc>
-    <lastmod>2020-10-28T09:31:01+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/petsc%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2020-10-28T09:31:01+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/hpc/</loc>
-    <lastmod>2020-10-26T14:32:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/introduction-to-hpc-with-mpi-for-data-science/</loc>
-    <lastmod>2020-10-26T14:32:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/mpi/</loc>
-    <lastmod>2021-06-01T10:07:24+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-10-26T14:32:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/cmake/</loc>
-    <lastmod>2020-09-30T17:50:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/cmake-notes/</loc>
-    <lastmod>2020-09-30T17:50:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/math/</loc>
-    <lastmod>2020-10-15T09:59:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/parallelize-matrix-inversion/</loc>
-    <lastmod>2020-10-15T09:59:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/gaussian-processes-regression/</loc>
-    <lastmod>2020-09-28T15:38:10+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-06-25T09:27:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2021-06-25T09:27:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E9%AB%98%E6%96%AF/</loc>
-    <lastmod>2020-09-28T15:38:10+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/the-basis-of-machine-learning/</loc>
-    <lastmod>2020-09-18T14:29:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2021-01-11T09:09:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E7%90%86%E8%AE%BA/</loc>
-    <lastmod>2021-01-11T09:09:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/ubuntu/</loc>
-    <lastmod>2021-06-24T09:37:45+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/ubuntu/</loc>
-    <lastmod>2021-06-24T09:37:45+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E8%BF%90%E7%BB%B4/</loc>
-    <lastmod>2021-06-24T09:37:45+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/robust-regression/</loc>
-    <lastmod>2020-09-14T14:25:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E5%9B%9E%E5%BD%92/</loc>
-    <lastmod>2020-11-17T16:17:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/code/</loc>
-    <lastmod>2020-09-07T18:11:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/my-useful-code-segment/</loc>
-    <lastmod>2020-09-07T18:11:25+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/%E7%90%86%E8%A7%A3%E5%81%8F%E5%B7%AE%E5%92%8C%E6%96%B9%E5%B7%AE/</loc>
-    <lastmod>2021-01-11T09:09:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2021-06-25T14:12:40+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E6%A6%82%E7%8E%87/</loc>
-    <lastmod>2021-06-25T14:12:40+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-06-25T14:12:40+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/quadratic-discriminant-analysis/</loc>
-    <lastmod>2021-06-25T09:27:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E5%88%86%E7%B1%BB/</loc>
-    <lastmod>2021-06-25T09:27:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/factor-analysis/</loc>
-    <lastmod>2020-09-04T08:52:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/factor-analysis/</loc>
-    <lastmod>2020-09-04T08:52:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/principal-components-curves-and-surfaces/</loc>
-    <lastmod>2020-08-28T09:08:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E9%99%8D%E7%BB%B4/</loc>
-    <lastmod>2020-08-28T09:08:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/awesome-library/</loc>
-    <lastmod>2021-03-18T17:51:10+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E7%BB%8F%E9%AA%8C/</loc>
-    <lastmod>2021-04-21T11:59:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/awesomesoftwares/</loc>
-    <lastmod>2021-04-21T11:59:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2021-04-21T11:59:34+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/parallel-kernel-ridge-regression/</loc>
+    <lastmod>2021-11-09T10:31:45+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/regression/</loc>
-    <lastmod>2020-11-18T17:33:13+08:00</lastmod>
+    <lastmod>2021-11-09T10:31:45+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/doxygen/</loc>
+    <lastmod>2021-11-06T11:39:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/doxygen%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-06T11:39:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/parallel-computing/</loc>
+    <lastmod>2021-11-06T11:30:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/parallel-hierarchical-clustering/</loc>
+    <lastmod>2021-11-06T11:30:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/hpc/</loc>
+    <lastmod>2021-11-06T11:26:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/hpc-note/</loc>
+    <lastmod>2021-11-06T11:25:16+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/pthread/</loc>
+    <lastmod>2021-11-06T11:41:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/pthread-note/</loc>
+    <lastmod>2021-11-06T11:41:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/pollux-co-adaptive-cluster-scheduling-for-goodput-optimized-deep-learning/</loc>
+    <lastmod>2021-11-06T11:32:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/algorithm/</loc>
+    <lastmod>2021-11-06T11:40:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/study/</loc>
+    <lastmod>2021-11-21T15:21:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/svm/</loc>
+    <lastmod>2021-11-06T11:34:52+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/english/</loc>
+    <lastmod>2021-11-06T11:21:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/english-notes/</loc>
+    <lastmod>2021-11-06T11:21:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/c-/</loc>
+    <lastmod>2021-11-30T11:27:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/effective-modern-c&#43;&#43;-note/</loc>
+    <lastmod>2021-11-06T11:19:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/cuda/</loc>
+    <lastmod>2021-11-21T15:21:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/cuda_note/</loc>
+    <lastmod>2021-11-21T15:21:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/effective-c&#43;&#43;/</loc>
+    <lastmod>2021-11-06T11:19:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/architecture/</loc>
+    <lastmod>2021-11-06T11:22:45+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/fundamentals-of-architecture/</loc>
+    <lastmod>2021-11-06T11:22:45+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/org-mode-note/</loc>
+    <lastmod>2021-11-06T11:28:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/spacemacs/</loc>
+    <lastmod>2021-11-25T11:21:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/mt/</loc>
+    <lastmod>2021-11-06T11:27:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/mt-note/</loc>
+    <lastmod>2021-11-06T11:27:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/optimization/</loc>
+    <lastmod>2021-11-06T11:31:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/optimization-techniques/</loc>
+    <lastmod>2021-11-06T11:28:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/pipelining-computation-and-optimization-strategies-for-scaling-gromacs-on-the-sunway-many-core-processor%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-06T11:31:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/parallel-computing-in-dnns-using-cpu-and-mic%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-06T11:29:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/k-means/</loc>
+    <lastmod>2021-11-06T11:26:40+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/machine-learning/</loc>
+    <lastmod>2021-11-06T11:43:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/spectral-clustering/</loc>
+    <lastmod>2021-11-06T11:35:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/deep-learning/</loc>
+    <lastmod>2021-11-06T11:43:01+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/deep-learning-training/</loc>
+    <lastmod>2021-11-06T11:17:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/accelerating/</loc>
+    <lastmod>2021-11-06T11:13:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/accelerating-technology/</loc>
+    <lastmod>2021-11-06T11:13:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/zero-offload-democratizing-billion-scale-model-training-notes/</loc>
+    <lastmod>2021-11-06T11:37:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/dl-development-note/</loc>
+    <lastmod>2021-11-06T11:15:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/recommendation/</loc>
+    <lastmod>2021-11-06T11:35:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/self-attentive-sequential-recommendation/</loc>
+    <lastmod>2021-11-06T11:35:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/economic/</loc>
+    <lastmod>2021-11-06T11:46:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/economic-note/</loc>
+    <lastmod>2021-11-06T11:18:52+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/factorization-machines/</loc>
+    <lastmod>2021-11-06T11:22:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/deep-learning-activation-functions/</loc>
+    <lastmod>2021-11-06T11:15:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/deep-learnning/</loc>
+    <lastmod>2021-11-06T11:15:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/statistics/</loc>
+    <lastmod>2021-11-06T11:35:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/statistics-practice/</loc>
+    <lastmod>2021-11-06T11:35:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/history-augmented-collaborative-filtering-for-financial-recommendations-%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-06T11:25:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/pytorch/</loc>
+    <lastmod>2021-11-06T11:33:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/pytorch-notes/</loc>
+    <lastmod>2021-11-06T11:33:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/deep-learning-initializing-weights/</loc>
+    <lastmod>2021-11-06T11:15:53+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/deep-learning-loss-functions/</loc>
+    <lastmod>2021-11-06T11:16:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/deep-learning-layers/</loc>
+    <lastmod>2021-11-06T11:16:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/protocol-buffers/</loc>
+    <lastmod>2021-11-06T11:46:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/caffe-%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-06T11:38:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/protocl-buffers/</loc>
+    <lastmod>2021-11-06T11:33:01+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/batch-normalization/</loc>
+    <lastmod>2021-11-06T11:14:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/dropout/</loc>
+    <lastmod>2021-11-06T11:18:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/plantuml-%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2021-11-06T11:40:52+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/gradient-descent/</loc>
+    <lastmod>2021-11-06T11:24:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/gradients-descent-methods/</loc>
+    <lastmod>2021-11-06T11:24:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2021-11-06T11:44:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/git/</loc>
+    <lastmod>2021-11-06T11:24:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/git-notes/</loc>
+    <lastmod>2021-11-06T11:24:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/hdf5/</loc>
+    <lastmod>2021-11-06T11:24:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/hdf5-note/</loc>
+    <lastmod>2021-11-06T11:24:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/ensemble-methods/</loc>
+    <lastmod>2021-11-06T11:21:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/emacs-org-note/</loc>
+    <lastmod>2021-11-06T11:20:53+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/org/</loc>
+    <lastmod>2021-11-06T11:20:53+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/efficient-gpu-memory-management-for-nonlinear-dnns-%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-06T11:20:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/openmp/</loc>
+    <lastmod>2021-11-06T11:28:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/openmp%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-06T11:28:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/petsc%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2021-11-06T11:29:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/introduction-to-hpc-with-mpi-for-data-science/</loc>
+    <lastmod>2021-11-06T11:26:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/mpi/</loc>
+    <lastmod>2021-11-12T17:25:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/cmake/</loc>
+    <lastmod>2021-11-06T11:39:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/cmake-notes/</loc>
+    <lastmod>2021-11-06T11:39:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/parallelize-matrix-inversion/</loc>
+    <lastmod>2021-11-06T11:30:40+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/gaussian-processes-regression/</loc>
+    <lastmod>2021-11-06T11:23:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/the-basis-of-machine-learning/</loc>
+    <lastmod>2021-11-06T11:37:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/ubuntu/</loc>
+    <lastmod>2021-11-19T10:29:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/ubuntu/</loc>
+    <lastmod>2021-11-19T10:29:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/robust-regression/</loc>
+    <lastmod>2021-11-06T11:34:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/code-example/</loc>
+    <lastmod>2021-11-06T11:28:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/my-useful-code-segment/</loc>
+    <lastmod>2021-11-06T11:28:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/%E7%90%86%E8%A7%A3%E5%81%8F%E5%B7%AE%E5%92%8C%E6%96%B9%E5%B7%AE/</loc>
+    <lastmod>2021-11-06T11:43:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/math/</loc>
+    <lastmod>2021-11-06T11:43:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-06T11:42:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/quadratic-discriminant-analysis/</loc>
+    <lastmod>2021-11-06T11:33:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/factor-analysis/</loc>
+    <lastmod>2021-11-06T11:40:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/principal-components-curves-and-surfaces/</loc>
+    <lastmod>2021-11-06T11:32:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/awesome-library/</loc>
+    <lastmod>2021-11-30T11:24:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/awesomesoftwares/</loc>
+    <lastmod>2021-11-06T11:14:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/softwares/</loc>
+    <lastmod>2021-11-06T11:14:03+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/support-vector-regression/</loc>
-    <lastmod>2020-08-26T09:11:05+08:00</lastmod>
+    <lastmod>2021-11-06T11:36:09+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/mpi%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-06-01T10:07:24+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2020-08-28T09:08:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E7%BB%8F%E6%B5%8E/</loc>
-    <lastmod>2020-08-28T09:08:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E7%BB%8F%E6%B5%8E%E5%AD%A6/</loc>
-    <lastmod>2020-08-28T09:08:08+08:00</lastmod>
+    <lastmod>2021-11-12T17:25:47+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E9%AD%94%E9%AC%BC%E7%BB%8F%E6%B5%8E%E5%AD%A6%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-08-28T09:08:08+08:00</lastmod>
+    <lastmod>2021-11-06T11:46:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B8%B8%E7%94%A8%E6%8C%87%E6%A0%87/</loc>
-    <lastmod>2020-08-26T08:58:17+08:00</lastmod>
+    <lastmod>2021-11-06T11:44:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/eigen/</loc>
-    <lastmod>2021-04-21T16:27:36+08:00</lastmod>
+    <lastmod>2021-11-06T11:20:40+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Bmatrix/</loc>
-    <lastmod>2021-04-21T16:27:36+08:00</lastmod>
+    <lastmod>2021-11-06T11:20:40+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/eigen%E7%AC%94%E8%AE%B0%E4%B9%8Btensor/</loc>
-    <lastmod>2021-01-13T15:11:30+08:00</lastmod>
+    <lastmod>2021-11-06T11:20:27+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/policy-based-design/</loc>
-    <lastmod>2020-08-19T18:07:45+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2020-08-19T18:07:45+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2021-04-08T10:55:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E7%9F%A9%E9%98%B5/</loc>
-    <lastmod>2021-04-08T10:55:36+08:00</lastmod>
+    <lastmod>2021-11-06T11:31:29+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E7%9F%A9%E9%98%B5%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-04-08T10:55:36+08:00</lastmod>
+    <lastmod>2021-11-06T11:43:48+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/posts/accurate-fast-and-scalable-kernel-ridge-regression-on-parallel-and-distributed-systems-%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-11-18T17:33:13+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/divide-and-conquer-kernel-ridge-regression%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-08-17T15:59:26+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/design/</loc>
+    <lastmod>2021-11-06T11:45:18+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2020-08-17T09:39:02+08:00</lastmod>
+    <lastmod>2021-11-06T11:45:18+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/test-driven-development/</loc>
-    <lastmod>2020-08-17T09:39:02+08:00</lastmod>
+    <lastmod>2021-11-06T11:36:35+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/tags/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2020-08-17T09:39:02+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/testing/</loc>
+    <lastmod>2021-11-06T11:36:35+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/markdown/</loc>
-    <lastmod>2020-09-07T09:10:18+08:00</lastmod>
+    <lastmod>2021-11-06T11:40:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/markdown-%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-09-07T09:10:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E7%BB%8F%E9%AA%8C/</loc>
-    <lastmod>2021-05-08T17:54:11+08:00</lastmod>
+    <lastmod>2021-11-06T11:40:30+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/kernel-ridge-regression/</loc>
-    <lastmod>2020-08-21T17:15:25+08:00</lastmod>
+    <lastmod>2021-11-06T11:27:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/spacemacs-%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-05-08T17:54:11+08:00</lastmod>
+    <lastmod>2021-11-25T11:21:54+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/c&#43;&#43;%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2021-02-24T11:25:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/clean-code/</loc>
-    <lastmod>2020-08-18T18:11:26+08:00</lastmod>
+    <lastmod>2021-11-16T17:33:03+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</loc>
-    <lastmod>2020-08-18T18:11:26+08:00</lastmod>
+    <lastmod>2021-11-06T11:45:44+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/c&#43;&#43;%E6%9D%82%E8%AE%B0/</loc>
-    <lastmod>2021-06-22T20:36:31+08:00</lastmod>
+    <lastmod>2021-11-30T11:27:48+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0/</loc>
-    <lastmod>2020-08-07T10:33:09+08:00</lastmod>
+    <lastmod>2021-11-06T11:41:54+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E6%95%B0%E5%AD%A6%E6%9D%82%E8%AE%B0/</loc>
-    <lastmod>2020-09-18T11:12:17+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2020-09-18T11:12:17+08:00</lastmod>
+    <lastmod>2021-11-06T11:42:15+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/regression/</loc>
-    <lastmod>2020-11-17T16:17:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2020-11-17T16:17:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/%E5%8A%A0%E9%80%9F/</loc>
-    <lastmod>2020-09-07T09:10:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2020-09-07T09:10:18+08:00</lastmod>
+    <lastmod>2021-11-06T11:34:10+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8A%A0%E9%80%9F-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2020-09-07T09:10:18+08:00</lastmod>
+    <lastmod>2021-11-06T11:43:01+08:00</lastmod>
   </url>
   
   <url>
