@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">liudy</title>
     <subtitle type="html"></subtitle>
-    <updated>2021-12-01T11:35:13&#43;08:00</updated>
+    <updated>2021-12-01T11:35:55&#43;08:00</updated>
     <id>https://liudyboy.github.io/</id>
     <link rel="alternate" type="text/html" href="https://liudyboy.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://liudyboy.github.io/atom.xml" />
@@ -720,7 +720,7 @@
             <title type="text">Ray 笔记</title>
             <link rel="alternate" type="text/html" href="https://liudyboy.github.io/posts/ray-%E7%AC%94%E8%AE%B0/" />
             <id>https://liudyboy.github.io/posts/ray-%E7%AC%94%E8%AE%B0/</id>
-            <updated>2021-12-01T11:34:20&#43;08:00</updated>
+            <updated>2021-12-01T11:35:48&#43;08:00</updated>
             <published>2021-11-19T17:50:39&#43;08:00</published>
             <author>
                     <name>liudy</name>
@@ -1964,6 +1964,7 @@ local resources, can serve requests from remote workers, and can redirect a work
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/taskscheduleing.png&#34; alt=&#34;&#34;&gt;
 (c) Scheduling with ownership. (1-2) Local scheduler redirects owner to node 2. (3) Update task location. (4-5) Remote scheduler grants
 worker lease. (6) Task dispatch. (d) Direct scheduling by the owner, using the worker and resources leased from node 2 in (c).&lt;/p&gt;
+&lt;p&gt;next&lt;/p&gt;
 &lt;h2 id=&#34;gym&#34;&gt;gym&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

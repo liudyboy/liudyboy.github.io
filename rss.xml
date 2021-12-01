@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 01 Dec 2021 11:35:13 &#43;0800</lastBuildDate>
+        <lastBuildDate>Wed, 01 Dec 2021 11:35:55 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://liudyboy.github.io/rss.xml" />
         
@@ -1970,6 +1970,7 @@ local resources, can serve requests from remote workers, and can redirect a work
 &lt;p&gt;&lt;img src=&#34;https://liudyboy.github.io/imgs/taskscheduleing.png&#34; alt=&#34;&#34;&gt;
 (c) Scheduling with ownership. (1-2) Local scheduler redirects owner to node 2. (3) Update task location. (4-5) Remote scheduler grants
 worker lease. (6) Task dispatch. (d) Direct scheduling by the owner, using the worker and resources leased from node 2 in (c).&lt;/p&gt;
+&lt;p&gt;next&lt;/p&gt;
 &lt;h2 id=&#34;gym&#34;&gt;gym&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
