@@ -9,10 +9,64 @@
     <managingEditor>liudy95@126.com (liudy)</managingEditor>
     <webMaster>liudy95@126.com (liudy)</webMaster>
     <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-    <lastBuildDate>Mon, 22 Nov 2021 14:47:05 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Jan 2022 10:51:45 +0800</lastBuildDate>
     
 	<atom:link href="https://liudyboy.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>tools</title>
+      <link>https://liudyboy.github.io/tags/tools/</link>
+      <pubDate>Wed, 05 Jan 2022 10:51:45 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>library</title>
+      <link>https://liudyboy.github.io/tags/library/</link>
+      <pubDate>Tue, 04 Jan 2022 14:31:13 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/library/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ray</title>
+      <link>https://liudyboy.github.io/tags/ray/</link>
+      <pubDate>Fri, 24 Dec 2021 16:19:45 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/ray/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis</title>
+      <link>https://liudyboy.github.io/tags/redis/</link>
+      <pubDate>Tue, 21 Dec 2021 16:06:00 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cython</title>
+      <link>https://liudyboy.github.io/tags/cython/</link>
+      <pubDate>Mon, 20 Dec 2021 09:07:58 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/cython/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>protobuf</title>
+      <link>https://liudyboy.github.io/tags/protobuf/</link>
+      <pubDate>Wed, 15 Dec 2021 10:57:31 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/tags/protobuf/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>python</title>
@@ -20,24 +74,6 @@
       <pubDate>Mon, 22 Nov 2021 14:47:05 +0800</pubDate>
       <author>liudy95@126.com (liudy)</author>
       <guid>https://liudyboy.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>library</title>
-      <link>https://liudyboy.github.io/tags/library/</link>
-      <pubDate>Fri, 19 Nov 2021 17:50:39 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/tags/library/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tools</title>
-      <link>https://liudyboy.github.io/tags/tools/</link>
-      <pubDate>Fri, 19 Nov 2021 09:35:41 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/tags/tools/</guid>
       <description></description>
     </item>
     

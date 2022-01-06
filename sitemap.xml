@@ -4,22 +4,117 @@
   
   <url>
     <loc>https://liudyboy.github.io/categories/</loc>
-    <lastmod>2021-12-11T20:51:55+08:00</lastmod>
+    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/centos-note/</loc>
+    <lastmod>2022-01-05T10:57:20+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/</loc>
-    <lastmod>2021-12-11T20:51:55+08:00</lastmod>
+    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/</loc>
-    <lastmod>2021-12-11T20:51:55+08:00</lastmod>
+    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/categories/programing/</loc>
-    <lastmod>2021-12-11T20:51:55+08:00</lastmod>
+    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/</loc>
+    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/tools/</loc>
+    <lastmod>2022-01-05T10:57:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/glog-note/</loc>
+    <lastmod>2022-01-04T17:12:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/library/</loc>
+    <lastmod>2022-01-04T17:12:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/gflags-note/</loc>
+    <lastmod>2022-01-04T17:09:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/bazel-note/</loc>
+    <lastmod>2021-12-31T11:17:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/cloudpickle-note/</loc>
+    <lastmod>2021-12-24T16:25:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/ray/</loc>
+    <lastmod>2021-12-24T16:25:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/redis/</loc>
+    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/redis_note/</loc>
+    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/cython/</loc>
+    <lastmod>2021-12-20T10:53:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/cython-note/</loc>
+    <lastmod>2021-12-20T10:53:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/ray_rpc-note/</loc>
+    <lastmod>2021-12-16T18:03:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/ray_system_design-note/</loc>
+    <lastmod>2021-12-15T11:06:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/protobuf/</loc>
+    <lastmod>2021-12-16T17:52:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/protocol-buffers-note/</loc>
+    <lastmod>2021-12-16T17:52:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/ray_workflow-note/</loc>
+    <lastmod>2021-12-21T14:20:51+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/ray_raylet-note/</loc>
+    <lastmod>2021-12-20T11:18:00+08:00</lastmod>
   </url>
   
   <url>
@@ -33,28 +128,13 @@
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/tags/</loc>
-    <lastmod>2021-12-11T20:51:55+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/library/</loc>
-    <lastmod>2021-12-11T20:51:55+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liudyboy.github.io/posts/ray-%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-12-11T20:51:55+08:00</lastmod>
+    <lastmod>2021-12-30T15:30:10+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/git-%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2021-11-29T17:41:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/tools/</loc>
-    <lastmod>2021-11-29T17:41:07+08:00</lastmod>
+    <lastmod>2022-01-05T09:46:51+08:00</lastmod>
   </url>
   
   <url>
@@ -174,7 +254,7 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/c-/</loc>
-    <lastmod>2021-12-09T11:39:17+08:00</lastmod>
+    <lastmod>2022-01-01T19:46:30+08:00</lastmod>
   </url>
   
   <url>
@@ -209,12 +289,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/org-mode-note/</loc>
-    <lastmod>2021-11-06T11:28:59+08:00</lastmod>
+    <lastmod>2021-12-30T11:08:15+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/spacemacs/</loc>
-    <lastmod>2021-11-25T11:21:54+08:00</lastmod>
+    <lastmod>2021-12-30T11:08:15+08:00</lastmod>
   </url>
   
   <url>
@@ -504,12 +584,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/ubuntu/</loc>
-    <lastmod>2021-11-19T10:29:42+08:00</lastmod>
+    <lastmod>2022-01-05T16:01:29+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/ubuntu/</loc>
-    <lastmod>2021-11-19T10:29:42+08:00</lastmod>
+    <lastmod>2022-01-05T16:01:29+08:00</lastmod>
   </url>
   
   <url>
@@ -619,12 +699,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/design/</loc>
-    <lastmod>2021-11-06T11:45:18+08:00</lastmod>
+    <lastmod>2021-12-27T16:58:44+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2021-11-06T11:45:18+08:00</lastmod>
+    <lastmod>2021-12-27T16:58:44+08:00</lastmod>
   </url>
   
   <url>
@@ -654,12 +734,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/spacemacs-%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-11-25T11:21:54+08:00</lastmod>
+    <lastmod>2021-12-29T16:31:32+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/c&#43;&#43;%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2021-12-08T11:46:09+08:00</lastmod>
+    <lastmod>2022-01-01T19:46:30+08:00</lastmod>
   </url>
   
   <url>
@@ -669,7 +749,7 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/c&#43;&#43;%E6%9D%82%E8%AE%B0/</loc>
-    <lastmod>2021-12-09T11:39:17+08:00</lastmod>
+    <lastmod>2021-12-16T15:11:59+08:00</lastmod>
   </url>
   
   <url>
