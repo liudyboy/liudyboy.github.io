@@ -4,47 +4,202 @@
   
   <url>
     <loc>https://liudyboy.github.io/categories/</loc>
-    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+    <lastmod>2022-10-20T17:38:43+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/posts/centos-note/</loc>
-    <lastmod>2022-01-05T10:57:20+08:00</lastmod>
+    <loc>https://liudyboy.github.io/tags/cv/</loc>
+    <lastmod>2022-09-01T11:36:17+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/</loc>
-    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+    <lastmod>2022-10-20T17:38:43+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/</loc>
-    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+    <lastmod>2022-10-20T17:38:43+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/categories/programing/</loc>
-    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+    <loc>https://liudyboy.github.io/categories/research/</loc>
+    <lastmod>2022-09-01T11:36:17+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/</loc>
-    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+    <lastmod>2022-10-20T17:38:43+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/tags/tools/</loc>
-    <lastmod>2022-01-05T10:57:20+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/posts/glog-note/</loc>
-    <lastmod>2022-01-04T17:12:10+08:00</lastmod>
+    <loc>https://liudyboy.github.io/posts/understanding-diffusion-models-a-unified-perspective-note/</loc>
+    <lastmod>2022-09-01T11:36:17+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/library/</loc>
-    <lastmod>2022-01-04T17:12:10+08:00</lastmod>
+    <lastmod>2022-09-26T16:49:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/programing/</loc>
+    <lastmod>2022-10-20T17:38:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/uthash-note/</loc>
+    <lastmod>2022-07-14T09:41:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/plasma-note/</loc>
+    <lastmod>2022-07-18T15:08:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/mochi-margo-note/</loc>
+    <lastmod>2022-07-12T14:37:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/rpc/</loc>
+    <lastmod>2022-07-12T14:37:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/spack-note/</loc>
+    <lastmod>2022-07-12T10:43:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/tools/</loc>
+    <lastmod>2022-10-17T10:06:16+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/memory/</loc>
+    <lastmod>2022-07-07T15:25:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/memory-allocation/</loc>
+    <lastmod>2022-07-07T15:25:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/file-system/</loc>
+    <lastmod>2022-07-01T15:07:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/file-systems/</loc>
+    <lastmod>2022-07-01T15:07:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/io/</loc>
+    <lastmod>2022-07-01T15:07:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/c-/</loc>
+    <lastmod>2022-10-20T17:38:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/optimization/</loc>
+    <lastmod>2022-06-27T09:12:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/shared-memory/</loc>
+    <lastmod>2022-06-27T09:12:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/programming/</loc>
+    <lastmod>2022-04-25T17:08:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/socket/</loc>
+    <lastmod>2022-04-25T17:08:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/socket-programming-note/</loc>
+    <lastmod>2022-04-25T17:08:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/ucx/</loc>
+    <lastmod>2022-04-25T11:24:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/ucx-note/</loc>
+    <lastmod>2022-04-25T11:24:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/python/</loc>
+    <lastmod>2022-10-12T11:14:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/python-library-async-notes/</loc>
+    <lastmod>2022-04-24T16:52:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/asio/</loc>
+    <lastmod>2022-09-21T11:47:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/asio-notes/</loc>
+    <lastmod>2022-09-21T11:47:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/distributed/</loc>
+    <lastmod>2022-02-08T10:28:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/distributed-garbage-collection-notes/</loc>
+    <lastmod>2022-02-08T10:28:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/tags/concurrency/</loc>
+    <lastmod>2022-02-13T09:50:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/seven-concurrency-models-in-seven-weeks-notes/</loc>
+    <lastmod>2022-02-13T09:50:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/categories/study/</loc>
+    <lastmod>2022-04-15T16:35:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/grpc-note/</loc>
+    <lastmod>2022-06-17T10:41:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/centos-note/</loc>
+    <lastmod>2022-07-08T17:12:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liudyboy.github.io/posts/glog-note/</loc>
+    <lastmod>2022-02-16T10:17:46+08:00</lastmod>
   </url>
   
   <url>
@@ -54,37 +209,37 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/bazel-note/</loc>
-    <lastmod>2021-12-31T11:17:37+08:00</lastmod>
+    <lastmod>2022-10-17T10:06:16+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/cloudpickle-note/</loc>
-    <lastmod>2021-12-24T16:25:13+08:00</lastmod>
+    <lastmod>2022-04-21T14:52:40+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/ray/</loc>
-    <lastmod>2021-12-24T16:25:13+08:00</lastmod>
+    <lastmod>2022-04-21T14:52:40+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/redis/</loc>
-    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+    <lastmod>2022-05-13T16:04:23+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/redis_note/</loc>
-    <lastmod>2022-01-06T09:15:32+08:00</lastmod>
+    <lastmod>2022-05-13T16:04:23+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/cython/</loc>
-    <lastmod>2021-12-20T10:53:27+08:00</lastmod>
+    <lastmod>2022-05-13T15:05:55+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/cython-note/</loc>
-    <lastmod>2021-12-20T10:53:27+08:00</lastmod>
+    <lastmod>2022-05-13T15:05:55+08:00</lastmod>
   </url>
   
   <url>
@@ -99,12 +254,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/protobuf/</loc>
-    <lastmod>2021-12-16T17:52:30+08:00</lastmod>
+    <lastmod>2022-01-12T14:57:51+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/protocol-buffers-note/</loc>
-    <lastmod>2021-12-16T17:52:30+08:00</lastmod>
+    <lastmod>2022-01-12T14:57:51+08:00</lastmod>
   </url>
   
   <url>
@@ -118,28 +273,23 @@
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/tags/python/</loc>
-    <lastmod>2021-12-07T09:46:23+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liudyboy.github.io/posts/pythons-note/</loc>
-    <lastmod>2021-12-07T09:46:23+08:00</lastmod>
+    <lastmod>2022-10-12T11:14:20+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/ray-%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-12-30T15:30:10+08:00</lastmod>
+    <lastmod>2022-04-01T18:11:40+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/git-%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2022-01-05T09:46:51+08:00</lastmod>
+    <lastmod>2022-06-16T10:50:04+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/ftp-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2021-11-18T22:17:58+08:00</lastmod>
+    <lastmod>2022-05-20T10:43:45+08:00</lastmod>
   </url>
   
   <url>
@@ -155,11 +305,6 @@
   <url>
     <loc>https://liudyboy.github.io/posts/gpu-cluster-scheduling/</loc>
     <lastmod>2021-11-07T17:04:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/categories/research/</loc>
-    <lastmod>2021-11-09T10:31:45+08:00</lastmod>
   </url>
   
   <url>
@@ -214,12 +359,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/pthread/</loc>
-    <lastmod>2021-11-06T11:41:10+08:00</lastmod>
+    <lastmod>2022-01-12T17:52:18+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/pthread-note/</loc>
-    <lastmod>2021-11-06T11:41:10+08:00</lastmod>
+    <lastmod>2022-01-12T17:52:18+08:00</lastmod>
   </url>
   
   <url>
@@ -233,28 +378,18 @@
   </url>
   
   <url>
-    <loc>https://liudyboy.github.io/categories/study/</loc>
-    <lastmod>2021-11-21T15:21:19+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liudyboy.github.io/posts/svm/</loc>
     <lastmod>2021-11-06T11:34:52+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/english/</loc>
-    <lastmod>2021-11-06T11:21:33+08:00</lastmod>
+    <lastmod>2022-04-15T16:35:14+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/english-notes/</loc>
-    <lastmod>2021-11-06T11:21:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/c-/</loc>
-    <lastmod>2022-01-01T19:46:30+08:00</lastmod>
+    <lastmod>2022-04-15T16:35:14+08:00</lastmod>
   </url>
   
   <url>
@@ -294,7 +429,7 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/spacemacs/</loc>
-    <lastmod>2021-12-30T11:08:15+08:00</lastmod>
+    <lastmod>2022-07-08T10:09:00+08:00</lastmod>
   </url>
   
   <url>
@@ -305,11 +440,6 @@
   <url>
     <loc>https://liudyboy.github.io/posts/mt-note/</loc>
     <lastmod>2021-11-06T11:27:38+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liudyboy.github.io/tags/optimization/</loc>
-    <lastmod>2021-11-06T11:31:09+08:00</lastmod>
   </url>
   
   <url>
@@ -519,12 +649,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/emacs-org-note/</loc>
-    <lastmod>2021-11-06T11:20:53+08:00</lastmod>
+    <lastmod>2022-04-27T11:28:24+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/org/</loc>
-    <lastmod>2021-11-06T11:20:53+08:00</lastmod>
+    <lastmod>2022-04-27T11:28:24+08:00</lastmod>
   </url>
   
   <url>
@@ -584,12 +714,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/ubuntu/</loc>
-    <lastmod>2022-01-05T16:01:29+08:00</lastmod>
+    <lastmod>2022-10-18T15:26:15+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/ubuntu/</loc>
-    <lastmod>2022-01-05T16:01:29+08:00</lastmod>
+    <lastmod>2022-10-18T15:26:15+08:00</lastmod>
   </url>
   
   <url>
@@ -639,17 +769,17 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/awesome-library/</loc>
-    <lastmod>2021-11-30T11:24:04+08:00</lastmod>
+    <lastmod>2022-09-26T16:49:20+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/awesomesoftwares/</loc>
-    <lastmod>2021-11-06T11:14:03+08:00</lastmod>
+    <lastmod>2022-06-14T17:06:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/tags/softwares/</loc>
-    <lastmod>2021-11-06T11:14:03+08:00</lastmod>
+    <lastmod>2022-06-14T17:06:00+08:00</lastmod>
   </url>
   
   <url>
@@ -699,12 +829,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/tags/design/</loc>
-    <lastmod>2021-12-27T16:58:44+08:00</lastmod>
+    <lastmod>2022-02-14T15:16:53+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2021-12-27T16:58:44+08:00</lastmod>
+    <lastmod>2022-02-14T15:16:53+08:00</lastmod>
   </url>
   
   <url>
@@ -734,12 +864,12 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/spacemacs-%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-12-29T16:31:32+08:00</lastmod>
+    <lastmod>2022-07-08T10:09:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liudyboy.github.io/posts/c&#43;&#43;%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2022-01-01T19:46:30+08:00</lastmod>
+    <lastmod>2022-10-20T17:38:43+08:00</lastmod>
   </url>
   
   <url>
@@ -749,7 +879,7 @@
   
   <url>
     <loc>https://liudyboy.github.io/posts/c&#43;&#43;%E6%9D%82%E8%AE%B0/</loc>
-    <lastmod>2021-12-16T15:11:59+08:00</lastmod>
+    <lastmod>2022-06-17T10:24:05+08:00</lastmod>
   </url>
   
   <url>

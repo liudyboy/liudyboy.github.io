@@ -9,33 +9,42 @@
     <managingEditor>liudy95@126.com (liudy)</managingEditor>
     <webMaster>liudy95@126.com (liudy)</webMaster>
     <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-    <lastBuildDate>Wed, 05 Jan 2022 10:51:45 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Sep 2022 10:25:28 +0800</lastBuildDate>
     
 	<atom:link href="https://liudyboy.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Programing</title>
-      <link>https://liudyboy.github.io/categories/programing/</link>
-      <pubDate>Wed, 05 Jan 2022 10:51:45 +0800</pubDate>
-      <author>liudy95@126.com (liudy)</author>
-      <guid>https://liudyboy.github.io/categories/programing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Research</title>
       <link>https://liudyboy.github.io/categories/research/</link>
-      <pubDate>Sat, 06 Nov 2021 11:07:13 +0800</pubDate>
+      <pubDate>Thu, 01 Sep 2022 10:25:28 +0800</pubDate>
       <author>liudy95@126.com (liudy)</author>
       <guid>https://liudyboy.github.io/categories/research/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Programing</title>
+      <link>https://liudyboy.github.io/categories/programing/</link>
+      <pubDate>Wed, 13 Jul 2022 18:04:35 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/categories/programing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programming</title>
+      <link>https://liudyboy.github.io/categories/programming/</link>
+      <pubDate>Mon, 25 Apr 2022 14:55:47 +0800</pubDate>
+      <author>liudy95@126.com (liudy)</author>
+      <guid>https://liudyboy.github.io/categories/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Study</title>
       <link>https://liudyboy.github.io/categories/study/</link>
-      <pubDate>Tue, 15 Jun 2021 14:03:55 +0800</pubDate>
+      <pubDate>Sun, 23 Jan 2022 12:10:41 +0800</pubDate>
       <author>liudy95@126.com (liudy)</author>
       <guid>https://liudyboy.github.io/categories/study/</guid>
       <description></description>

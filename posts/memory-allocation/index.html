@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>Memory Allocation | liudy</title>
+
+    <link rel="stylesheet" href="/css/meme.min.ee60e170cedf90d86c927787e2597360b59802242e3845a7d04834f4b534af2b.css" integrity="sha256-7mDhcM7fkNhskneH4llzYLWYAiQuOEWn0Eg09LU0rys=" />
+
+    
+    
+        <script src="/js/meme.min.434274bb2302fe029f98d3d29ae57dab1566be565436f52a6dd93089085533c4.js" integrity="sha256-Q0J0uyMC/gKfmNPSmuV9qxVmvlZUNvUqbdkwiQhVM8Q="></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="liudy" /><meta name="description" content="本文介绍关于 memory allocation 方面的笔记。" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="liudy" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="liudy" />
+    <meta name="msapplication-starturl" content="../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://liudyboy.github.io/posts/memory-allocation/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2022-07-05T14:55:34+08:00",
+        "dateModified": "2022-07-07T15:25:55+08:00",
+        "url": "https://liudyboy.github.io/posts/memory-allocation/",
+        "headline": "Memory Allocation",
+        "description": "本文介绍关于 memory allocation 方面的笔记。",
+        "inLanguage" : "zh-CN",
+        "articleSection": "posts",
+        "wordCount":  3909 ,
+        "image": ["https://liudyboy.github.io/imgs/linear_allocator.svg","https://liudyboy.github.io/imgs/linear_allocator_alloc.svg","https://liudyboy.github.io/imgs/stack_allocator.svg","https://liudyboy.github.io/imgs/stack_allocator_alloc.svg","https://liudyboy.github.io/imgs/stack_allocator_free.svg","https://liudyboy.github.io/imgs/stack_allocator_header.svg","https://liudyboy.github.io/imgs/pool_allocator.svg","https://liudyboy.github.io/imgs/pool_allocator_list.svg","https://liudyboy.github.io/imgs/pool_allocator_list_inplace.svg","https://liudyboy.github.io/imgs/pool_allocator_alloc.svg","https://liudyboy.github.io/imgs/pool_allocator_alloc_unordered.svg","https://liudyboy.github.io/imgs/free_list_allocator.svg","https://liudyboy.github.io/imgs/free_list_allocator_red_black_tree.svg"],
+        "author": {
+            "@type": "Person",
+            "description": "Viva La Vida",
+            "email": "liudy95@126.com",
+            "image": "https://liudyboy.github.io/icons/apple-touch-icon.png",
+            "url": "https://liudyboy.github.io/",
+            "name": "liudy"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "liudy",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://liudyboy.github.io/icons/apple-touch-icon.png"
+            },
+            "url": "https://liudyboy.github.io/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://liudyboy.github.io/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary_large_image" />
+
+
+
+    
+
+
+
+<meta property="og:title" content="Memory Allocation" />
+<meta property="og:description" content="本文介绍关于 memory allocation 方面的笔记。" />
+<meta property="og:url" content="https://liudyboy.github.io/posts/memory-allocation/" />
+<meta property="og:site_name" content="liudy" />
+<meta property="og:locale" content="zh" /><meta property="og:image" content="https://liudyboy.github.io/imgs/linear_allocator.svg" />
+<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2022-07-05T14:55:34&#43;08:00" />
+    <meta property="article:modified_time" content="2022-07-07T15:25:55&#43;08:00" />
+    
+    <meta property="article:section" content="posts" />
+
+
+
+     <script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+ MathJax.Hub.Config({
+     tex2jax: {
+         inlineMath: [['$','$'], ['\\(','\\)']],
+         displayMath: [['$$','$$'], ['\[\[','\]\]']],
+         processEscapes: true,
+         processEnvironments: true,
+         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+         TeX: { equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"] }
+     }
+ });
+
+ MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+ });
+
+</script>
+
+<style>
+ code.has-jax {
+     font: inherit;
+     font-size: 100%;
+     background: inherit;
+     border: inherit;
+     color: #515151;
+ }
+</style>
+
+
+   
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header" data-scroll-header>
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">liudy</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/categories/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon th"><path d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255 0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm386.667-56H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24z"/></svg><span class="menu-item-name">分类</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/tags/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon tags"><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg><span class="menu-item-name">标签</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/about/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class="menu-item-name">关于</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    <div class="main-inner">
+
+        
+
+        <article class="content post" data-align="default" data-type="posts" data-toc-num="true">
+
+            <h1 class="post-title">Memory Allocation</h1>
+
+            
+
+            
+                <div class="post-description">本文介绍关于 memory allocation 方面的笔记。</div>
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2022-07-05T14:55:34&#43;08:00" class="post-meta-item published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2022.7.5</time>
+    
+    
+        
+        <time datetime="2022-07-07T15:25:55&#43;08:00" class="post-meta-item modified"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.7.7</time>
+    
+    
+    
+        
+        
+        
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/research/" class="category-link">Research</a></span>
+            
+        
+    
+    
+        
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;3909</span>
+    
+    
+        
+        <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;8&nbsp;分钟</span>
+    
+    
+        
+            
+            <span class="post-meta-item busuanzi-page-pv" id="busuanzi_container_page_pv"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon post-meta-icon"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_page_pv"></span></span>
+        
+    
+    
+</div>
+
+            
+
+            <nav class="contents">
+  <h2 id="contents" class="contents-title">目录</h2><ol class="toc">
+    <li><a href="#linear-allocation">Linear Allocation</a>
+      <ol>
+        <li><a href="#basic-implementation">Basic Implementation</a>
+          <ol>
+            <li><a href="#memory-alignment">Memory Alignment</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#stack-like-lifo-allocation">Stack-Like (LIFO) Allocation</a>
+      <ol>
+        <li><a href="#a-simple-implementation">A simple implementation</a></li>
+      </ol>
+    </li>
+    <li><a href="#pool-based-allocation">Pool-Based Allocation</a>
+      <ol>
+        <li><a href="#a-simple-implementation-1">A simple implementation</a></li>
+      </ol>
+    </li>
+    <li><a href="#free-list-based-allocation">Free List Based Allocation</a>
+      <ol>
+        <li><a href="#implementation">Implementation</a>
+          <ol>
+            <li><a href="#linked-list-approach">Linked list Approach</a></li>
+            <li><a href="#red-black-tree-approach">Red Black Tree Approach</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#buddy-memory-allocation">Buddy Memory Allocation</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ol>
+</nav><div class="post-body">
+              <h2 id="linear-allocation"><a href="#linear-allocation" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Linear Allocation</h2>
+<p>Linear allocation, 如名字所表示的，其内存的分配方式为线性的。在逻辑上其只需要维护一个当前最后分配位置的 offset （or pointer）
+<img src="/imgs/linear_allocator.svg" alt=""></p>
+<p>当需要分配内存时， offset 会继续向后移动
+<img src="/imgs/linear_allocator_alloc.svg" alt=""></p>
+<p>需要注意的是该 linear allocation 不支持用户 free 指定的内存块，内存一般只能一次性全都进行 free。</p>
+<h3 id="basic-implementation"><a href="#basic-implementation" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Basic Implementation</h3>
+<h4 id="memory-alignment"><a href="#memory-alignment" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Memory Alignment</h4>
+<p>在现代计算机架构中内存的读取都是按照 word size (4 bytes on a 32 bit machine, 8 bytes on a 64 bit machine) 进行读取的。如果你要访问一个 unaligned memory， 将会导致 cpu 必须要访问多个 &quot;word&quot;，如此则会导致更高的时延。</p>
+<p>在内存中， align 一般都是需要是 2 的指数值（1，2，4，8，16，etc）。我们可以使用如下代码判断 alignment 是否为 2 的指数</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">bool</span> <span class="nf">is_power_of_two</span><span class="p">(</span><span class="n">uintptr_t</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>对地址进行 alignment</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">uintptr_t</span> <span class="nf">align_forward</span><span class="p">(</span><span class="n">uintptr_t</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">align</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">uintptr_t</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">modulo</span><span class="p">;</span>
+
+	<span class="n">assert</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="n">align</span><span class="p">));</span>
+
+	<span class="n">p</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">align</span><span class="p">;</span>
+	<span class="c1">// Same as (p % a) but faster as &#39;a&#39; is a power of two
+</span><span class="c1"></span>	<span class="n">modulo</span> <span class="o">=</span> <span class="n">p</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">modulo</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// If &#39;p&#39; address is not aligned, push the address to the
+</span><span class="c1"></span>		<span class="c1">// next value which is aligned
+</span><span class="c1"></span>		<span class="n">p</span> <span class="o">+=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">modulo</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>A simple implementation</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;stddef.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#if !defined(__cplusplus)
+</span><span class="cp"></span>	<span class="cp">#if (defined(_MSC_VER) &amp;&amp; _MSC_VER &lt; 1800) || (!defined(_MSC_VER) &amp;&amp; !defined(__STDC_VERSION__))
+</span><span class="cp"></span>		<span class="cp">#ifndef true
+</span><span class="cp"></span>		<span class="cp">#define true  (0 == 0)
+</span><span class="cp"></span>		<span class="cp">#endif
+</span><span class="cp"></span>		<span class="cp">#ifndef false
+</span><span class="cp"></span>		<span class="cp">#define false (0 != 0)
+</span><span class="cp"></span>		<span class="cp">#endif
+</span><span class="cp"></span>		<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="kt">bool</span><span class="p">;</span>
+	<span class="cp">#else
+</span><span class="cp"></span>		<span class="cp">#include</span> <span class="cpf">&lt;stdbool.h&gt;</span><span class="cp">
+</span><span class="cp"></span>	<span class="cp">#endif
+</span><span class="cp">#endif
+</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">bool</span> <span class="nf">is_power_of_two</span><span class="p">(</span><span class="n">uintptr_t</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">uintptr_t</span> <span class="nf">align_forward</span><span class="p">(</span><span class="n">uintptr_t</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">align</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">uintptr_t</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">modulo</span><span class="p">;</span>
+
+	<span class="n">assert</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="n">align</span><span class="p">));</span>
+
+	<span class="n">p</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">align</span><span class="p">;</span>
+	<span class="c1">// Same as (p % a) but faster as &#39;a&#39; is a power of two
+</span><span class="c1"></span>	<span class="n">modulo</span> <span class="o">=</span> <span class="n">p</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">modulo</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// If &#39;p&#39; address is not aligned, push the address to the
+</span><span class="c1"></span>		<span class="c1">// next value which is aligned
+</span><span class="c1"></span>		<span class="n">p</span> <span class="o">+=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">modulo</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#ifndef DEFAULT_ALIGNMENT
+</span><span class="cp">#define DEFAULT_ALIGNMENT (2*sizeof(void *))
+</span><span class="cp">#endif
+</span><span class="cp"></span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">Arena</span> <span class="n">Arena</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">Arena</span> <span class="p">{</span>
+	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
+	<span class="n">size_t</span>         <span class="n">buf_len</span><span class="p">;</span>
+	<span class="n">size_t</span>         <span class="n">prev_offset</span><span class="p">;</span> <span class="c1">// This will be useful for later on
+</span><span class="c1"></span>	<span class="n">size_t</span>         <span class="n">curr_offset</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">arena_init</span><span class="p">(</span><span class="n">Arena</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">backing_buffer</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">backing_buffer_length</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">a</span><span class="o">-&gt;</span><span class="n">buf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">backing_buffer</span><span class="p">;</span>
+	<span class="n">a</span><span class="o">-&gt;</span><span class="n">buf_len</span> <span class="o">=</span> <span class="n">backing_buffer_length</span><span class="p">;</span>
+	<span class="n">a</span><span class="o">-&gt;</span><span class="n">curr_offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">a</span><span class="o">-&gt;</span><span class="n">prev_offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">arena_alloc_align</span><span class="p">(</span><span class="n">Arena</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">align</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// Align &#39;curr_offset&#39; forward to the specified alignment
+</span><span class="c1"></span>	<span class="n">uintptr_t</span> <span class="n">curr_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">buf</span> <span class="o">+</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">curr_offset</span><span class="p">;</span>
+	<span class="n">uintptr_t</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">align_forward</span><span class="p">(</span><span class="n">curr_ptr</span><span class="p">,</span> <span class="n">align</span><span class="p">);</span>
+	<span class="n">offset</span> <span class="o">-=</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">;</span> <span class="c1">// Change to relative offset
+</span><span class="c1"></span>
+	<span class="c1">// Check to see if the backing memory has space left
+</span><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="n">offset</span><span class="o">+</span><span class="n">size</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">buf_len</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">offset</span><span class="p">];</span>
+		<span class="n">a</span><span class="o">-&gt;</span><span class="n">prev_offset</span> <span class="o">=</span> <span class="n">offset</span><span class="p">;</span>
+		<span class="n">a</span><span class="o">-&gt;</span><span class="n">curr_offset</span> <span class="o">=</span> <span class="n">offset</span><span class="o">+</span><span class="n">size</span><span class="p">;</span>
+
+		<span class="c1">// Zero new memory by default
+</span><span class="c1"></span>		<span class="n">memset</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">ptr</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="c1">// Return NULL if the arena is out of memory (or handle differently)
+</span><span class="c1"></span>	<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Because C doesn&#39;t have default parameters
+</span><span class="c1"></span><span class="kt">void</span> <span class="o">*</span><span class="nf">arena_alloc</span><span class="p">(</span><span class="n">Arena</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">arena_alloc_align</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">DEFAULT_ALIGNMENT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">arena_free</span><span class="p">(</span><span class="n">Arena</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// Do nothing
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">arena_resize_align</span><span class="p">(</span><span class="n">Arena</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">old_memory</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">old_size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">new_size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">align</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">old_mem</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">old_memory</span><span class="p">;</span>
+
+	<span class="n">assert</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="n">align</span><span class="p">));</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">old_mem</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">old_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">arena_alloc_align</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">new_size</span><span class="p">,</span> <span class="n">align</span><span class="p">);</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">buf</span> <span class="o">&lt;=</span> <span class="n">old_mem</span> <span class="o">&amp;&amp;</span> <span class="n">old_mem</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">buf</span><span class="o">+</span><span class="n">buf_len</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">buf</span><span class="o">+</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">prev_offset</span> <span class="o">==</span> <span class="n">old_mem</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">a</span><span class="o">-&gt;</span><span class="n">curr_offset</span> <span class="o">=</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">prev_offset</span> <span class="o">+</span> <span class="n">new_size</span><span class="p">;</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">new_size</span> <span class="o">&gt;</span> <span class="n">old_size</span><span class="p">)</span> <span class="p">{</span>
+				<span class="c1">// Zero the new memory by default
+</span><span class="c1"></span>				<span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">curr_offset</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">new_size</span><span class="o">-</span><span class="n">old_size</span><span class="p">);</span>
+			<span class="p">}</span>
+			<span class="k">return</span> <span class="n">old_memory</span><span class="p">;</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="kt">void</span> <span class="o">*</span><span class="n">new_memory</span> <span class="o">=</span> <span class="n">arena_alloc_align</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">new_size</span><span class="p">,</span> <span class="n">align</span><span class="p">);</span>
+			<span class="n">size_t</span> <span class="n">copy_size</span> <span class="o">=</span> <span class="n">old_size</span> <span class="o">&lt;</span> <span class="n">new_size</span> <span class="o">?</span> <span class="nl">old_size</span> <span class="p">:</span> <span class="n">new_size</span><span class="p">;</span>
+			<span class="c1">// Copy across old memory to the new memory
+</span><span class="c1"></span>			<span class="n">memmove</span><span class="p">(</span><span class="n">new_memory</span><span class="p">,</span> <span class="n">old_memory</span><span class="p">,</span> <span class="n">copy_size</span><span class="p">);</span>
+			<span class="k">return</span> <span class="n">new_memory</span><span class="p">;</span>
+		<span class="p">}</span>
+
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="n">assert</span><span class="p">(</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="s">&#34;Memory is out of bounds of the buffer in this arena&#34;</span><span class="p">);</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// Because C doesn&#39;t have default parameters
+</span><span class="c1"></span><span class="kt">void</span> <span class="o">*</span><span class="nf">arena_resize</span><span class="p">(</span><span class="n">Arena</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">old_memory</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">old_size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">new_size</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">arena_resize_align</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">old_memory</span><span class="p">,</span> <span class="n">old_size</span><span class="p">,</span> <span class="n">new_size</span><span class="p">,</span> <span class="n">DEFAULT_ALIGNMENT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">arena_free_all</span><span class="p">(</span><span class="n">Arena</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">a</span><span class="o">-&gt;</span><span class="n">curr_offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">a</span><span class="o">-&gt;</span><span class="n">prev_offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Extra Features
+</span><span class="c1"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">Temp_Arena_Memory</span> <span class="n">Temp_Arena_Memory</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">Temp_Arena_Memory</span> <span class="p">{</span>
+	<span class="n">Arena</span> <span class="o">*</span><span class="n">arena</span><span class="p">;</span>
+	<span class="n">size_t</span> <span class="n">prev_offset</span><span class="p">;</span>
+	<span class="n">size_t</span> <span class="n">curr_offset</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Temp_Arena_Memory</span> <span class="nf">temp_arena_memory_begin</span><span class="p">(</span><span class="n">Arena</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">Temp_Arena_Memory</span> <span class="n">temp</span><span class="p">;</span>
+	<span class="n">temp</span><span class="p">.</span><span class="n">arena</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+	<span class="n">temp</span><span class="p">.</span><span class="n">prev_offset</span> <span class="o">=</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">prev_offset</span><span class="p">;</span>
+	<span class="n">temp</span><span class="p">.</span><span class="n">curr_offset</span> <span class="o">=</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">curr_offset</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">temp_arena_memory_end</span><span class="p">(</span><span class="n">Temp_Arena_Memory</span> <span class="n">temp</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">temp</span><span class="p">.</span><span class="n">arena</span><span class="o">-&gt;</span><span class="n">prev_offset</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">prev_offset</span><span class="p">;</span>
+	<span class="n">temp</span><span class="p">.</span><span class="n">arena</span><span class="o">-&gt;</span><span class="n">curr_offset</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">curr_offset</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">backing_buffer</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+	<span class="n">Arena</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+	<span class="n">arena_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">backing_buffer</span><span class="p">,</span> <span class="mi">256</span><span class="p">);</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">int</span> <span class="o">*</span><span class="n">x</span><span class="p">;</span>
+		<span class="kt">float</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>
+		<span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">;</span>
+
+		<span class="c1">// Reset all arena offsets for each loop
+</span><span class="c1"></span>		<span class="n">arena_free_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+
+		<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">arena_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+		<span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span> <span class="o">*</span><span class="p">)</span><span class="n">arena_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+		<span class="n">str</span> <span class="o">=</span> <span class="n">arena_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+		<span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+		<span class="o">*</span><span class="n">f</span> <span class="o">=</span> <span class="mi">987</span><span class="p">;</span>
+		<span class="n">memmove</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="s">&#34;Hellope&#34;</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%p: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">x</span><span class="p">);</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%p: %f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">f</span><span class="p">);</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%p: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+
+		<span class="n">str</span> <span class="o">=</span> <span class="n">arena_resize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+		<span class="n">memmove</span><span class="p">(</span><span class="n">str</span><span class="o">+</span><span class="mi">7</span><span class="p">,</span> <span class="s">&#34; world!&#34;</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%p: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="n">arena_free_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="stack-like-lifo-allocation"><a href="#stack-like-lifo-allocation" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Stack-Like (LIFO) Allocation</h2>
+<p>stack-like allocation 指的是支持 last-in, first-out 原则的内存分配策略。 在该 allocator 中会在内存中维护一个 header 信息，其中保存关于内存分配的一些信息比如：</p>
+<ul>
+<li>Store the padding from the previous offset</li>
+<li>Store the previous offset</li>
+<li>Store the size of the allocation</li>
+</ul>
+<p><img src="/imgs/stack_allocator.svg" alt=""></p>
+<p>当有新的 allocation，依旧是将 offset 进行移动，
+<img src="/imgs/stack_allocator_alloc.svg" alt=""></p>
+<p>当要释放尾部的一块内存时，会去读取 header 内的信息，然后修改相应的 offset 的值
+<img src="/imgs/stack_allocator_free.svg" alt=""></p>
+<h3 id="a-simple-implementation"><a href="#a-simple-implementation" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>A simple implementation</h3>
+<p>数据结构</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">Stack</span> <span class="n">Stack</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">Stack</span> <span class="p">{</span>
+	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
+	<span class="n">size_t</span> <span class="n">buf_len</span><span class="p">;</span>
+	<span class="n">size_t</span> <span class="n">offset</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">Stack_Allocation_Header</span> <span class="n">Stack_Allocation_Header</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">Stack_Allocation_Header</span> <span class="p">{</span>
+	<span class="kt">uint8_t</span> <span class="n">padding</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>在这里 header 中保存的信息为了 alignment, 前面空置（padding）了多少bytes
+<img src="/imgs/stack_allocator_header.svg" alt=""></p>
+<p><code>stack_init</code></p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">stack_init</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">backing_buffer</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">backing_buffer_length</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">s</span><span class="o">-&gt;</span><span class="n">buf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">backing_buffer</span><span class="p">;</span>
+	<span class="n">s</span><span class="o">-&gt;</span><span class="n">buf_len</span> <span class="o">=</span> <span class="n">backing_buffer_length</span><span class="p">;</span>
+	<span class="n">s</span><span class="o">-&gt;</span><span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">size_t</span> <span class="nf">calc_padding_with_header</span><span class="p">(</span><span class="n">uintptr_t</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">uintptr_t</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">header_size</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">uintptr_t</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">modulo</span><span class="p">,</span> <span class="n">padding</span><span class="p">,</span> <span class="n">needed_space</span><span class="p">;</span>
+
+	<span class="n">assert</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="n">alignment</span><span class="p">));</span>
+
+	<span class="n">p</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="n">alignment</span><span class="p">;</span>
+	<span class="n">modulo</span> <span class="o">=</span> <span class="n">p</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// (p % a) as it assumes alignment is a power of two
+</span><span class="c1"></span>
+	<span class="n">padding</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">needed_space</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">modulo</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Same logic as &#39;align_forward&#39;
+</span><span class="c1"></span>		<span class="n">padding</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">modulo</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">needed_space</span> <span class="o">=</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">header_size</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">padding</span> <span class="o">&lt;</span> <span class="n">needed_space</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">needed_space</span> <span class="o">-=</span> <span class="n">padding</span><span class="p">;</span>
+
+		<span class="k">if</span> <span class="p">((</span><span class="n">needed_space</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">padding</span> <span class="o">+=</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="p">(</span><span class="n">needed_space</span><span class="o">/</span><span class="n">a</span><span class="p">));</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="n">padding</span> <span class="o">+=</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">needed_space</span><span class="o">/</span><span class="n">a</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="p">(</span><span class="n">size_t</span><span class="p">)</span><span class="n">padding</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">stack_alloc_align</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">alignment</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">uintptr_t</span> <span class="n">curr_addr</span><span class="p">,</span> <span class="n">next_addr</span><span class="p">;</span>
+	<span class="n">size_t</span> <span class="n">padding</span><span class="p">;</span>
+	<span class="n">Stack_Allocation_Header</span> <span class="o">*</span><span class="n">header</span><span class="p">;</span>
+
+
+	<span class="n">assert</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="n">alignment</span><span class="p">));</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">alignment</span> <span class="o">&gt;</span> <span class="mi">128</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// As the padding is 8 bits (1 byte), the largest alignment that can
+</span><span class="c1"></span>		<span class="c1">// be used is 128 bytes
+</span><span class="c1"></span>		<span class="n">alignment</span> <span class="o">=</span> <span class="mi">128</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">curr_addr</span> <span class="o">=</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">buf</span> <span class="o">+</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">offset</span><span class="p">;</span>
+	<span class="n">padding</span> <span class="o">=</span> <span class="n">calc_padding_with_header</span><span class="p">(</span><span class="n">curr_addr</span><span class="p">,</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">alignment</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Stack_Allocation_Header</span><span class="p">));</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">offset</span> <span class="o">+</span> <span class="n">padding</span> <span class="o">+</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="n">s</span><span class="o">-&gt;</span><span class="n">buf_len</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// Stack allocator is out of memory
+</span><span class="c1"></span>		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">s</span><span class="o">-&gt;</span><span class="n">offset</span> <span class="o">+=</span> <span class="n">padding</span><span class="p">;</span>
+
+	<span class="n">next_addr</span> <span class="o">=</span> <span class="n">curr_addr</span> <span class="o">+</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">padding</span><span class="p">;</span>
+	<span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="n">Stack_Allocation_Header</span> <span class="o">*</span><span class="p">)(</span><span class="n">next_addr</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Stack_Allocation_Header</span><span class="p">));</span>
+	<span class="n">header</span><span class="o">-&gt;</span><span class="n">padding</span> <span class="o">=</span> <span class="p">(</span><span class="n">uint8_t</span><span class="p">)</span><span class="n">padding</span><span class="p">;</span>
+
+	<span class="n">s</span><span class="o">-&gt;</span><span class="n">offset</span> <span class="o">+=</span> <span class="n">size</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="n">memset</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">next_addr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Because C does not have default parameters
+</span><span class="c1"></span><span class="kt">void</span> <span class="o">*</span><span class="nf">stack_alloc</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">stack_alloc_align</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">DEFAULT_ALIGNMENT</span><span class="p">);</span>
+<span class="p">}</span>
+ <span class="kt">void</span> <span class="nf">stack_free</span><span class="p">(</span><span class="n">Stack</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">uintptr_t</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">curr_addr</span><span class="p">;</span>
+		<span class="n">Stack_Allocation_Header</span> <span class="o">*</span><span class="n">header</span><span class="p">;</span>
+		<span class="n">size_t</span> <span class="n">prev_offset</span><span class="p">;</span>
+
+		<span class="n">start</span> <span class="o">=</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">;</span>
+		<span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">buf_len</span><span class="p">;</span>
+		<span class="n">curr_addr</span> <span class="o">=</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">ptr</span><span class="p">;</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="n">curr_addr</span> <span class="o">&amp;&amp;</span> <span class="n">curr_addr</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">))</span> <span class="p">{</span>
+			<span class="n">assert</span><span class="p">(</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="s">&#34;Out of bounds memory address passed to stack allocator (free)&#34;</span><span class="p">);</span>
+			<span class="k">return</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="k">if</span> <span class="n">curr_addr</span> <span class="o">&gt;=</span> <span class="n">start</span><span class="o">+</span><span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">offset</span> <span class="p">{</span>
+			<span class="c1">// Allow double frees
+</span><span class="c1"></span>			<span class="k">return</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="n">Stack_Allocation_Header</span> <span class="o">*</span><span class="p">)(</span><span class="n">curr_addr</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Stack_Allocation_Header</span><span class="p">));</span>
+		<span class="n">prev_offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">size_t</span><span class="p">)(</span><span class="n">curr_addr</span> <span class="o">-</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">header</span><span class="o">-&gt;</span><span class="n">padding</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
+
+		<span class="n">s</span><span class="o">-&gt;</span><span class="n">offset</span> <span class="o">=</span> <span class="n">prev_offset</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="pool-based-allocation"><a href="#pool-based-allocation" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Pool-Based Allocation</h2>
+<p>Pool-based allocation 将内存池分为一个个相等大小的 chunks，并且跟踪其状态占用或者空闲。</p>
+<p><img src="/imgs/pool_allocator.svg" alt="">
+我们使用一个 free list (linked-list) 来存储空闲的 chunks。
+<img src="/imgs/pool_allocator_list.svg" alt="">
+一般 free list 是直接写在 chunk 的内部（头部）。
+<img src="/imgs/pool_allocator_list_inplace.svg" alt=""></p>
+<p>当有内存请求时，直接使用 free list 的头部内存块
+<img src="/imgs/pool_allocator_alloc.svg" alt=""></p>
+<p>需要注意的是，由于本 allocator 支持随意 free memory， 所以 free list 的结构可能会无序，比如：
+<img src="/imgs/pool_allocator_alloc_unordered.svg" alt=""></p>
+<h3 id="a-simple-implementation-1"><a href="#a-simple-implementation-1" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>A simple implementation</h3>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stddef.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#if !defined(__cplusplus)
+</span><span class="cp"></span>	<span class="cp">#if (defined(_MSC_VER) &amp;&amp; _MSC_VER &lt; 1800) || (!defined(_MSC_VER) &amp;&amp; !defined(__STDC_VERSION__))
+</span><span class="cp"></span>		<span class="cp">#ifndef true
+</span><span class="cp"></span>		<span class="cp">#define true  (0 == 0)
+</span><span class="cp"></span>		<span class="cp">#endif
+</span><span class="cp"></span>		<span class="cp">#ifndef false
+</span><span class="cp"></span>		<span class="cp">#define false (0 != 0)
+</span><span class="cp"></span>		<span class="cp">#endif
+</span><span class="cp"></span>		<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="kt">bool</span><span class="p">;</span>
+	<span class="cp">#else
+</span><span class="cp"></span>		<span class="cp">#include</span> <span class="cpf">&lt;stdbool.h&gt;</span><span class="cp">
+</span><span class="cp"></span>	<span class="cp">#endif
+</span><span class="cp">#endif
+</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">bool</span> <span class="nf">is_power_of_two</span><span class="p">(</span><span class="n">uintptr_t</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">uintptr_t</span> <span class="nf">align_forward_uintptr</span><span class="p">(</span><span class="n">uintptr_t</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">uintptr_t</span> <span class="n">align</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">uintptr_t</span> <span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">modulo</span><span class="p">;</span>
+
+	<span class="n">assert</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="n">align</span><span class="p">));</span>
+
+	<span class="n">a</span> <span class="o">=</span> <span class="n">align</span><span class="p">;</span>
+	<span class="n">p</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
+	<span class="n">modulo</span> <span class="o">=</span> <span class="n">p</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">modulo</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">p</span> <span class="o">+=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">modulo</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">size_t</span> <span class="nf">align_forward_size</span><span class="p">(</span><span class="n">size_t</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">align</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">size_t</span> <span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">modulo</span><span class="p">;</span>
+
+	<span class="n">assert</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">((</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">align</span><span class="p">));</span>
+
+	<span class="n">a</span> <span class="o">=</span> <span class="n">align</span><span class="p">;</span>
+	<span class="n">p</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
+	<span class="n">modulo</span> <span class="o">=</span> <span class="n">p</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">modulo</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">p</span> <span class="o">+=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">modulo</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#ifndef DEFAULT_ALIGNMENT
+</span><span class="cp">#define DEFAULT_ALIGNMENT 8
+</span><span class="cp">#endif
+</span><span class="cp"></span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">Pool_Free_Node</span> <span class="n">Pool_Free_Node</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">Pool_Free_Node</span> <span class="p">{</span>
+	<span class="n">Pool_Free_Node</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">Pool</span> <span class="n">Pool</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">Pool</span> <span class="p">{</span>
+	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
+	<span class="n">size_t</span> <span class="n">buf_len</span><span class="p">;</span>
+	<span class="n">size_t</span> <span class="n">chunk_size</span><span class="p">;</span>
+
+	<span class="n">Pool_Free_Node</span> <span class="o">*</span><span class="n">head</span><span class="p">;</span> <span class="c1">// Free List Head
+</span><span class="c1"></span><span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">pool_free_all</span><span class="p">(</span><span class="n">Pool</span> <span class="o">*</span><span class="n">p</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">pool_init</span><span class="p">(</span><span class="n">Pool</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">backing_buffer</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">backing_buffer_length</span><span class="p">,</span>
+               <span class="n">size_t</span> <span class="n">chunk_size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">chunk_alignment</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// Align backing buffer to the specified chunk alignment
+</span><span class="c1"></span>	<span class="n">uintptr_t</span> <span class="n">initial_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">backing_buffer</span><span class="p">;</span>
+	<span class="n">uintptr_t</span> <span class="n">start</span> <span class="o">=</span> <span class="n">align_forward_uintptr</span><span class="p">(</span><span class="n">initial_start</span><span class="p">,</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">chunk_alignment</span><span class="p">);</span>
+	<span class="n">backing_buffer_length</span> <span class="o">-=</span> <span class="p">(</span><span class="n">size_t</span><span class="p">)(</span><span class="n">start</span><span class="o">-</span><span class="n">initial_start</span><span class="p">);</span>
+
+	<span class="c1">// Align chunk size up to the required chunk_alignment
+</span><span class="c1"></span>	<span class="n">chunk_size</span> <span class="o">=</span> <span class="n">align_forward_size</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">,</span> <span class="n">chunk_alignment</span><span class="p">);</span>
+
+	<span class="c1">// Assert that the parameters passed are valid
+</span><span class="c1"></span>	<span class="n">assert</span><span class="p">(</span><span class="n">chunk_size</span> <span class="o">&gt;=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Pool_Free_Node</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+	       <span class="s">&#34;Chunk size is too small&#34;</span><span class="p">);</span>
+	<span class="n">assert</span><span class="p">(</span><span class="n">backing_buffer_length</span> <span class="o">&gt;=</span> <span class="n">chunk_size</span> <span class="o">&amp;&amp;</span>
+	       <span class="s">&#34;Backing buffer length is smaller than the chunk size&#34;</span><span class="p">);</span>
+
+	<span class="c1">// Store the adjusted parameters
+</span><span class="c1"></span>	<span class="n">p</span><span class="o">-&gt;</span><span class="n">buf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">backing_buffer</span><span class="p">;</span>
+	<span class="n">p</span><span class="o">-&gt;</span><span class="n">buf_len</span> <span class="o">=</span> <span class="n">backing_buffer_length</span><span class="p">;</span>
+	<span class="n">p</span><span class="o">-&gt;</span><span class="n">chunk_size</span> <span class="o">=</span> <span class="n">chunk_size</span><span class="p">;</span>
+	<span class="n">p</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="c1">// Free List Head
+</span><span class="c1"></span>
+	<span class="c1">// Set up the free list for free chunks
+</span><span class="c1"></span>	<span class="n">pool_free_all</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">pool_alloc</span><span class="p">(</span><span class="n">Pool</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// Get latest free node
+</span><span class="c1"></span>	<span class="n">Pool_Free_Node</span> <span class="o">*</span><span class="n">node</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">node</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">assert</span><span class="p">(</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="s">&#34;Pool allocator has no free memory&#34;</span><span class="p">);</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// Pop free node
+</span><span class="c1"></span>	<span class="n">p</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+
+	<span class="c1">// Zero memory by default
+</span><span class="c1"></span>	<span class="k">return</span> <span class="n">memset</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">chunk_size</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">pool_free</span><span class="p">(</span><span class="n">Pool</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">Pool_Free_Node</span> <span class="o">*</span><span class="n">node</span><span class="p">;</span>
+
+	<span class="kt">void</span> <span class="o">*</span><span class="n">start</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">;</span>
+	<span class="kt">void</span> <span class="o">*</span><span class="n">end</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">buf_len</span><span class="p">];</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// Ignore NULL pointers
+</span><span class="c1"></span>		<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="n">ptr</span> <span class="o">&amp;&amp;</span> <span class="n">ptr</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">))</span> <span class="p">{</span>
+		<span class="n">assert</span><span class="p">(</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="s">&#34;Memory is out of bounds of the buffer in this pool&#34;</span><span class="p">);</span>
+		<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// Push free node
+</span><span class="c1"></span>	<span class="n">node</span> <span class="o">=</span> <span class="p">(</span><span class="n">Pool_Free_Node</span> <span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">;</span>
+	<span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span>
+	<span class="n">p</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">pool_free_all</span><span class="p">(</span><span class="n">Pool</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">size_t</span> <span class="n">chunk_count</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">buf_len</span> <span class="o">/</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">chunk_size</span><span class="p">;</span>
+	<span class="n">size_t</span> <span class="n">i</span><span class="p">;</span>
+
+	<span class="c1">// Set all chunks to be free
+</span><span class="c1"></span>	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">chunk_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">chunk_size</span><span class="p">];</span>
+		<span class="n">Pool_Free_Node</span> <span class="o">*</span><span class="n">node</span> <span class="o">=</span> <span class="p">(</span><span class="n">Pool_Free_Node</span> <span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">;</span>
+		<span class="c1">// Push free node onto thte free list
+</span><span class="c1"></span>		<span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span>
+		<span class="n">p</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">backing_buffer</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+	<span class="n">Pool</span> <span class="n">p</span><span class="p">;</span>
+	<span class="kt">void</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="o">*</span><span class="n">d</span><span class="p">,</span> <span class="o">*</span><span class="n">e</span><span class="p">,</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>
+
+	<span class="n">pool_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">backing_buffer</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">DEFAULT_ALIGNMENT</span><span class="p">);</span>
+
+	<span class="n">a</span> <span class="o">=</span> <span class="n">pool_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+	<span class="n">b</span> <span class="o">=</span> <span class="n">pool_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+	<span class="n">c</span> <span class="o">=</span> <span class="n">pool_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+	<span class="n">d</span> <span class="o">=</span> <span class="n">pool_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+	<span class="n">e</span> <span class="o">=</span> <span class="n">pool_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+	<span class="n">f</span> <span class="o">=</span> <span class="n">pool_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+
+	<span class="n">pool_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span>
+	<span class="n">pool_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+	<span class="n">pool_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+	<span class="n">pool_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span>
+
+	<span class="n">d</span> <span class="o">=</span> <span class="n">pool_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+
+	<span class="n">pool_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+
+	<span class="n">a</span> <span class="o">=</span> <span class="n">pool_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+
+	<span class="n">pool_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+	<span class="n">pool_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+	<span class="n">pool_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="free-list-based-allocation"><a href="#free-list-based-allocation" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Free List Based Allocation</h2>
+<p>对于 pool allocator 的缺点是其内存分配必须是同样的 size。对于 free list allocator 则对内存的分配与释放没有任何限制，只是相较于其它 allocator 性能上会有些损失。在实现 free list allocator 上一般会有两种方式: linked list； red black tree。</p>
+<h3 id="implementation"><a href="#implementation" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Implementation</h3>
+<h4 id="linked-list-approach"><a href="#linked-list-approach" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Linked list Approach</h4>
+<p><img src="/imgs/free_list_allocator.svg" alt="">
+该方法中，我们使用一个 linked list 存储一个连续的内存块及其的大小。当用户申请内存时，我们查找并返回一个满足需求的内存块，同时将该块从 linked list 中删除，并且在 block 的头部存储一个 header 信息。当 free 的时候，我们通过 header 的信息，知道需要 free 块的大小，将该块插入到 linked list 中，最后我们还会将邻近的 free blocks 进行合并变成更大的 block。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">// Unlike our trivial stack allocator, this header needs to store the 
+</span><span class="c1">// block size along with the padding meaning the header is a bit
+</span><span class="c1">// larger than the trivial stack allocator
+</span><span class="c1"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">Free_List_Allocation_Header</span> <span class="n">Free_List_Allocation_Header</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">Free_List_Allocation_Header</span> <span class="p">{</span>
+    <span class="n">size_t</span> <span class="n">block_size</span><span class="p">;</span>
+    <span class="n">size_t</span> <span class="n">padding</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// An intrusive linked list for the free memory blocks
+</span><span class="c1"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">Free_List_Node</span> <span class="n">Free_List_Node</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">Free_List_Node</span> <span class="p">{</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">size_t</span> <span class="n">block_size</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="n">Placement_Policy</span> <span class="n">Placement_Policy</span><span class="p">;</span>
+<span class="k">enum</span> <span class="n">Placement_Policy</span> <span class="p">{</span>
+    <span class="n">Placement_Policy_Find_First</span><span class="p">,</span>
+    <span class="n">Placement_Policy_Find_Best</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">Free_List</span> <span class="n">Free_List</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">Free_List</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="o">*</span>           <span class="n">data</span><span class="p">;</span>
+    <span class="n">size_t</span>           <span class="n">size</span><span class="p">;</span>
+    <span class="n">size_t</span>           <span class="n">used</span><span class="p">;</span>
+    
+    <span class="n">Free_List_Node</span> <span class="o">*</span> <span class="n">head</span><span class="p">;</span>
+    <span class="n">Placement_Policy</span> <span class="n">policy</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kt">void</span> <span class="nf">free_list_free_all</span><span class="p">(</span><span class="n">Free_List</span> <span class="o">*</span><span class="n">fl</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fl</span><span class="o">-&gt;</span><span class="n">used</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">first_node</span> <span class="o">=</span> <span class="p">(</span><span class="n">Free_List_Node</span> <span class="o">*</span><span class="p">)</span><span class="n">fl</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+    <span class="n">first_node</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">=</span> <span class="n">fl</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+    <span class="n">first_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">f</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">=</span> <span class="n">first_node</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">free_list_init</span><span class="p">(</span><span class="n">Free_List</span> <span class="o">*</span><span class="n">fl</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fl</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
+    <span class="n">fl</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+    <span class="n">free_list_free_all</span><span class="p">(</span><span class="n">fl</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">size_t</span> <span class="nf">calc_padding_with_header</span><span class="p">(</span><span class="n">uintptr_t</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">uintptr_t</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">header_size</span><span class="p">);</span>
+
+<span class="n">Free_List_Node</span> <span class="o">*</span><span class="nf">free_list_find_first</span><span class="p">(</span><span class="n">Free_List</span> <span class="o">*</span><span class="n">fl</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">size_t</span> <span class="o">*</span><span class="n">padding_</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">**</span><span class="n">prev_node_</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Iterates the list and finds the first free block with enough space 
+</span><span class="c1"></span>    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">node</span> <span class="o">=</span> <span class="n">fl</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">prev_node</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    
+    <span class="n">size_t</span> <span class="n">padding</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="n">node</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">padding</span> <span class="o">=</span> <span class="n">calc_padding_with_header</span><span class="p">((</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">alignment</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Free_List_Allocation_Header</span><span class="p">));</span>
+        <span class="n">size_t</span> <span class="n">required_space</span> <span class="o">=</span> <span class="n">size</span> <span class="o">+</span> <span class="n">padding</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">&gt;=</span> <span class="n">required_space</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">prev_node</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">padding_</span><span class="p">)</span> <span class="o">*</span><span class="n">padding_</span> <span class="o">=</span> <span class="n">padding</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">prev_node_</span><span class="p">)</span> <span class="o">*</span><span class="n">prev_node_</span> <span class="o">=</span> <span class="n">prev_node</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">node</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Free_List_Node</span> <span class="o">*</span><span class="nf">free_list_find_best</span><span class="p">(</span><span class="n">Free_List</span> <span class="o">*</span><span class="n">fl</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">size_t</span> <span class="o">*</span><span class="n">padding_</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">**</span><span class="n">prev_node_</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This iterates the entire list to find the best fit
+</span><span class="c1"></span>    <span class="c1">// O(n)
+</span><span class="c1"></span>    <span class="n">size_t</span> <span class="n">smallest_diff</span> <span class="o">=</span> <span class="o">~</span><span class="p">(</span><span class="n">size_t</span><span class="p">)</span><span class="mi">0</span><span class="p">;</span>
+    
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">node</span> <span class="o">=</span> <span class="n">fl</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">prev_node</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">best_node</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    
+    <span class="n">size_t</span> <span class="n">padding</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="n">node</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">padding</span> <span class="o">=</span> <span class="n">calc_padding_with_header</span><span class="p">((</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span><span class="n">uintptr_t</span><span class="p">)</span><span class="n">alignment</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Free_List_Allocation_Header</span><span class="p">));</span>
+        <span class="n">size_t</span> <span class="n">required_space</span> <span class="o">=</span> <span class="n">size</span> <span class="o">+</span> <span class="n">padding</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">&gt;=</span> <span class="n">required_space</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">block_size</span> <span class="o">-</span> <span class="n">required_space</span> <span class="o">&lt;</span> <span class="n">smallest_diff</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">best_node</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">prev_node</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">padding_</span><span class="p">)</span> <span class="o">*</span><span class="n">padding_</span> <span class="o">=</span> <span class="n">padding</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">prev_node_</span><span class="p">)</span> <span class="o">*</span><span class="n">prev_node_</span> <span class="o">=</span> <span class="n">prev_node</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">best_node</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">free_list_alloc</span><span class="p">(</span><span class="n">Free_List</span> <span class="o">*</span><span class="n">fl</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">alignment</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">size_t</span> <span class="n">padding</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">prev_node</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">node</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">size_t</span> <span class="n">alignment_padding</span><span class="p">,</span> <span class="n">required_space</span><span class="p">,</span> <span class="n">remaining</span><span class="p">;</span>
+    <span class="n">Free_List_Allocation_Header</span> <span class="o">*</span><span class="n">header_ptr</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Free_List_Node</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Free_List_Node</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">alignment</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">alignment</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">fl</span><span class="o">-&gt;</span><span class="n">policy</span> <span class="o">==</span> <span class="n">Placement_Policy_Find_Best</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">free_list_find_best</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">padding</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prev_node</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">free_list_find_first</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">padding</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prev_node</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">node</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">assert</span><span class="p">(</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="s">&#34;Free list has no free memory&#34;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">alignment_padding</span> <span class="o">=</span> <span class="n">padding</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Free_List_Allocation_Header</span><span class="p">);</span>
+    <span class="n">required_space</span> <span class="o">=</span> <span class="n">size</span> <span class="o">+</span> <span class="n">padding</span><span class="p">;</span>
+    <span class="n">remaining</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">-</span> <span class="n">required_space</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">remaining</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">new_node</span> <span class="o">=</span> <span class="p">(</span><span class="n">Free_List_Node</span> <span class="o">*</span><span class="p">)((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">node</span> <span class="o">+</span> <span class="n">required_space</span><span class="p">);</span>
+        <span class="n">new_node</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">=</span> <span class="n">rest</span><span class="p">;</span>
+        <span class="n">free_list_node_insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fl</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">new_node</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="n">free_list_node_remove</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fl</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">,</span> <span class="n">prev_node</span><span class="p">,</span> <span class="n">node</span><span class="p">);</span>
+    
+    <span class="n">header_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="n">Free_List_Allocation_Header</span> <span class="o">*</span><span class="p">)((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">node</span> <span class="o">+</span> <span class="n">alignment_padding</span><span class="p">);</span>
+    <span class="n">header_ptr</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">=</span> <span class="n">required_space</span><span class="p">;</span>
+    <span class="n">header_ptr</span><span class="o">-&gt;</span><span class="n">padding</span> <span class="o">=</span> <span class="n">alignment_padding</span><span class="p">;</span>
+    
+    <span class="n">fl</span><span class="o">-&gt;</span><span class="n">used</span> <span class="o">+=</span> <span class="n">required_space</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">header_ptr</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Free_List_Allocation_Header</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">free_list_coalescence</span><span class="p">(</span><span class="n">Free_List</span> <span class="o">*</span><span class="n">fl</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">prev_node</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">free_node</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">free_list_free</span><span class="p">(</span><span class="n">Free_List</span> <span class="o">*</span><span class="n">fl</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Free_List_Allocation_Header</span> <span class="o">*</span><span class="n">header</span><span class="p">;</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">free_node</span><span class="p">;</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">node</span><span class="p">;</span>
+    <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">prev_node</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="n">Free_List_Allocation_Header</span> <span class="o">*</span><span class="p">)((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Free_List_Allocation_Header</span><span class="p">));</span>
+    <span class="n">free_node</span> <span class="o">=</span> <span class="p">(</span><span class="n">Free_List_Node</span> <span class="o">*</span><span class="p">)</span><span class="n">header</span><span class="p">;</span>
+    <span class="n">free_node</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">=</span> <span class="n">header</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">+</span> <span class="n">header</span><span class="o">-&gt;</span><span class="n">padding</span><span class="p">;</span>
+    <span class="n">free_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    
+    <span class="n">node</span> <span class="o">=</span> <span class="n">fl</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">node</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">&lt;</span> <span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">free_list_node_insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fl</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">,</span> <span class="n">prev_node</span><span class="p">,</span> <span class="n">free_node</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">prev_node</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">fl</span><span class="o">-&gt;</span><span class="n">used</span> <span class="o">-=</span> <span class="n">free_node</span><span class="o">-&gt;</span><span class="n">block_size</span><span class="p">;</span>
+    
+    <span class="n">free_list_coalescence</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span> <span class="n">prev_node</span><span class="p">,</span> <span class="n">free_node</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">free_list_coalescence</span><span class="p">(</span><span class="n">Free_List</span> <span class="o">*</span><span class="n">fl</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">prev_node</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">free_node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">free_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">free_node</span> <span class="o">+</span> <span class="n">free_node</span><span class="o">-&gt;</span><span class="n">block_size</span><span class="p">)</span> <span class="o">==</span> <span class="n">free_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">free_node</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">+=</span> <span class="n">free_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">block_size</span><span class="p">;</span>
+        <span class="n">free_list_node_remove</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fl</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">,</span> <span class="n">free_node</span><span class="p">,</span> <span class="n">free_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">prev_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">prev_node</span> <span class="o">+</span> <span class="n">prev_node</span><span class="o">-&gt;</span><span class="n">block_size</span><span class="p">)</span> <span class="o">==</span> <span class="n">free_node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">prev_node</span><span class="o">-&gt;</span><span class="n">block_size</span> <span class="o">+=</span> <span class="n">free_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">block_size</span><span class="p">;</span>
+        <span class="n">free_list_node_remove</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fl</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">,</span> <span class="n">prev_node</span><span class="p">,</span> <span class="n">free_node</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">free_list_node_insert</span><span class="p">(</span><span class="n">Free_List_Node</span> <span class="o">**</span><span class="n">phead</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">prev_node</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">new_node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">prev_node</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">phead</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">new_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="o">*</span><span class="n">phead</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="o">*</span><span class="n">phead</span> <span class="o">=</span> <span class="n">new_node</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">prev_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">prev_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">new_node</span><span class="p">;</span>
+            <span class="n">new_node</span><span class="o">-&gt;</span><span class="n">next</span>  <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">new_node</span><span class="o">-&gt;</span><span class="n">next</span>  <span class="o">=</span> <span class="n">prev_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">prev_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">new_node</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">free_list_node_remove</span><span class="p">(</span><span class="n">Free_List_Node</span> <span class="o">**</span><span class="n">phead</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">prev_node</span><span class="p">,</span> <span class="n">Free_List_Node</span> <span class="o">*</span><span class="n">del_node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">prev_node</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="o">*</span><span class="n">phead</span> <span class="o">=</span> <span class="n">del_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> 
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> 
+        <span class="n">prev_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">del_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> 
+    <span class="p">}</span> 
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h4 id="red-black-tree-approach"><a href="#red-black-tree-approach" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Red Black Tree Approach</h4>
+<p><img src="/imgs/free_list_allocator_red_black_tree.svg" alt=""></p>
+<h2 id="buddy-memory-allocation"><a href="#buddy-memory-allocation" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Buddy Memory Allocation</h2>
+<p>Buddy algorithm 假定管理的内存大小是 2 的指数。当申请内存时，allocator 查找一个最小满足需求的 block。如果申请的大小小于 block size 的一半，我们会将其进行分裂，左右各一半（称为 buddies）。如果需求大小依旧小于分裂后的 block size 的一半，上述过程会继续进行。</p>
+<p>当 free a block， 我们会试着对其 buddies 进行合并。</p>
+<h2 id="reference"><a href="#reference" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Reference</h2>
+<ol>
+<li><a href="https://www.gingerbill.org/article/2019/02/08/memory-allocation-strategies-002/#fnref:1" target="_blank" rel="noopener">linear allocation</a></li>
+<li><a href="https://developer.ibm.com/articles/pa-dalign/" target="_blank" rel="noopener">Data alignment: Straighten up and fly right</a></li>
+<li><a href="https://www.gingerbill.org/article/2021/12/02/memory-allocation-strategies-006/" target="_blank" rel="noopener">Buddy Memory Allocation</a></li>
+</ol>
+
+            </div>
+
+        </article>
+
+        
+
+        
+    
+    
+        <ul class="post-copyright">
+            <li class="copyright-item author"><span class="copyright-item-text">作者</span>：<a href="https://liudyboy.github.io/" target="_blank" rel="noopener">liudy</a></li>
+            
+                
+                
+                
+                
+                <li class="copyright-item link"><span class="copyright-item-text">链接</span>：<a href="/posts/memory-allocation/" target="_blank" rel="noopener">https://liudyboy.github.io/posts/memory-allocation/</a></li>
+            
+            <li class="copyright-item license"><span class="copyright-item-text">许可</span>：<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></li>
+            
+        </ul>
+    
+
+
+
+        
+    <div class="updated-badge-container">
+        <span title="Updated @ 2022-07-07 15:25:55 CST" style="cursor:help">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2022-07-07</text><text x="915" y="140" textLength="650" transform="scale(.1)">2022-07-07</text></g></svg>
+        </span></div>
+
+
+
+        
+
+
+        <div class="post-share">
+
+        
+
+        <div class="share-items">
+
+            
+
+            
+
+            
+
+            
+
+            
+                <div class="share-item weibo">
+                    
+                    <a href="https://service.weibo.com/share/share.php?&amp;url=https://liudyboy.github.io/posts/memory-allocation/&amp;title=Memory%20Allocation&amp;pic=https://liudyboy.github.io/imgs/linear_allocator.svg&amp;searchPic=false" title="分享到「新浪微博」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon weibo-icon"><path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item douban">
+                    
+                    <a href="https://www.douban.com/share/service?href=https://liudyboy.github.io/posts/memory-allocation/&amp;name=Memory%20Allocation&amp;text=%e6%9c%ac%e6%96%87%e4%bb%8b%e7%bb%8d%e5%85%b3%e4%ba%8e%20memory%20allocation%20%e6%96%b9%e9%9d%a2%e7%9a%84%e7%ac%94%e8%ae%b0%e3%80%82" title="分享到「豆瓣」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon douban-icon"><path d="M.643.92v2.412h22.714V.92H.643zm1.974 4.926v9.42h18.764v-9.42H2.617zm2.72 2.408H18.69v4.605H5.338V8.254zm1.657 7.412l-2.512.938c1.037 1.461 1.87 2.825 2.512 4.091H0v2.385h24v-2.385h-6.678c.818-1.176 1.589-2.543 2.303-4.091l-2.73-.938a29.952 29.952 0 01-2.479 5.03h-4.75c-.786-1.962-1.677-3.641-2.672-5.03Z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item qq">
+                    
+                    <a href="https://connect.qq.com/widget/shareqq/index.html?url=https://liudyboy.github.io/posts/memory-allocation/&amp;title=Memory%20Allocation&amp;summary=%e6%9c%ac%e6%96%87%e4%bb%8b%e7%bb%8d%e5%85%b3%e4%ba%8e%20memory%20allocation%20%e6%96%b9%e9%9d%a2%e7%9a%84%e7%ac%94%e8%ae%b0%e3%80%82&amp;pics=https://liudyboy.github.io/imgs/linear_allocator.svg&amp;site=liudy" title="分享到「QQ」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon qq-icon"><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item qzone">
+                    
+                    <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://liudyboy.github.io/posts/memory-allocation/&amp;title=Memory%20Allocation&amp;summary=%e6%9c%ac%e6%96%87%e4%bb%8b%e7%bb%8d%e5%85%b3%e4%ba%8e%20memory%20allocation%20%e6%96%b9%e9%9d%a2%e7%9a%84%e7%ac%94%e8%ae%b0%e3%80%82&amp;pics=https://liudyboy.github.io/imgs/linear_allocator.svg&amp;site=liudy" title="分享到「QQ 空间」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon qzone-icon"><path d="M23.985 9.202c-.032-.099-.127-.223-.334-.258-.207-.036-7.351-1.406-7.351-1.406s-.105-.022-.198-.07c-.092-.047-.127-.167-.127-.167S12.447.956 12.349.77C12.25.583 12.104.532 12 .532c-.104 0-.251.051-.349.238-.098.186-3.626 6.531-3.626 6.531s-.035.12-.128.167c-.092.047-.197.07-.197.07S.556 8.908.348 8.943c-.208.036-.302.16-.333.258a.477.477 0 0 0 .125.449l5.362 5.49s.072.08.119.172c.016.104.005.21.005.21s-1.189 7.242-1.22 7.45.075.369.159.43c.083.062.233.106.421.013.189-.093 6.812-3.261 6.812-3.261s.098-.044.201-.061c.103-.017.201.061.201.061s6.623 3.168 6.812 3.261c.188.094.338.049.421-.013a.463.463 0 0 0 .159-.43c-.021-.14-.93-5.677-.93-5.677.876-.54 1.425-1.039 1.849-1.747-2.594.969-6.006 1.717-9.415 1.866-.915.041-2.41.097-3.473-.015-.678-.071-1.17-.144-1.243-.438-.053-.215.054-.46.545-.831a2640.5 2640.5 0 0 1 2.861-2.155c1.285-.968 3.559-2.47 3.559-2.731 0-.285-2.144-.781-4.037-.781-1.945 0-2.275.132-2.811.168-.488.034-.769.005-.804-.138-.06-.248.183-.389.588-.568.709-.314 1.86-.594 1.984-.626.194-.052 3.082-.805 5.618-.535 1.318.14 3.244.668 3.244 1.276 0 .342-1.721 1.494-3.225 2.597-1.149.843-2.217 1.561-2.217 1.688 0 .342 3.533 1.241 6.689 1.01l.003-.022c.048-.092.119-.172.119-.172l5.362-5.49a.477.477 0 0 0 .127-.449z"/></svg></a>
+                </div>
+            
+
+            
+                <div class="share-item qrcode">
+                    <div class="qrcode-container" title="通过「二维码」"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon qrcode-icon"><path d="M0 224h192V32H0v192zM64 96h64v64H64V96zm192-64v192h192V32H256zm128 128h-64V96h64v64zM0 480h192V288H0v192zm64-128h64v64H64v-64zm352-64h32v128h-96v-32h-32v96h-64V288h96v32h64v-32zm0 160h32v32h-32v-32zm-64 0h32v32h-32v-32z"/></svg><div id="qrcode-img"></div>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+
+<script>
+    var typeNumber = 0;
+    var errorCorrectionLevel = 'L';
+    var qr = qrcode(typeNumber, errorCorrectionLevel);
+    qr.addData('https:\/\/liudyboy.github.io\/posts\/memory-allocation\/');
+    qr.make();
+    document.getElementById('qrcode-img').innerHTML = qr.createImgTag();
+</script>
+
+                </div>
+            
+
+        </div>
+
+    </div>
+
+
+
+
+        
+    
+    
+        <div class="related-posts">
+            <h2 class="related-title">相关文章：<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon related-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg></h2>
+            <ul class="related-list">
+                
+                    <li class="related-item">
+                        <a href="/posts/understanding-diffusion-models-a-unified-perspective-note/" class="related-link">Understanding Diffusion Models a Unified Perspective Note</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/file-systems/" class="related-link">File Systems</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/distributed-garbage-collection-notes/" class="related-link">Distributed Garbage Collection Notes</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/gpu-cluster-scheduling/" class="related-link">GPU Cluster Scheduling</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/parallel-kernel-ridge-regression/" class="related-link">Parallel Kernel Ridge Regression</a>
+                    </li>
+                
+            </ul>
+        </div>
+    
+
+
+
+        
+    
+        <div class="post-tags">
+            
+                
+                
+                
+                
+                    
+                    <a href="/tags/memory/" rel="tag" class="post-tags-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>memory</a>
+                
+            
+        </div>
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+                <li class="post-nav-prev">
+                    <a href="/posts/spack-note/" rel="prev">&lt; Spack Note</a>
+                </li>
+            
+            
+                <li class="post-nav-next">
+                    <a href="/posts/file-systems/" rel="next">File Systems &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2020–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;liudy</div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+
+            
+    
+        <ul class="socials"><li class="socials-item">
+                    <a href="mailto:liudy95@foxmail.com" target="_blank" rel="external noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://github.com/liudyboy" target="_blank" rel="external noopener" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </li></ul>
+    
+
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+
+<script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+        speedAsDuration: true,
+        header: '[data-scroll-header]'
+    });
+</script>
+
+
+
+
+
+
+    <script>
+    if (typeof MathJax === 'undefined') {
+        window.MathJax = {
+            loader: {
+                load: ['[tex]/mhchem']
+            },
+            
+            tex: {
+                inlineMath: {'[+]': [['$', '$']]},
+                tags: 'ams',
+                packages: {'[+]': ['mhchem']}
+            }
+        };
+        (function() {
+            var script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js';
+            script.defer = true;
+            document.head.appendChild(script);
+        })();
+    } else {
+        MathJax.texReset();
+        MathJax.typeset();
+    }
+</script>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    mediumZoom(document.querySelectorAll('div.post-body img'), {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+
+
+
+    
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+
+
+    </body>
+</html>
